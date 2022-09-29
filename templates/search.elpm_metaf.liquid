@@ -1,0 +1,28 @@
+{% comment %}
+THIS FILE IS MAINTAINED AUTOMATICALLY FROM EXCEL-LIKE MANAGER APP (BULK PRODUCT MANAGER)
+DO NOT CHANGE OR REMOVE!
+{% endcomment %}
+{% layout none %}
+{% assign mf_scopes = "global" | split: ',' %}
+{% assign has_pout = 0 %}
+{% capture jresp %}
+if(!window.pdata_aux)
+	window.pdata_aux = [];
+
+window.pdata_aux[window.pdata_aux.length] = {
+{% paginate collections.all.products by 30 %}
+ "products_mf" : { {% assign n = 0 %}
+{% for product in collections.all.products %}{% assign has_pout = 1 %}{% if n > 0 %},{% endif %}"{{ product.id }}" : {
+"id" : "{{ product.id }}",
+"meta" : [{% assign v = 0 %}{% for mf_scope in mf_scopes %}{% assign mf_scope_arr = mf_scope | split: "," %}{% for field in product.metafields[mf_scope] %}{% if v > 0 %},{% endif %}{{ mf_scope_arr | concat: field | json }}{% assign v = v | plus: 1 %}{% endfor %}{% endfor %}]
+}
+{% for variant in product.variants %}
+,"{{variant.id}}" : {"id" : "{{ variant.id }}","meta" : [{% assign v = 0 %}{% for mf_scope in mf_scopes %}{% assign mf_scope_arr = mf_scope | split: "," %}{% for field in variant.metafields[mf_scope] %}{% if v > 0 %},{% endif %}{{ mf_scope_arr | concat: field | json }}{% assign v = v | plus: 1 %}{% endfor %}{% endfor %}]}
+{% endfor %}
+{% assign n = n | plus: 1 %}
+{% endfor %}
+{% endpaginate %}
+}
+,"pcount" : {{ n }}
+}{% endcapture %}
+{% assign jresp = jresp | strip %}{{ jresp }};

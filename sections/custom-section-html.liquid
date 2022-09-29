@@ -1,0 +1,100 @@
+<div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+  <div class="contain-full-width">
+    <div class="wrapper">
+
+      {% if section.settings.title != blank %}
+        <header>
+          <h4>{{ section.settings.title | escape }}</h4>
+        </header>
+      {% endif %}
+
+      <div class="custom-content-container">
+        {% for block in section.blocks %}
+          <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+            {% case block.type %}
+              {% when 'richtext' %}
+                <div class="content rte">
+                  {% if block.settings.title != blank %}
+                    <h2>{{ block.settings.title | escape }}</h2>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <div class="richtext">
+                      {{ block.settings.text }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% when 'html' %}
+                <div class="content">
+                  {% if block.settings.code != blank %}
+                    {{ block.settings.code }}
+                  {% endif %}
+                </div>
+            {% endcase %}
+
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Content HTML",
+  "class": "featured-text-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Custom Content HTML Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "richtext",
+      "name": "Rich text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Talk about your brand"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "html",
+          "id": "code",
+          "label": "HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Content HTML",
+      "category": "Advanced layout",
+      "blocks": [
+        {
+          "type": "richtext",
+          "settings": {
+            "title": "Custom Content HTML Title"
+          }
+        },
+        {
+          "type": "html",
+          "settings": {
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

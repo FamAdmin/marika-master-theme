@@ -1,0 +1,276 @@
+{% comment %}
+** Cart page - default view **
+- Template section
+{% endcomment %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="section clearfix">
+  <div class="sixteen columns">
+    <h1>{{ 'cart.general.title' | t }}</h1>
+    <div class="feature_divider"></div>
+  </div>
+</div>
+
+{% if cart.item_count == 0 %}
+  <div class="sixteen columns">
+    <div class="section clearfix">
+      <div class="six columns offset-by-five">
+        <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
+
+        <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}" class="action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+      </div>
+      <br class="clear" />
+    </div>
+  </div>
+{% else %}
+
+  <form action="/cart" method="post" id="cart_form">
+    <div class="section clearfix">
+      <div class="ten columns">
+        {% assign total_saving = 0 %}
+        {% for item in cart.items %}
+          {% if item.variant.compare_at_price > item.variant.price %}
+            {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+            {% assign total_saving = saving | plus: total_saving %}
+          {% endif %}
+
+          <div class="section clearfix">
+            <div class="three columns alpha">
+              <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
+                {% for image in item.product.images %}
+                  {% assign variantOption = item.variant.option1 | upcase %}
+                  {% assign imageAlt = image.alt | upcase %}
+                  {% if imageAlt == variantOption %}
+                    <img  src="{{ image | img_url: '100x' }}"
+                      alt="{{ image.title | escape }}"
+                      class="lazyload {{ settings.image_loading_style }}"
+                      style="max-width: 139px"
+                      data-sizes="auto"
+                      data-src="{{ image | img_url: '900x' }}"
+                      data-srcset=" {{ image | img_url: '300x' }} 300w,
+                                    {{ image | img_url: '600x' }} 600w,
+                                    {{ image | img_url: '900x' }} 900w"
+                     />
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+<!--                 <img  src="{{ item | img_url: '100x' }}"
+                      alt="{{ item.title | escape }}"
+                      class="lazyload {{ settings.image_loading_style }}"
+                      style="max-width: {{- item.image.width -}}px"
+                      data-sizes="auto"
+                      data-src="{{ item | img_url: '900x' }}"
+                      data-srcset=" {{ item | img_url: '300x' }} 300w,
+                                    {{ item | img_url: '600x' }} 600w,
+                                    {{ item | img_url: '900x' }} 900w"
+                       /> -->
+
+              </a>
+            </div>
+
+            <div class="seven columns omega cart_content_info">
+              <h3>
+                <a {% unless item.product.handle contains 'gwp' %}href="{{ item.url }}" {% endunless %}>{{ item.product.title }}
+<span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
+<span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
+                                </a>
+              </h3>
+
+              {% unless item.variant.title contains "Title" %}
+                <p class="meta">
+                  {% for option in item.product.options %}
+                    <span class="label">{{ option }}:</span> <span>{{ item.variant.options[forloop.index0] }}</span><br />
+                  {% endfor %}
+                </p>
+              {% endunless %}
+
+              {% if item.properties %}
+                <p>
+                  {% for p in item.properties %}
+                    {% unless p.last == blank %}
+                      {% if p.last contains '/uploads/' %}
+                        <div>
+                          {{ p.first }}: <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
+                        </div>
+                      {% else %}
+<!--                         <div>
+                          {{ p.first }}: {{ p.last }}
+                        </div> -->
+                      {% endif %}
+                    {% endunless %}
+                  {% endfor %}
+                </p>
+              {% endif %}
+
+              <p class="modal_price">
+                {% if item.price > 0 %}
+                  <span class="">
+<span class="saso-cart-item-price" data-key="{{item.key}}">{{ item.price | money }}</span>
+</span>
+                {% else %}
+                  {{ settings.free_price_text }}
+                {% endif %}
+
+                {% if item.price < item.variant.compare_at_price %}
+                  <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
+                {% endif %}
+              </p>
+
+            {% if item.product.tags contains 'final_sale' %}
+            	<p style="color: #363636; margin: -10px 0 0;">
+                  Final Sale: No Returns or Exchanges
+                </p>
+            {% endif %}
+
+              {% if item.product.handle contains 'gwp' %}
+            	
+            
+              {% else %}
+                <div class="product-quantity-box left">
+                  <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                  <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                  <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="five columns offset-by-one">
+        <div class="section clearfix">
+          <div class="subtotal">
+            <p class="cart_subtotal js-cart_subtotal">
+              <span class="right">
+                
+<span class="saso-cart-original-total"><span class="">{{ cart.total_price | money }}</span></span>
+<span class="saso-cart-total"></span>
+
+              </span>
+              <span>{{ 'cart.general.subtotal' | t }}</span>
+            </p>
+
+            {% if section.settings.display_savings %}
+              <p class="cart_savings sale">
+                {% if total_saving > 0 %}
+                  <span class="right">
+                    <span class="">{{ total_saving | money }}</span>
+                  </span>
+                  <span>{{ 'layout.general.savings' | t }}</span>
+                {% endif %}
+              </p>
+            {% endif %}
+
+            {% if settings.show_multiple_currencies %}
+              <p>
+                <small>
+                  {{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
+                </small>
+              </p>
+            {% endif %}
+
+            {% if section.settings.display_special_instructions %}
+              <label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
+              <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>
+            {% endif %}
+
+            {% if section.settings.display_tos_checkbox %}
+              <p>
+                <input type="checkbox" class="tos_agree" id="cart_agree" required />
+                  <label class="tos_label" for="cart_agree">
+                    {{ 'cart.general.agree_to_terms_html' | t }}
+                  </label>
+                {% if settings.tos_page != blank %}
+                  <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                {% endif %}
+              </p>
+            {% endif %}
+
+            {% if section.settings.cart_message != blank %}
+              <div>
+                {{ section.settings.cart_message }}
+              </div>
+            {% endif %}
+
+            <p>
+              <input type="submit" class="action_button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
+            </p>
+
+            {% if content_for_additional_checkout_buttons and settings.cart_action != 'ajax' %}
+              <div class="additional-checkout-buttons">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {% endif %}
+
+            {% if cart.item_count > 0 %}
+              <div class="featured-links">
+                <a href="/collections/bestsellers" class="secondary_button">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- start Recomatic code -->
+
+  <div id="recomatic-asset-url" data-value="https://cdn.shopify.com/s/files/1/1588/5229/files/color.JPG?5103053599268345582"></div>
+  <style type="text/css">.recomatic-product-wrap { display: none; }</style>
+  <div class="recomatic-related-products sixteen columns" style="padding-top: 30px;">
+    <div class="related-products__title"><h3>You'll Also Love</h3></div>
+    <div class="feature_divider"></div>
+    <div recomatic="cart" shop="{{shop.permanent_domain}}" product_ids="{{cart.items|map:'product'|map:'id'|join:','}}"></div>
+  </div>
+
+	<script>
+      var done = false;
+      $('body').on('DOMNodeInserted', '.recomatic-wrap', function(e) {
+        if(!done){
+          setTimeout( () => {
+            $(".recomatic-color").each( function(){
+              $(this)[0].style.backgroundImage = $(this)[0].style.backgroundImage + ", " + $(this)[0].style.backgroundImage.replace('JPG', 'jpg');
+            });
+          }, 1000);
+          done = true;
+        }
+      });
+	</script>
+
+  <!-- end Recomatic code -->
+
+  {% include 'cart-shipping-calculator' %}
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Cart page",
+  "class": "cart-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "display_special_instructions",
+      "label": "Show \"note\" text box"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_tos_checkbox",
+      "label": "Show \"agree to terms\" checkbox"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_savings",
+      "label": "Show total savings",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "cart_message",
+      "label": "Cart message"
+    }
+  ]
+}
+
+{% endschema %}

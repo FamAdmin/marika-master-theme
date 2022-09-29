@@ -1,0 +1,195 @@
+<div class="product-details">
+  {% assign today_date = 'now' | date: '%s' %}
+  {% assign three_weeks_ago_date = 'now' | date: '%s' | minus: 1814400 | date: '%s' %}
+  {% assign published_date = product.published_at | date: '%s' %}
+  {% if published_date > three_weeks_ago_date %}
+  	<p style="margin-top: 0; margin-bottom: -5px;">NEW</p>
+  {% endif %}
+  
+  <h2>
+    <span class="title">{{ product.title }}</span>
+  </h2>
+  {% if settings.enable_shopify_collection_badges and settings.enable_shopify_review_comments %}
+    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  {% endif %}
+  {% if settings.display_vendor %}
+    <span class="brand">{{ product.vendor }}</span>
+  {% endif %}
+
+  {% assign variantCount = 1 %}
+  {% assign currentVariant = product.variants[0].option1 | upcase %}
+  {% for variant in product.variants %}
+    {% assign option = variant.option1 | upcase %}
+    {% if variant.inventory_quantity > 0 and variant.featured_image %}
+      {% if option != currentVariant %}
+        {% assign currentVariant = option %}
+          {% assign variantCount = variantCount | plus: 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %}
+  {% if variantCount > 1 %}
+    <span class="available-in">Available in {{variantCount}} Colors</span>
+  {% else %}
+    <br />
+  {% endif %}
+  {% endcomment %}
+
+
+
+  {% if collection_handles contains 'coming-soon' %}
+    <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+    <span class="price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+<!--       <meta itemprop="price" content="{{ product.price_min | money_without_currency }}" />
+      <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+      <meta itemprop="seller" content="{{ shop.name | escape }}" />
+      <meta itemprop="availability" content="{% if product.available %}in_stock{% else %}out_of_stock{% endif %}" />
+      <meta itemprop="itemCondition" content="New" /> -->
+
+      {% if product.available %}
+        {% comment %}
+          {% if product.compare_at_price_max > product.price %}
+            <span class="on-sale">Now</span>
+          {% endif %}
+      	{% endcomment %}
+
+        {% if product.price_varies and product.price_min > 0 %}
+          <small><em>Starting at </em></small>
+        {% endif %}
+          {% if product.price_min > 0 %}
+            {% if product.compare_at_price_max > product.price %}
+              <span class="money sales-price">{{ product.price_min | money }}</span>
+            {% else %}
+              <span class="money">{{ product.price_min | money }}</span>
+            {% endif %}
+          {% else %}
+            {{ settings.free_price_text }}
+          {% endif %}
+      {% else %}
+        <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+      {% endif %}
+      {% if product.compare_at_price_max > product.price %}
+        <span class="was_price">
+          <span class="money">{{ product.compare_at_price_max | money }}</span>
+        </span>
+      {% endif %}
+    </span>
+  	<p class="promo-note">
+        {% assign today_date = 'now' | date: '%s' %} 
+        {% assign promos = product.metafields.promo_code.time_content.value %}
+
+        {% for promo in promos %}
+     	<script>console.log('promo:',{{ promo }});</script>
+      
+        {% assign promo_start_date = promo.promo_start | date: '%s' %} 
+        {% assign promo_end_date = promo.promo_end | date: '%s' %} 
+
+      	<script>console.log('promo starts:', {{ promo_start_date }}, 'now is:', {{ today_date }} ); </script>
+        {% if promo_start_date < today_date and promo_end_date > today_date %}
+        {{ promo.promo_cond_text }}
+        {% endif %}
+
+        {% endfor %}
+    </p>
+  {% endif %}
+
+  {% comment %}
+  {% if collection_handles contains '2-for-25-leggings' or collection_handles contains 'winter-clearance' or product.tags contains 'final_sale' %}
+    <p style="color: #ff6479; margin: 0;">
+      Final Sale: No Returns or Exchanges
+    </p>
+  {% endif %}
+  {% endcomment %}
+  
+  {% if product.handle == 'mlj0249a ' %}
+<!--     <p style="color: #333; margin: 0; font-family: 'Gotham', sans-serif;font-size: 12px;font-style: italic;">
+      35% Off Shapewear
+    </p> -->
+  	<p style="color: #333;margin: 0;font-family: 'Gotham', sans-serif;font-size: 12px;font-style: italic;">
+      Promotions cannot be combined
+    </p>
+  {% endif %}
+  
+  
+<!--   TODO: Final sale -->
+
+{% comment %}
+  {% if variantCount > 1 %}
+    <span class="available-in">Available in {{variantCount}} Colors:</span>
+  {% else %}
+    <span class="available-in">Available in 1 Color: </span>
+  {% endif %}
+{% endcomment %}
+
+{% comment %}
+  <div class="popover-content">
+    {% assign currentVariant = product.variants[0].option1 %}
+    <img class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/{{product.variants[0].featured_image.src}}" data-variant="{{product.variants[0].option1}}" style="max-width: 30px;"/>
+    {% for image in product.images %}
+      {% if image.alt == product.variants[0].option1 %}
+        <img src="https://cdn.shopify.com/s/files/1/1588/5229/{{image}}" style="display:none"/>
+      {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if variantCount > 0 %}
+      {% for variant in product.variants %}
+        {% if variant.inventory_quantity > 0 %}
+          {% if variant.option1 != currentVariant %}
+            {% assign currentVariant = variant.option1 %}
+            <img class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/{{variant.featured_image.src}}" data-variant="{{variant.option1}}" style="max-width: 30px;"/>
+            {% for image in product.images %}
+              {% if image.alt == variant.option1 %}
+                <img src="https://cdn.shopify.com/s/files/1/1588/5229/{{image}}" style="display:none"/>
+              {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% endcomment %}
+</div>
+
+<style>
+  .popover-swatch {
+    width: 21px !important;
+    height: 21px !important;
+    border-radius: 100%;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+  .popover-content {
+    margin-top: 5px;
+  }
+
+  /* .quick_shop {
+    display: none;
+  } */
+
+  .available-in {
+    font-size: 14px;
+  }
+
+
+</style>
+
+<script>
+$('.product-wrap').on('hover', function(e) {
+  // alert('hover!')
+  e.stopPropogation();
+
+  return false;
+
+})
+$('.container').on('mouseenter', '.popover-swatch', function(e) {
+  console.log('switch!', $(this).attr('data-variant'))
+
+  $(this).closest('.popover-content').prev().find('.image__container img').attr('src', $(this).next().attr('src'));
+  $(this).closest('.popover-content').prev().find('.image__container img').attr('srcset', $(this).next().attr('srcset'));
+})
+</script>

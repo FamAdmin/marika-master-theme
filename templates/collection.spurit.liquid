@@ -1,0 +1,7 @@
+{% layout none %}
+{
+"tags": {{ collection.all_tags | json }},
+"types": {{ collection.all_types | json }},
+"vendors": {{ collection.all_vendors | json }},
+"collections": {{ collections | json }}
+}

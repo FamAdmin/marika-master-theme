@@ -1,0 +1,285 @@
+{% comment %}
+** Image with text overlay - homepage partial **
+- Draggable section
+{% endcomment %}
+
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<section id="banner-{{section.id}}" class="banner">
+  {% if section.settings.image != nil %}
+  <a href="{{section.settings.banner_link}}">
+    <img  src="{{ section.settings.image | img_url: '2400x'}}"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="lazyload {{ settings.image_loading_style }}"
+          sizes="100vw"
+          data-src="{{ section.settings.image | img_url: default }}"
+          srcset="
+          {{ section.settings.image | img_url: default }} {{default | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+          {{ section.settings.image | img_url: size10 }} {{size10 | replace: 'x', 'w'}}"
+
+           />
+  </a>
+  {% else %}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+  {% endif %}
+ 
+    {% if section.settings.button1_link != blank %}
+      <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+        {{ section.settings.button1 }}
+      </a>
+    {% endif %}
+  
+  {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank %}
+    <div class="position-{{ section.settings.text_position }} caption js-caption">
+      <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+        {% if section.settings.title and section.settings.title_on == true %}
+          <h1 class="headline" style="color:{{ section.settings.heading_text_color }};">
+            {{ section.settings.title }}
+          </h1>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <div class="subtitle" style="color:{{ section.settings.richtext_color }};">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+        {% if section.settings.button1 != blank %}
+          <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+            {{ section.settings.button1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.pretext != blank %}
+          <div class="pretext" style="color:{{ section.settings.richtext_color }};">
+            {{ section.settings.pretext }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endunless %}
+</section>
+
+
+<section id="banner-{{section.id}}" class="banner-mobile">
+  <a href="{{section.settings.banner_link}}">
+    <img  src="{{ section.settings.mobile_image | img_url: '100x'}}"
+          alt="{{ section.settings.mobile_image.alt | escape }}"
+          class="lazyload {{ settings.image_loading_style }}"
+          sizes="100vw"
+          data-src="{{ section.settings.mobile_image | img_url: default }}"
+          srcset="
+          {{ section.settings.mobile_image | img_url: default }} {{default | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+          {{ section.settings.mobile_image | img_url: size10 }} {{size10 | replace: 'x', 'w'}}"
+
+           />
+  </a>
+ 
+  {% unless section.settings.button1_link != blank %}
+    {% if section.settings.button1_link != blank %}
+      <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+        {{ section.settings.button1 }}
+      </a>
+    {% endif %}
+  {% endunless %}
+  {% unless section.settings.title == blank and section.settings.button1 == blank %}
+    <div class="position-{{ section.settings.text_position }} caption js-caption">
+      <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+        
+        {% if section.settings.title and section.settings.title_on == true %}
+          <h1 class="headline" style="color:{{ section.settings.heading_text_color }};">
+            {{ section.settings.title }}
+          </h1>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <div class="subtitle" style="color:{{ section.settings.richtext_color }};">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+        {% if section.settings.button1 != blank %}
+          <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+            {{ section.settings.button1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.pretext != blank %}
+          <div class="pretext" style="color:{{ section.settings.richtext_color }};">
+            {{ section.settings.pretext }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endunless %}
+  <div class="special-position">
+  	{% if section.settings.subtitle != blank %}
+          <div class="subtitle" style="color:{{ section.settings.richtext_color }};">
+            {{ section.settings.subtitle }}
+          </div>
+      {% endif %}
+     {% if section.settings.button1 != blank %}
+          <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+            {{ section.settings.button1 }}
+          </a>
+      {% endif %}
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Image with text overlay",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1800 x 1000px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "banner_link",
+      "label": "Banner Link"
+    },
+    {
+      "type": "richtext",
+      "id": "pretext",
+      "label": "Preheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+	{
+      "id": "heading_text_color",
+      "type": "color",
+      "label": "Heading Text Color",
+      "default": "#020202"
+    },
+	{
+      "type": "checkbox",
+      "id": "title_on",
+      "label": "Show Heading",
+		"default": true
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subheading"
+    },
+	{
+	  "type": "color",
+      "id": "richtext_color",
+      "label": "Subheading Text Color",
+      "default": "#020202"
+    },
+    {
+      "type": "checkbox",
+      "id": "caption_background",
+      "label": "Display solid text background",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "caption_background_transparency",
+      "label": "Enable background transparency"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "button1",
+      "label": "First button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "First button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button1_highlight",
+      "label": "Highlight first button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text overlay",
+      "category": "Image",
+      "settings": {
+        "image": "",
+        "title": "Your Headline",
+        "text_position": "center",
+        "text_align": "center"
+      }
+    }
+  ]
+}
+
+{% endschema %}

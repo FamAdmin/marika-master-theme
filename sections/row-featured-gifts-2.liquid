@@ -1,0 +1,71 @@
+<section id="section-{{section.id}}" class="banner row row-featured-gifts">
+  <h1>{{section.settings.title}}</h1>
+  <div class="col-sm-16 row featured-gifts-wrapper">
+    {% for block in section.blocks %}
+
+      {% if section.blocks.size == 4 %}
+        <div class="col-sm-3">
+          <a href="{{block.settings.link_url}}">
+            <img src="{{block.settings.image | img_url: '480x', format: 'pjpg' }}" alt="{{ block.settings.image.alt | escape }}"/> 
+          </a>
+        </div>
+      {% endif %}
+
+       {% if section.blocks.size == 3 %}
+        <div class="col-sm-4">
+          <a href="{{block.settings.link_url}}">
+            <img src="{{block.settings.image | img_url: '480x', format: 'pjpg' }}" alt="{{ block.settings.image.alt | escape }}"/> 
+          </a>
+        </div>
+      {% endif %}
+
+    {% endfor %}
+    
+  </div>
+    
+
+</section>
+
+{% schema %}
+
+{
+  "name": "Row Featured Gifts 2",
+  "class": "row-featured-gifts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Row Featured Gifts 2",
+      "category": "Image",
+      "settings": {
+        "title": "Your Headline"
+      }
+    }
+  ]
+}
+
+{% endschema %}

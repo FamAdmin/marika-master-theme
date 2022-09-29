@@ -1,0 +1,68 @@
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="sixteen columns page limitWidth">
+  {% include 'page-multi-column', content: page.content %}
+</div>
+<div class="marikagives-wrapper sixteen columns">
+  <h3>Our Partners</h3>
+  <div class="eight columns alpha">
+    <img src="https://cdn.shopify.com/s/files/1/1588/5229/files/Marika-gives-dwc.jpg?16842392247044173600">
+    <p class="marikagives-subhead">Downtown Women's Center</p>
+    <p>The only organization in Los Angeles focused exclusively on serving and empowering homeless and formerly homeless women.</p>
+    <a href="https://www.downtownwomenscenter.org" target="_blank">Learn More</a>
+  </div>
+  <div class="eight columns omega">
+    <img src="https://cdn.shopify.com/s/files/1/1588/5229/files/Marika-gives-elawc.jpg?16842392247044173600">
+    <p class="marikagives-subhead">East Los Angeles Women's Center</p>
+    <p>Working to ensure all women, girls, and their families reside in a healthy safe place, free from violence and abuse, with access to necessary health services and social support.</p>
+  	<a href="https://www.elawc.org" target="_blank">Learn More</a>
+  </div>
+</div>
+<br>
+<br>
+<style>
+  .limitWidth {
+  	max-width: 1000px;
+    margin: 0 auto !important;
+    display: block;
+    float: none;
+  }
+  .marikagives-wrapper {
+  	text-align: center;
+    max-width: 1000px;
+    margin: 0 auto !important;
+    float: none;
+    display: block;
+  }
+  .marikagives-wrapper .marikagives-subhead {
+  	font-weight: 700;
+  }
+  .marikagives-wrapper img {
+  	width: 100%;
+  }
+  
+  .marikagives-wrapper h3:before, .marikagives-wrapper h3:after {
+  	background-color: #333;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 35%;
+  }
+  
+  .marikagives-wrapper h3:before {
+  	right: 0.5em;
+    margin-left: -50%;
+  }
+  
+  .marikagives-wrapper h3:after {
+  	left: 0.5em;
+    margin-right: -50%;
+  }
+  
+  .marikagives-wrapper a {
+  	text-decoration: underline;
+    font-family: 'Gotham', 'Montserrat', sans-serif;
+  }
+</style>

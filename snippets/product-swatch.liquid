@@ -1,0 +1,83 @@
+{% comment %}
+  Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
+{% endcomment %}
+
+{% assign file_extension = 'png' %}
+
+{% assign swatch = product-swatch %}
+{% assign found_option = false %}
+{% assign is_color = false %}
+{% assign option_index = 0 %}
+
+{% for option in product.options %}
+  {% if option == swatch %}
+    {% assign found_option = true %}
+    {% assign option_index = forloop.index0 %}
+    {% assign downcased_option = swatch | downcase %}
+    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+      {% assign is_color = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="swatch clearfix" data-option-index="{{ option_index }}">
+  <div class="option_title">{{ swatch }}</div>
+  {% assign values = '' %}
+  {% for variant in product.variants %}
+    {% assign value = variant.options[option_index] %}
+    {% unless values contains value %}
+      {% assign values = values | join: ',' %}
+      {% assign values = values | append: ',' | append: value %}
+      {% assign values = values | split: ',' %}
+
+      {% if variant.featured_image %}
+
+        <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+        <div data-value="{{ value | escape }}" class="swatch-element {% if is_color %}color {% endif %}{{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}" onmouseover="">
+          {% if is_color %}
+            <div class="tooltip">{{ value }}</div>
+          {% endif %}
+          {% if is_color %}
+
+            <!-- Theme has an indexing issue with color swatches and product images -->
+            <!-- So manually looping through variants and matching -->
+            {% for variant in product.variants %}
+              <!-- TODO: color swatch replacement -->
+              {% assign variantColor = variant.option1 | replace: '/ ', ' ' | replace: '/', ' ' | replace: '  ', ' ' | replace: ' ', '-' | replace: "'", "" | upcase %}
+              {% assign styleNumber = product.handle | upcase %}
+              {% if variant.option1 == value %}
+                {% assign variantImage = variant.featured_image.src %}
+                <!-- <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="background-image: url({{ variant.featured_image.src | img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};"> -->
+                <label class="swatch-bg-img" for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="background-image: url(https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?5103053599268345582), url(https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.jpg?5103053599268345582); background-color: {{ value | split: ' ' | last | handle }};">
+                <span class="crossed-out"></span>
+              </label>
+              {% break %}
+              {% endif %}
+            {% endfor %}
+
+  		{% comment %}
+            <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
+              <span class="crossed-out"></span>
+            </label> {% endcomment %}
+          {% else %}
+            <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}">
+              {{ value }}
+              <span class="crossed-out"></span>
+            </label>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if option_index == 1 %}
+    <div class="viewSizeGuide">
+      <a>View Size Guide</a>
+    </div>
+  {% endif %}
+  </div>
+  {% if option_index == 1 %}
+    <div class="viewSizeGuideResponsive viewSizeGuide">
+      <a style="padding-left: 0;">View Size Guide</a>
+    </div>
+  {% endif %}

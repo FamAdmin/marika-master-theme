@@ -1,0 +1,134 @@
+{% assign popularProductsCollection = collections[section.settings.collection].products %}
+{% assign products = collections[section.settings.collection].products %}
+
+{% assign cartItems = '' %}
+
+{% for cartItem in cart.items %}
+  <script>console.log('cart item:', {{cartItem.title | json}})</script>
+  {% assign itemTitle = cartItem.title | split: ' - ' %}
+  {% assign cartItems = cartItems | append: itemTitle[0] | append: ';' %}
+{% endfor %}
+
+{% assign cartItemsArray = cartItems | remove_last: ';' | split: ';' %}
+
+<div class="cart-related-products-section">
+  <h2>Best Sellers</h2>
+  {% comment %}
+  <div id="lightSliderCart" class="flickity-popular-products">
+    {% for product in popularProductsCollection limit: 10 %}
+      {% if cartItemsArray contains product.title %}
+      {% else %}
+        <script>console.log('product: ', {{product | json}})</script>
+        <div class="popular-products-wrapper" style="padding: 20px;">
+          <a href="{{product.url}}">
+            <img src="{{product.featured_image.src | img_url: '200x'}}" alt="{{product.title}}"/>
+          </a>
+          <a href="{{product.url}}">
+            <p>{{product.title}}</p>
+          </a>
+          <a href="{{product.url}}">
+            <p>{{product.price | money}}</p>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="related-products related-products--slider js-related-products-slider">
+  {% include 'product-loop', related_products: true %}
+  </div>
+  {% endcomment %}
+  <div class="container related-products--grid">
+  <div class="sixteen columns">
+            {% include 'product-loop', related_products: true, limit: 6 %}
+    </div></div>
+</div>
+
+<style>
+  /* smaller, dark, rounded square */
+  .cart-related-products-section .flickity-button {
+  background: #333;
+  }
+  .cart-related-products-section .flickity-button:hover {
+  background: #F90;
+  }
+
+  .cart-related-products-section .flickity-prev-next-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  }
+  /* icon color */
+  .cart-related-products-section .flickity-button-icon {
+  fill: white;
+  }
+  .cart-related-products-section .flickity-prev-next-button {
+    top: 33%;
+    display: block !important;
+    opacity: 0.75;
+  }
+  .cart-related-products-section .flickity-prev-next-button.previous {
+    left: 20px;
+  }
+  .cart-related-products-section .flickity-page-dots {
+    display: none;
+  }
+  .cart-related-products-section h2 {
+    text-align: center;
+  }
+
+  .popular-products-wrapper {
+    max-width: 20%;
+    width: 20%
+    /* min-width: 196px; */
+  }
+
+  .popular-products-wrapper img {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    .popular-products-wrapper {
+      max-width: 100%;
+      width: 50%;
+    }
+  }
+  .cart-related-products-section .popover-swatch {
+  	display: inline !important;
+  }
+  
+  @media screen and (min-width: 768px) {
+  	.popular-products-section .slider-gallery .gallery-cell {
+      padding: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+
+{
+  "name": "Popular Products",
+  "class": "popular-products-section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Choose Collection"
+    }
+  ]
+}
+
+{% endschema %}
+
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylsheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script> -->
+
+<!-- <script>
+$(function(){
+  $('.bxslider').bxSlider({
+    mode: 'fade',
+    captions: true,
+    slideWidth: 600
+  });
+});
+</script> -->

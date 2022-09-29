@@ -1,0 +1,195 @@
+
+  {%- if content_for_header contains 'bulk-noindex-sitemap.helloshopowner.com' -%}
+
+    {%- assign hso_noindex_template_name = template | split: '.' | first -%}
+
+    {%- assign hso_is_meta_used_before = false -%}
+    {%- assign hso_IsPaginationPage = false -%}
+
+    {%- capture hso_contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+  
+    {%- assign hso_pageUrl = hso_contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+        replace:'/','/' | 
+        replace:'%20',' ' | 
+        replace:'&','&'
+    -%}
+
+    {%- assign hso_pageQuerystring = hso_pageUrl | split:'?' | last -%}
+    {%- assign hso_pageQuerystringArray = hso_pageQuerystring | split:'&'-%}
+
+
+    {% for hso_singleQueryString in hso_pageQuerystringArray %}
+      {%- assign hso_singleQueryStringName = hso_singleQueryString | split: '=' | first -%}
+      {%- assign hso_singleQueryStringValue = hso_singleQueryString | split: '=' | last -%}
+
+      {% if hso_singleQueryStringName == "page" and hso_singleQueryStringValue > "1" %}
+        {%- assign hso_IsPaginationPage = true -%}
+      {% endif %}
+
+    {% endfor %}
+
+    {% comment %}
+      Entire Website NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and shop.metafields.hso_noindex.bulk_settings.value.entireWebsite.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.entireWebsite.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and shop.metafields.hso_noindex.bulk_settings.value.entireWebsite.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and shop.metafields.hso_noindex.bulk_settings.value.entireWebsite.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {% comment %}
+      404 Page NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == '404' and shop.metafields.hso_noindex.bulk_settings.value.notFound404Page.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.notFound404Page.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == '404' and shop.metafields.hso_noindex.bulk_settings.value.notFound404Page.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == '404' and shop.metafields.hso_noindex.bulk_settings.value.notFound404Page.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {% comment %}
+      Search Page NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'search' and shop.metafields.hso_noindex.bulk_settings.value.searchResults.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.searchResults.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'search' and shop.metafields.hso_noindex.bulk_settings.value.searchResults.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'search' and shop.metafields.hso_noindex.bulk_settings.value.searchResults.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {% comment %}
+      Cart Page NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'cart' and shop.metafields.hso_noindex.bulk_settings.value.cartPage.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.cartPage.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'cart' and shop.metafields.hso_noindex.bulk_settings.value.cartPage.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'cart' and shop.metafields.hso_noindex.bulk_settings.value.cartPage.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {% comment %}
+      Login Page NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/login' and shop.metafields.hso_noindex.bulk_settings.value.loginPage.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.loginPage.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/login' and shop.metafields.hso_noindex.bulk_settings.value.loginPage.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/login' and shop.metafields.hso_noindex.bulk_settings.value.loginPage.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {% comment %}
+      Register Page NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/register' and shop.metafields.hso_noindex.bulk_settings.value.registerPage.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.registerPage.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/register' and shop.metafields.hso_noindex.bulk_settings.value.registerPage.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'customers/register' and shop.metafields.hso_noindex.bulk_settings.value.registerPage.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    
+    {% comment %}
+      Out of Stock product NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'product' and product.available == false and shop.metafields.hso_noindex.bulk_settings.value.outOfStockProductsPage.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.outOfStockProductsPage.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'product' and product.available == false and shop.metafields.hso_noindex.bulk_settings.value.outOfStockProductsPage.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_noindex_template_name == 'product' and product.available == false and shop.metafields.hso_noindex.bulk_settings.value.outOfStockProductsPage.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    
+    {% comment %}
+      Pagination NoIndex/NoFollow meta tag render
+    {% endcomment %}
+
+    {%- if hso_is_meta_used_before == false and hso_IsPaginationPage == true and shop.metafields.hso_noindex.bulk_settings.value.paginationPage.noIndex == true and shop.metafields.hso_noindex.bulk_settings.value.paginationPage.noFollow == true -%}
+      <meta name="robots" content="noindex,nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_IsPaginationPage == true and shop.metafields.hso_noindex.bulk_settings.value.paginationPage.noIndex == true -%}
+      <meta name="robots" content="noindex">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- elsif hso_is_meta_used_before == false and hso_IsPaginationPage == true and shop.metafields.hso_noindex.bulk_settings.value.paginationPage.noFollow == true -%}
+      <meta name="robots" content="nofollow">
+      {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'product' and product.metafields.seo.hidden == 2 -%}
+    <meta name="robots" content="noindex,nofollow">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'product' and product.metafields.seo.hidden == 3 -%}
+    <meta name="robots" content="noindex">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'collection' and collection.metafields.seo.hidden == 2 -%}
+    <meta name="robots" content="noindex,nofollow">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'collection' and collection.metafields.seo.hidden == 3 -%}
+    <meta name="robots" content="noindex">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'page' and page.metafields.seo.hidden == 2 -%}
+    <meta name="robots" content="noindex,nofollow">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'page' and page.metafields.seo.hidden == 3 -%}
+    <meta name="robots" content="noindex">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'blog' and blog.metafields.seo.hidden == 2 -%}
+    <meta name="robots" content="noindex,nofollow">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+    {%- if hso_is_meta_used_before == false and hso_noindex_template_name == 'blog' and blog.metafields.seo.hidden == 3 -%}
+    <meta name="robots" content="noindex">
+    {%- assign hso_is_meta_used_before = true -%}
+    {%- endif -%}
+
+  {%- endif -%}
+  

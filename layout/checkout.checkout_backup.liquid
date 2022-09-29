@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div>
+
+    {{ order_summary_toggle }}
+
+    <div class="content" data-content>
+      <div class="wrap">
+
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            <h4 class="showOnMobile767" style="margin-bottom: 20px; color: #ff6479;">Promotions cannot be combined.</h4>
+            {{ content_for_layout }}
+          </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
+
+        <div class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            <h4 class="hideOnMobile767" style="margin-bottom: 20px; color: #ff6479;">Promotions cannot be combined.</h4>
+            {{ content_for_order_summary }}
+
+            {% for line_item in checkout.line_items %}
+              {% for image in line_item.product.images %}
+                {% assign variantOption = line_item.variant.option1 | upcase %}
+                {% assign imageAlt = image.alt | upcase %}
+                {% if imageAlt == variantOption %}
+                  <input type="hidden" class="lineItemImages" name="{{image.alt}}" value="{{image | img_url: '100x'}}">
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {{ tracking_code }}''
+
+    <style>
+      .main__header {
+        padding-bottom: 15px;
+      }
+      .main__content .section {
+        padding-top: 0;
+      }
+      @media screen and (max-width: 999px) {
+        #order-summary .order-summary--is-collapsed {
+          height: auto;
+          visibility: visible;
+        }
+      }
+
+      .showOnMobile767 {
+        display: none;
+      }
+      @media screen and (max-width: 768px) {
+        .hideOnMobile767 {
+          display: none;
+        }
+        .showOnMobile767 {
+          display: block;
+        }
+      }
+
+      @media screen and (min-width: 769px) {
+        .content {
+          height: 2000px;
+        }
+      }
+
+      .section--shipping-address {
+        margin-top: 20px;
+      }
+
+      div[data-alternative-payments] {
+        display: none;
+      }
+
+      .payment-icon-list__more .content-box__small-text {
+      	cursor: default;
+      }
+      .payment-icon-list__more {
+      	cursor: default;
+      }
+
+      span[data-brand-icons-for-gateway="109716873"] {
+      	cursor: default;
+      }
+
+    </style>
+    <script>
+      $(window).on('load', function() {
+        setTimeout(function() {
+          $('tr.product').each(function() {
+            var $this = $(this);
+            $('.lineItemImages').each(function() {
+              if ($this.find('.product__description__variant').html().indexOf($(this).attr('name')) > -1) {
+                $this.find('.product-thumbnail__image').attr('src', $(this).val());
+              }
+            })
+          })
+        }, 500)
+
+        if (window.location.pathname.indexOf('checkouts') > -1) {
+      		$('.section__title').css('margin-top', '20px');
+      	}
+
+        // TODO: expand order details on mobile
+        if ($(window).width() < 768) {
+          setTimeout(function() {
+            $('.order-summary-toggle').removeClass('order-summary-toggle--show').addClass('order-summary-toggle--hide');
+            $('#order-summary').removeClass('order-summary--is-collapsed').addClass('order-summary--is-expanded');
+          })
+        }
+
+        setTimeout(function() {
+        	$('.product__description__property.order-summary__small-text').each(function(){
+                if ($(this).text().indexOf('Final Sale') > -1) {
+                  console.log('match!');
+                  $(this).html('<span>Final Sale</span>');
+                }
+            })
+        }, 500)
+
+        setTimeout(function() {
+        	$('.product__description__property.order-summary__small-text').each(function(){
+                if ($(this).text().indexOf('Final Sale') > -1) {
+                  console.log('match!');
+                  $(this).html('<span>Final Sale</span>');
+                }
+            })
+        }, 2000)
+
+
+      })
+
+      $('.section--shipping-address .field__input').on('paste', function(e) {
+        e.preventDefault();
+      })
+
+      if (window.location.pathname.indexOf('thank_you') > -1) {
+        setTimeout(function() {
+          $('.main__content h4').hide();
+        }, 1000);
+      }
+
+      console.log('cartlineitems', {{checkout.line_items | json}})
+      console.log('product variantid', {{settings.gwp_variant_id | json}})
+      console.log('ite', {{settings.gwp_product | json}})
+        {% assign gwp_in_cart = false %}
+        {% assign gwp_variant_id = settings.gwp_variant_id | plus: 0 %}
+
+        {% for item in checkout.line_items %}
+        console.log('ite', {{item.product | json}})
+          {% if item.product.variants[0].id == gwp_variant_id %}
+          console.log('gwp in cart')
+            {% assign gwp_in_cart = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% assign threshold = settings.gwp_threshold | times: 100 %}
+		
+        
+          console.log('checkouttotalprice', {{checkout.total_price | json}})
+      {% if settings.gwp_enable == true %}
+        {% if checkout.line_items_subtotal_price >= threshold %}
+                   
+          {% if gwp_in_cart == false %}
+            $.ajax({
+              type: 'POST',
+              url: '/cart/update.js',
+              data: {
+                updates: {
+                  {{settings.gwp_variant_id}} : 1
+                }
+              },
+              dataType: 'json',
+              success: function() {
+                location.reload();
+              },
+              error: function(err) {
+                console.log('error:', err)
+              }
+            })
+          
+          {% endif %}
+        {% else %}
+         
+           console.log('below threshold');
+          {% if gwp_in_cart == true %}
+      		console.log('remove!');
+            $.ajax({
+              type: 'POST',
+              url: '/cart/update.js',
+              data: {
+                updates: {
+                  {{settings.gwp_variant_id}} : 0
+                }
+              },
+              dataType: 'json',
+              success: function() {
+                location.reload();
+              },
+              error: function(err) {
+                console.log('error:', err)
+              }
+            })
+          {% endif %}
+            
+        {% endif %}
+            {% endif %}
+           
+            
+                  
+
+        function updateGWP(variantID, quantity) {
+            $.ajax({
+              type: 'POST',
+              url: '/cart/update.js',
+              data: {
+                updates: {
+                  variantID : quantity
+                }
+              },
+              dataType: 'json',
+              success: function() {
+                location.reload();
+              },
+              error: function(err) {
+                console.log('error:', err)
+              }
+            })
+        }
+
+
+    </script>
+
+
+
+
+
+    </script>
+  </body>
+</html>

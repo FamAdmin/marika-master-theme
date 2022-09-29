@@ -1,0 +1,45 @@
+<div class="seoCopyBlockHPWrapper">
+  <section class="seo-copy-block-homepage">
+    {% if section.settings.seo-copy-header %}
+      <h3>{{ section.settings.seo-copy-header }}</h3>
+    {% endif %}
+    {% if section.settings.seo-copy-text %}
+      <p>{{ section.settings.seo-copy-text }}</p>
+    {% endif %}
+  </section>
+</div>
+
+<style>
+  .seoCopyBlockHPWrapper {
+    width: 100% !important;
+    margin: 0 auto;
+    font-size: 12px;
+    max-width: 970px;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "SEO Copy Block HP",
+  "class": "seo-copy-block-hp",
+  "settings": [
+    {
+      "type": "text",
+      "id": "seo-copy-header",
+      "label": "SEO Copy Header"
+    },
+    {
+      "type": "textarea",
+      "id": "seo-copy-text",
+      "label": "SEO Copy Text"
+    }
+  ],
+  "presets": [{
+    "name": "SEO Copy Block HP",
+    "category": "Text"
+  }]
+}
+{% endschema %}

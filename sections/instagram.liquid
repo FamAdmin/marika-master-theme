@@ -1,0 +1,63 @@
+<div class="yotpo yotpo-visual-carousel"
+data-auto-slide="1"
+data-source="all"
+data-title="0"
+data-hover-color="#ffffff"
+data-hover-opacity="0.8"
+data-hover-icon="true"
+data-cta-text="Shop Now"
+data-cta-color="#ff317d"
+></div>
+
+{% stylesheet 'scss' %}
+	.section-instagram {
+		max-width: 1400px;
+    	margin: 0 auto;
+	}
+{% endstylesheet %}
+
+{% schema %}
+{
+	"name": "Instagram",
+	"class": "section-instagram",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+			"type": "text",
+			"id": "buttOn_text",
+			"label": "Button Text"
+		},
+		{
+			"type": "text",
+			"id": "button_url",
+			"label": "Button URL"
+		},
+		{
+			"type": "text",
+			"id": "text_below_button",
+			"label": "Text Below Button"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_sign_in",
+			"label": "Show Sign In Link",
+		    "default": true
+		}
+	],
+	"presets": [
+		{
+			"name": "Instagram - Home Page",
+			"category": "App Related"
+		}
+	]
+}
+{% endschema %}
+
+
+{% javascript %}
+{% endjavascript %}
+

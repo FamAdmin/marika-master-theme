@@ -1,0 +1,66 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.title | escape }}",
+  "sku": "{{ product.variants.first.sku }}",
+  "gtin14": "{{ product.variants.first.barcode }}",
+  "brand": "{{ product.vendor }}",
+  "description": "{{ product.description | strip_html | escape }}",
+  "image": "https:{{ product.featured_image.src | img_url: 'grande' }}",
+    "offers": {
+		"@type": "Offer",
+		"priceCurrency": "{{ shop.currency }}",
+		"price": "{{ product.price |money_without_currency  | strip_html }}",
+		"itemCondition" : "http://schema.org/NewCondition",
+		"availability" : "{% if product.available == true %}http://schema.org/InStock{% else %}http://schema.org/OutOfStock{% endif %}",
+		"url" : "{{ shop.url }}{{ product.url }}"
+	}
+}
+</script>
+
+{% section 'product-template' %}
+{%- section 'size-guide' -%}
+{% include 'klaviyo-viewed-product' %}
+
+<div class="slide-placeholder" style="opacity:0;height:1px;overflow:hidden;position:absolute;pointer-events:none;">
+</div>
+<div class="slide-placeholder-lightbox" style="opacity:0;height:1px;overflow:hidden;position:absolute;pointer-events:none;">
+</div>
+<script>
+
+
+
+	window.VIG = window.VIG || {};
+	VIG.loaded = false;
+	VIG.VariantChangeCallback = function(){
+      //console.log('start');
+     $('.product_gallery').css('opacity',0);
+		var visible_ids = $('.product_gallery_nav img:visible').map(function() {
+		return $(this).data('image-id');
+		}).get();
+
+
+		var slidesToAdd = [],
+            lightboxSlides =[];
+
+
+		visible_ids.forEach(function(element) {
+		slidesToAdd.push($('.slide-placeholder [data-image-id='+element+']').closest('.gallery-cell'));
+		});
+
+
+      $('.product_gallery').flickity( 'remove', $('.product_gallery:not(.js-gallery-modal) .gallery-cell') );
+		slidesToAdd.forEach(function(element) {
+		$('.product_gallery:not(.js-gallery-modal)').flickity( 'append', element.clone(true));
+            $('.product_gallery').css('opacity',1);
+
+		});
+	};
+
+
+</script>

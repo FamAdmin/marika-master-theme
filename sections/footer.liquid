@@ -1,0 +1,540 @@
+{% comment %}
+** Footer - default view **
+- Static section
+- Uses blocks
+{% endcomment %}
+
+<footer class="footer">
+  <div class="container footer-menu-wrap">
+      {% for block in section.blocks %}
+        <!-- <div class="{% if forloop.length >= 5 %}three columns{% elsif forloop.length == 4 %}four columns{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}eight columns{% endif %}" {{ block.shopify_attributes }}> -->
+        <div class="three columns" {{ block.shopify_attributes }}>
+          {% if block.type == 'logo' %}
+            <div class="text-align--{{block.settings.text_align}}">
+              {% if block.settings.image %}
+                <img  src="{{ block.settings.image | img_url: '100x' }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      class="footer-logo lazyload {{ settings.image_loading_style }}"
+                      data-sizes="25vw"
+                      data-src="{{ block.settings.image | img_url: '2048x' }}"
+                      data-srcset=" {{ block.settings.image | img_url: '200x' }} 200w,
+                                    {{ block.settings.image | img_url: '300x' }} 300w,
+                                    {{ block.settings.image | img_url: '400x' }} 400w,
+                                    {{ block.settings.image | img_url: '500x' }} 500w,
+                                    {{ block.settings.image | img_url: '600x' }} 600w,
+                                    {{ block.settings.image | img_url: '1000x' }} 1000w"
+                   />
+              {% else %}
+                <div class="logo">{{ shop.name }}</div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'link_list' %}
+            <div class="footer_menu">
+              {% if block.settings.menu != blank %}
+                <h3>{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h3>
+                <div class="toggle_content">
+                  <ul>
+                    {% for link in linklists[block.settings.menu].links %}
+                      <li><a href="{{ link.url | replace: 'marikastaging.myshopify', 'marika' }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% else %}
+                <h6>Menu title<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  <ul>
+                    <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'text' %}
+            <div class="footer_content">
+              {% if block.settings.title != blank %}
+                <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  {{ block.settings.content }}
+                </div>
+              {% endif %}
+            </div>
+          {% elsif block.type == 'page' %}
+            <div class="footer_content">
+              {% if block.settings.page != blank %}
+                <h6>{{ pages[block.settings.page].title }}<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  {{ pages[block.settings.page].content }}
+                </div>
+              {% else %}
+                <h6>Page title<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+                </div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'html' %}
+            {% comment %}@TODO - Add HTML section for maps, widgets, embedding, etc{% endcomment %}
+
+          {% elsif block.type == 'empty' %}
+            <div class="empty-column"></div>
+
+          {% endif %}
+
+          {% assign social_media_column = section.settings.social_media_column | plus: 0  %}
+
+<!--           {% if block.settings.social_icons_footer %}
+            {% assign social_icons = true %}
+            <div class="footer-social-icons">
+              {% include 'social-icons' %}
+            </div>
+          {% endif %} -->
+
+        </div>
+<!--         {% if forloop.last and social_icons %}
+          <div class="footer-social-icons--mobile sixteen columns">
+            {% include 'social-icons' %}
+          </div>
+        {% endif %} -->
+      {% endfor %}
+
+      <!-- Newsletter subscription section -->
+
+      <div class="seven columns newsletter_section
+            {% if section.settings.display_first_name and section.settings.display_last_name %}newsletter-both-names--true {% else %}newsletter-both-names--false {% endif %}
+            {% if section.settings.image != nil %}newsletter-bgr-true{% endif %}
+            text-align--{{section.settings.newsletter_section_text_align}}
+            lazyload
+            {{ settings.image_loading_style }}"
+            {% if section.settings.image != nil %}style="background-image: url(https:{{ section.settings.image | img_url: '1600x'}})"{% endif %}
+            style="float: right;">
+
+            <!-- <div class="footer-social-icons">
+              {% include 'social-icons' %}
+            </div> -->
+        <div class="">
+          <div class="section_form">
+            {% if section.settings.newsletter_title != blank %}
+              <h3 style="font-size: 14px;" class="title">{{ section.settings.newsletter_title }}</h3>
+            {% endif %}
+            {% if section.settings.newsletter_text != blank %}
+              <div class="newsletter-text">{{ section.settings.newsletter_text }}</div>
+            {% endif %}
+          <div class="newsletter">
+            <span class="message"></span>
+            {% if settings.mailchimp_link != blank %}
+              <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+                {% if section.settings.display_first_name %}
+                  <input type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+                {% endif %}
+                {% if section.settings.display_last_name %}
+                  <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+                {% endif %}
+                <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+                <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
+              </form>
+            {% else %}
+              {% form 'customer' %}
+                {% if form.posted_successfully? %}
+                  <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
+                {% elsif form.errors %}
+                  {% for field in form.errors %}
+                    <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+                  {% endfor %}
+                {% endif %}
+
+                <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+                {% if section.settings.display_first_name %}
+                  <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+                {% endif %}
+                {% if section.settings.display_last_name %}
+                  <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+                {% endif %}
+
+                <input type="hidden" name="challenge" value="false" />
+                <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+                <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
+              {% endform %}
+            {% endif %}
+           </div>
+          </div>
+        </div>
+        <div class="footer-social-icons">
+          <!-- <h6 class="title">Find Us On Social Media</h6> -->
+              {% include 'social-icons' %}
+            </div>
+        
+        {% if section.settings.display_payment_methods %}
+          <div class="payment_methods">
+            {% for type in shop.enabled_payment_types %}
+              <img src="{{ type | payment_type_img_url }}" alt="{{ type | replace: "_", " " | capitalize }}" />
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+
+        <div class="sixteen columns row footer_credits">
+<!--         <div>
+          <p class="credits">
+            &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+          </p>
+          <p class="credits">
+            <a href="/pages/privacy-policy">Privacy Policy</a>
+          </p>
+          <p class="credits">
+            <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+          </p>
+        </div> -->
+<div>
+          <p class="credits">
+            &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}. &nbsp;|
+          </p>
+          <p class="credits">
+            <a href="/pages/privacy-policy">Privacy Policy &nbsp;|</a>
+          </p>
+          <p class="credits">
+            <a href="/pages/terms-and-conditions">Terms and Conditions &nbsp;|</a>
+          </p>
+          <p class="credits">
+            <a href="https://www.fambrands.com" target="_blank">FAMBrands.com</a>
+          </p>
+        </div>
+        
+      </div><!--end footer_credits-->
+    </div>
+  </div>
+</footer>
+
+<style>
+  .credits a, .credits {
+  font-size:11px;
+   text-align:center;
+  }
+  
+  
+.newsletter_section .section_form {
+  text-align: center;
+}
+
+.footer-social-icons {
+  text-align: center;
+  padding: 0;
+}
+
+.footer_menu {
+  text-align: center;
+}
+
+.footer_menu h3 {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* .footer_credits {
+  text-align: center;
+  font-size:12px;
+} */
+
+/* .credits {
+  float: none !important;
+  display: inline-block !important;
+  margin-right: 20px;
+} */
+  
+  .credits {
+  float: none !important;
+  display: inline-block !important;
+  margin-right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .icon-down-arrow {
+    display: none;
+  }
+}
+/*   
+  @media screen and (max-width: 767px) {
+    .footer-social-icons {
+    	margin-top: 10px;
+    }
+  	.footer_credits .credits {
+      margin-bottom: 0px;
+      margin-right: 10px;
+      padding-top:0px;
+      padding-bottom:10px;
+    }
+    
+    .payment_methods {
+     	padding-top:5px; 
+    }
+    .footer_credits {
+    	padding: 10px;
+    }
+    
+    .newsletter_section {
+    	margin: 0;
+    }
+  } */
+  
+    @media screen and (max-width: 767px) {
+    .footer-social-icons {
+    	margin-top: 10px;
+    }
+    .credits a, .credits {
+  	font-size:10px;
+  }
+  	.footer_credits .credits {
+      margin-bottom: 0px;
+/*       margin-right: 5px; */
+      margin-right:0px;
+      padding-top:0px;
+      padding-bottom:10px;
+    }
+    
+    .payment_methods {
+     	padding-top:5px; 
+    }
+    .footer_credits {
+/*     	padding: 5px; */
+    }
+    
+    .newsletter_section {
+    	margin: 0;
+    }
+  }
+  
+
+.footer_credits .payment_methods {
+	margin-right: 25px;
+}
+  
+  @media screen and (min-width: 1200px) {
+  	.footer_credits .payment_methods {
+        margin-right: 127px;
+    }
+  }
+  
+  @media (min-width: 960px) {
+    .payment_methods {
+        float: none;
+      text-align: center;
+    }
+  }
+
+.payment_methods img[alt="Jcb"], .payment_methods img[alt="Diners club"], .payment_methods img[alt="Shopify pay"], .payment_methods img[alt="Venmo"], .payment_methods img[alt="Paypal"] {
+	display: none;
+}
+  
+  @media (max-width: 768px) {
+    .footer .footer-menu-wrap h3 {
+        border-top: 1px solid #a7a7a7;
+        margin-bottom: 5px;
+/*         padding: 10px 20px 5px; */
+    }
+  }
+</style>
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_designed_by",
+      "label": "Show theme designer credits",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_payment_methods",
+      "label": "Show payment method icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Heading",
+      "default": "Subscribe"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "label": "Newsletter Subheading",
+      "default": "<p>Sign up to get the latest on sales, new releases and more …</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_first_name",
+      "label": "Display first name"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_last_name",
+      "label": "Display last name"
+    },
+    {
+      "type": "select",
+      "id": "newsletter_section_text_align",
+      "label": "Text alignment",
+      "options": [
+         {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+     ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Upload banner background image",
+      "info":"1600 x 300px recommended"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Logo alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Content page"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty column",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+
+{% endschema %}

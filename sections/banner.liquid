@@ -1,0 +1,92 @@
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<section id="banner-{{section.id}}" class="banner-desktop">
+    <a href="{{section.settings.banner_link}}">
+      <img  src="{{ section.settings.image | img_url: '100x', format: 'pjpg' }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            sizes="100vw"
+            data-src="{{ section.settings.image | img_url: default, format: 'pjpg' }}"
+            srcset="
+            {{ section.settings.image | img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+            {{ section.settings.image | img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+
+             />
+    </a>
+
+</section>
+<section id="banner-{{section.id}}" class="banner-mobile" style="display: none;">
+  <a href="{{section.settings.banner_link}}">
+    <img  src="{{ section.settings.mobile_image | img_url: '100x', format: 'pjpg' }}"
+      alt="{{ section.settings.mobile_image.alt | escape }}"
+      class="lazyload {{ settings.image_loading_style }}"
+      sizes="100vw"
+      data-src="{{ section.settings.mobile_image | img_url: default, format: 'pjpg' }}"
+      srcset="
+      {{ section.settings.mobile_image | img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+      {{ section.settings.mobile_image | img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+
+     />
+  </a>
+</section>
+
+{% schema %}
+
+{
+  "name": "Banner",
+  "class": "banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1800 x 1000px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_link",
+      "label": "Banner Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner",
+      "category": "Image"
+    }
+  ]
+}
+
+{% endschema %}
+

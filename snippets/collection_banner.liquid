@@ -1,0 +1,45 @@
+{% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
+  {% assign sizes = sizes | split: ',' %}
+<header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}" style="margin-bottom: 30px;">
+<img
+        {% if block.settings.collection_banner_image %}
+        src="{{ block.settings.collection_banner_image | img_url: sizes.first }}"
+        data-src="{{ block.settings.collection_banner_image | img_url: sizes.last }}"
+        {%- else block.settings.collection_banner_image -%}
+        src="{{ block.settings.collection_banner_image | img_url: sizes.first }}"
+        data-src="{{ block.settings.collection_banner_image | img_url: sizes.last }}"
+        {% endif %}
+        alt="{{ block.settings.title | escape }}"
+        class="lazyload {{ settings.image_loading_style }} hideOnMobile767"
+        sizes="100vw"
+        srcset="{%- for size in sizes -%}
+                {%- if block.settings.collection_banner_image -%}
+                    {{ block.settings.collection_banner_image | img_url: size }}
+                {%- else block.settings.collection_banner_image -%}
+                    {{ block.settings.collection_banner_image | img_url: size, format: 'pjpg' }}
+                {%- endif -%}
+                {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
+                {%- endfor -%}
+        " />
+</header>
+<header class="banner-mobile center page_banner dark-overlay-{{ block.settings.image_darken }}" style="margin-top: 0;">
+<img
+        {% if block.settings.collection_banner_image_mobile %}
+        src="{{ block.settings.collection_banner_image_mobile | img_url: sizes.first }}"
+        data-src="{{ block.settings.collection_banner_image_mobile | img_url: sizes.last }}"
+        {%- else block.settings.collection_banner_image_mobile -%}
+        src="{{ block.settings.collection_banner_image_mobile | img_url: sizes.first }}"
+        data-src="{{ block.settings.collection_banner_image_mobile | img_url: sizes.last }}"
+        {% endif %}
+        alt="{{ block.settings.title | escape }}"
+        class="lazyload {{ settings.image_loading_style }} showOnMobile767"
+        sizes="100vw"
+        style="width: 100%;"
+        srcset="{%- for size in sizes -%}
+                {%- if block.settings.collection_banner_image_mobile -%}
+                    {{ block.settings.collection_banner_image_mobile | img_url: size }}
+                {%- endif -%}
+                {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
+                {%- endfor -%}
+        " />
+</header>

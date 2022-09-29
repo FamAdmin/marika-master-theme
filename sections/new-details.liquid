@@ -1,0 +1,27 @@
+{% assign details_blocks = section.blocks | where: "type", "text_content" %}
+{% for block in details_blocks %}
+  <div>
+    {% echo block.settings.promo_details_text %}
+  </div>
+{% endfor %}
+{% schema %}
+
+{
+  "name": "Details",
+  "class": "details-section",
+  "blocks": [
+	{
+		"name": "Text Content",
+        "type": "text_content",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "promo_details_text",
+            "label": "Promo Details Text"
+          }
+		]
+	}
+  ]
+}
+
+{% endschema %}

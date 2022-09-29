@@ -1,0 +1,189 @@
+<div class="size-guide-popup modal modal-open">
+  <div class="modal-content">
+    <div class="myclosebox">
+      <a name="close-me-now" id="close-size-guide"><img src="https://cdn.shopify.com/s/files/1/1565/8379/files/d7ee2b63482a94bd2c769c513f1ada67.png?6827106314998524564"></a>
+    </div>
+    <h3>{{- section.settings['popup_main_header'] -}}</h3>
+    <p>{{- section.settings['popup_main_info'] -}}</p>
+
+    <table class="size-guide-table">
+      <thead>
+        {%- assign sizeNames = section.blocks[0].settings.sizes | newline_to_br -%}
+        {%- assign sizeNameArray = sizeNames | split: '<br />' -%}
+        <th></th>
+        {%- for sizeName in sizeNameArray -%}
+          {%- assign size_name = sizeName | split: '|' | first -%}
+          <th>{{- size_name-}}</th>
+        {%- endfor -%}
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr>
+            {%- assign blockSettings = block.settings -%}
+            {%- assign sizeTag = block.settings.title | split: '|' -%}
+            {%- assign sizes = block.settings.sizes | newline_to_br -%}
+            {%- assign sizesArray = sizes | split: '<br />' -%}
+            <td>{{- sizeTag -}}</td>
+            {%- for size in sizesArray -%}
+              {%- assign name = size | split: '|' | last -%}
+              <td>{{- name -}}</td>
+            {%- endfor -%}
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+    <div id="size-measurements-clothes">
+<h2 style="z-index: 1;"></h2>
+<table>
+<tbody>
+<tr>
+<td style="width:42%;"><strong> MARIKA SPORT</strong></td>
+<td style="width:19%;"><strong>BUST</strong></td>
+<td style="width:19%;"><strong>WAIST</strong></td>
+<td style="width:19%;"><strong>HIP</strong></td>
+</tr>
+<tr>
+<td>S</td>
+<td>33-35</td>
+<td>26-28</td>
+<td>37-39</td>
+</tr>
+<tr>
+<td>M</td>
+<td>36-38</td>
+<td>29-32</td>
+<td>40-42</td>
+</tr>
+<tr>
+<td>L</td>
+<td>39-41</td>
+<td>33-36</td>
+<td>43-45</td>
+</tr>
+<tr>
+<td>XL</td>
+<td>42-44</td>
+<td>37-40</td>
+<td>46-48</td>
+</tr>
+</tbody>
+</table>
+      <table>
+<tbody>
+<tr>
+<td style="width:42%;"><strong>BALANCE COLLECTION FOR MEN</strong></td>
+<td style="width:19%;"><strong>CHEST</strong></td>
+<td style="width:19%;"><strong>WAIST</strong></td>
+<td style="width:19%;"><strong>HIP</strong></td>
+</tr>
+<tr>
+<td>S</td>
+<td>37-39</td>
+<td>30-32</td>
+<td>36-38</td>
+</tr>
+<tr>
+<td>M</td>
+<td>40-42</td>
+<td>33-35</td>
+<td>39-41</td>
+</tr>
+<tr>
+<td>L</td>
+<td>43-45</td>
+<td>36-38</td>
+<td>42-44</td>
+</tr>
+<tr>
+<td>XL</td>
+<td>46-48</td>
+<td>39-41</td>
+<td>45-47</td>
+</tr>
+</tbody>
+</table>
+
+    <p style="font-size: 24px;font-weight: bold;">Bust</p>
+    <p>For bust size, measure around your chest at the fullest point of your breast.</p>
+
+    <p style="font-size: 24px;font-weight: bold;">Waist</p>
+    <p>Measure around your natural waist (the smallest part of your waistline) with one finger between your body and the measuring tape.</a>
+
+    <p style="font-size: 24px;font-weight: bold;">Hip</p>
+    <p>Measure around the fullest part of your hip, making sure to keep the tape straight.</p>
+
+    <p style="font-size: 24px;font-weight: bold;">Dress Length</p>
+    <p>Stand with your heels together, keeping tape straight and perpendicular to the floor. Measure from the high point of your shoulders down the length of your back.</p>
+
+    <p style="font-size: 24px;font-weight: bold;">Inseam</p>
+    <p>Find a pair of pants that fit you well and measure from the crotch seam to the opening at the bottom of the pant leg. Round the number to the nearest 1/2" to get your inseam length.</p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Size Pop Up",
+    "settings": [
+      {
+        "id": "popup_main_header",
+        "type": "text",
+        "label": "Main Header"
+      },
+      {
+        "id": "popup_main_info",
+        "type": "textarea",
+        "label": "Information Box below Main Header"
+      },
+      {
+        "id": "howtomeasure_header",
+        "type": "text",
+        "label": "How To Measure Header"
+      },
+      {
+        "id": "howtomeasure_details",
+        "type": "textarea",
+        "label": "How to Measure Bust Size Details"
+      },
+      {
+        "id": "measurewaist_header",
+        "type": "text",
+        "label": "How To Measure Waist Header"
+      },
+      {
+        "id": "measurewaist_details",
+        "type": "textarea",
+        "label": "How To Measure Waist Details"
+      },
+      {
+        "id": "measurehip_header",
+        "type": "text",
+        "label": "How To Measure Hip Header"
+      },
+      {
+        "id": "measurehip_details",
+        "type": "textarea",
+        "label": "How To Measure Hip Details"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "tag-row",
+      "name": "Tag Row Size Guide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tag Title",
+          "info": "This field is required in order for the tags to submit successfully! Example: X-Small (0-2)"
+        },
+        {
+          "type": "textarea",
+          "id": "sizes",
+          "label": "Add Sizes",
+          "info": "Example: Bust|34-35"
+        }
+      ]
+    }
+    ]
+  }
+  {% endschema %}

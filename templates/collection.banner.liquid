@@ -1,0 +1,7 @@
+{% if collection.handle contains '2-for' %}
+  {% section 'collection-template-banner-1' %}
+{% elsif collection.handle contains 'mix-match' %}
+  {% section 'collection-template-banner-2' %}
+{% else %}
+  {% section 'collection-template-banner' %}
+{% endif %}

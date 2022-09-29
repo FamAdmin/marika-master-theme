@@ -1,0 +1,468 @@
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+
+{% comment %}
+** Featured promotions - homepage partial **
+- Draggable section
+- Uses blocks
+{% endcomment %}
+
+{% assign featured_promos_per_row = section.settings.featured_promos_per_row | minus: 0 %}
+{% assign featured_promos_grid = section.settings.featured_promos_grid %}
+{% assign title_on_image = section.settings.promo_text_on_image_enabled %}
+
+<div class="row container custom-1x2-wrapper">
+  <div class="col-sm-8 leftSide">
+        <figure class="">
+            <div class="feature-inner">
+                <a {% if section.settings.link1 != blank %}href="{{ section.settings.link1 }}"{% endif %}>
+                  <img  src="{{ section.settings.image1 | img_url: '100x' }}"
+                        alt="{% if section.settings.image1.alt != blank %}{{ section.settings.image1.alt }}{% else %}{{ section.settings.title1 | escape }}{% endif %}"
+                        class="lazyload full-width-image {{ settings.image_loading_style }}"
+                        data-sizes="auto"
+                        data-src="{{ section.settings.image1 | img_url: '1400x' }}"
+                        data-srcset=" {{ section.settings.image1 | img_url: '240x' }} 240w,
+                                      {{ section.settings.image1 | img_url: '480x' }} 480w,
+                                      {{ section.settings.image1 | img_url: '600x' }} 600w,
+                                      {{ section.settings.image1 | img_url: '800x' }} 800w,
+                                      {{ section.settings.image1 | img_url: '900x' }} 900w,
+                                      {{ section.settings.image1 | img_url: '1000x' }} 1000w"
+                         />
+                 </a>
+
+                <figcaption class="feature-overlay">
+                  <a {% if section.settings.link1 != blank %}href="{{ section.settings.link1}}"{% endif %}class="link-promo"></a>
+                    <div class="feature-wrap">
+                      {% if section.settings.title1 != blank %}
+                        <h2 class="title" style="color: #000; margin-bottom: 5px;">{{ section.settings.title1 }}</h2>
+                      {% endif %}
+                      <div class="feature-details-2" style="display: block !important;">
+                        {% if section.settings.text1 != blank %}
+                          <div class="description" style="color: #000;font-weight: 700;">{{ section.settings.text1 }}</div>
+                        {% endif %}
+
+                        {% if section.settings.button_label1 != blank %}
+                           <a href="{{section.settings.link1}}"><div class="button" style="background: transparent;border: 1px solid #000;color:#000;">{{ section.settings.button_label1 }}</div></a>
+
+                        {% endif %}
+                      </div>
+                    </div>
+                </figcaption>
+            </div>
+
+        </figure>
+  </div>
+  <div class="col-sm-4 custom-1x2-right-col rightSide">
+        <figure class="col-sm-12">
+            <div class="feature-inner">
+                <a {% if section.settings.link2 != blank %}href="{{ section.settings.link2 }}"{% endif %}>
+                  <img  src="{{ section.settings.image2 | img_url: '100x' }}"
+                        alt="{% if section.settings.image2.alt != blank %}{{ section.settings.image2.alt }}{% else %}{{ section.settings.title2 | escape }}{% endif %}"
+                        class="lazyload full-width-image {{ settings.image_loading_style }}"
+                        data-sizes="auto"
+                        data-src="{{ section.settings.image2 | img_url: '1400x' }}"
+                        data-srcset=" {{ section.settings.image2 | img_url: '240x' }} 240w,
+                                      {{ section.settings.image2 | img_url: '480x' }} 480w,
+                                      {{ section.settings.image2 | img_url: '600x' }} 600w,
+                                      {{ section.settings.image2 | img_url: '800x' }} 800w,
+                                      {{ section.settings.image2 | img_url: '900x' }} 900w,
+                                      {{ section.settings.image2 | img_url: '1000x' }} 1000w"
+                         />
+                 </a>
+
+            </div>
+            <div class="custom-1x2-text-section">
+              <!-- <a {% if section.settings.link2 != blank %}href="{{ section.settings.link2 }}"{% endif %}>
+                <h2 class="title title-below">{{ section.settings.title2 }}</h2>
+              </a> -->
+
+              <div class="featuredPromotionsDesc" style="margin-bottom: 5px;">{{ section.settings.text2 }}</div>
+              <h3 style="font-size: 14px;">
+                <a href="{{section.settings.link2}}" class="featuredPromotionsLink">{{section.settings.button_label2}}</a>
+              </h3>
+            </div>
+        </figure>
+
+        <figure class="col-sm-12">
+            <div class="feature-inner">
+                <a {% if section.settings.link3 != blank %}href="{{ section.settings.link3 }}"{% endif %}>
+                  <img  src="{{ section.settings.image3 | img_url: '100x' }}"
+                        alt="{% if section.settings.image3alt != blank %}{{ section.settings.image3.alt }}{% else %}{{ section.settings.title3 | escape }}{% endif %}"
+                        class="lazyload full-width-image {{ settings.image_loading_style }}"
+                        data-sizes="auto"
+                        data-src="{{ section.settings.image3 | img_url: '1400x' }}"
+                        data-srcset=" {{ section.settings.image3 | img_url: '240x' }} 240w,
+                                      {{ section.settings.image3 | img_url: '480x' }} 480w,
+                                      {{ section.settings.image3 | img_url: '600x' }} 600w,
+                                      {{ section.settings.image3 | img_url: '800x' }} 800w,
+                                      {{ section.settings.image3 | img_url: '900x' }} 900w,
+                                      {{ section.settings.image3 | img_url: '1000x' }} 1000w"
+                         />
+                 </a>
+
+                <!-- <figcaption class="feature-overlay">
+                  <a {% if section.settings.link3 != blank %}href="{{ section.settings.link3 }}"{% endif %}class="link-promo"></a>
+                    <div class="feature-wrap">
+                      {% if section.settings.title3 != blank %}
+                        <h2 class="title" style="color: #fff; margin-bottom: 5px;">{{ section.settings.title3 }}</h2>
+                      {% endif %}
+                      <div class="feature-details-2" style="display: block !important;">
+                        {% if section.settings.text3 != blank %}
+                          <div class="description" style="color: #fff;">{{ section.settings.text3 }}</div>
+                        {% endif %}
+
+                        {% if section.settings.button_label3 != blank %}
+                          <div class="button" style="background: transparent;border: 1px solid #fff;">{{ section.settings.button_label3 }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                </figcaption> -->
+
+                <div class="custom-1x2-text-section">
+                  <!-- <a {% if section.settings.link2 != blank %}href="{{ section.settings.link3 }}"{% endif %}>
+                    <h2 class="title title-below">{{ section.settings.title3 }}</h2>
+                  </a> -->
+
+                  <div class="featuredPromotionsDesc">{{ section.settings.text3 }}</div>
+                  <h3 style="font-size: 14px;">
+                    <a href="{{section.settings.link3}}" class="featuredPromotionsLink">{{section.settings.button_label3}}</a>
+                  </h3>
+                </div>
+            </div>
+
+        </figure>
+  </div>
+</div>
+
+<style>
+  .custom-1x2-wrapper {
+    margin: 0 auto;
+    max-width: 1300px;
+  }
+  .feature-overlay {
+    text-align: center;
+  }
+  .feature-wrap {
+    position: absolute;
+    top: 34%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+  }
+
+  figure {
+    text-align: center;
+  }
+
+  .title-below {
+    margin-bottom: 5px !important;
+  }
+
+  .featuredPromotionsLink {
+    font-weight: 700;
+    text-decoration: underline;
+    color: #333;
+  }
+
+  .custom-1x2-text-section {
+    margin-bottom: 37px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-1x2-right-col figure {
+      padding-right: 0;
+    }
+
+    .custom-1x2-wrapper {
+      padding-left: 100px !important;
+      padding-right: 100px !important;
+    }
+  }
+
+  .leftSide {
+    display: inline;
+    width: 60%;
+    float: left;
+    margin: 0 1%;
+  }
+
+  .rightSide {
+    display: inline;
+    width: 35%;
+    float: left;
+    margin: 0 1%;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1199px) {
+    .leftSide {
+      width: 60%;
+    }
+
+    .rightSide {
+      width: 34.1%;
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 959px) {
+    .leftSide {
+      width: 60%;
+    }
+
+    .rightSide {
+      width: 33.2%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .leftSide {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .rightSide {
+      width: 100%;
+    }
+
+    .feature-wrap {
+      top: 14%;
+      left: 50%;
+    }
+  }
+
+  .featuredPromotionsDesc {
+    margin-top: 15px;
+    font-family: Gotham, sans-serif;
+    font-size: 16px;
+  }
+
+  .featuredPromotionsDesc p {
+    margin-bottom: 5px;
+  }
+
+  .featuredPromotionsLink {
+    font-family: Gotham, sans-serif;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+  }
+
+  .feature-details-2 p {
+    font-family: Gotham, sans-serif;
+    font-size: 16px;
+  }
+
+  .feature-details-2 .button {
+    width: 225px;
+    height: 55px;
+  }
+
+  .feature-details-2 .button:hover {
+    background: #fff !important;
+    color: #333;
+  }
+</style>
+
+<!-- <style>
+  .row {
+    display: table;
+    height: 1px;
+  }
+  .leftSide {
+    height: 100%;
+  }
+
+  .custom-1x2-right-col {
+    display: table-cell;
+  }
+</style> -->
+
+{% schema %}
+{
+  "name": "Custom 1x2",
+  "class": "custom-1x2-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "featured_promos_per_row",
+      "label": "Promotions per row",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "featured_promos_grid",
+      "label": "Promotions grid",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "full_width",
+          "label": "Full width"
+        }
+      ],
+      "default": "full_width"
+    },
+    {
+      "type": "select",
+      "id": "featured_links_animation",
+      "label": "Promotions animation",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "fadeIn",
+          "label": "Fade In"
+        },
+        {
+          "value": "fadeInUp",
+          "label": "Fade Up"
+        },
+        {
+          "value": "fadeInDown",
+          "label": "Fade Down"
+        }
+      ],
+      "default": "fadeInDown"
+    },
+    {
+      "type": "select",
+      "id": "feature_style",
+      "label": "Promotions style",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "promo_text_on_image_enabled",
+      "label": "Show title on image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "text_on_image_hover",
+      "label": "Show description & box on image hover",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Image 1",
+      "info": "840 x 840px recommended"
+    },
+    {
+      "type": "url",
+      "id": "link1",
+      "label": "Link 1"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Header 1",
+      "default": "Feature"
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "Text 1",
+      "default": "<p>Promotion description details.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label1",
+      "label": "Button label 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Image 2",
+      "info": "840 x 840px recommended"
+    },
+    {
+      "type": "url",
+      "id": "link2",
+      "label": "Link 2"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Header 2",
+      "default": "Feature"
+    },
+    {
+      "type": "richtext",
+      "id": "text2",
+      "label": "Text 2",
+      "default": "<p>Promotion description details.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label2",
+      "label": "Button label 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image3",
+      "label": "Image 3",
+      "info": "840 x 840px recommended"
+    },
+    {
+      "type": "url",
+      "id": "link3",
+      "label": "Link 3"
+    },
+    {
+      "type": "text",
+      "id": "title3",
+      "label": "Header 3",
+      "default": "Feature"
+    },
+    {
+      "type": "richtext",
+      "id": "text3",
+      "label": "Text 3",
+      "default": "<p>Promotion description details.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label3",
+      "label": "Button label 3"
+    }
+  ],
+  "presets": [{
+    "name": "Custom 1x2",
+    "category": "Image",
+    "settings": {
+      "featured_promos_per_row": "3",
+      "featured_promos_grid": "full_width"
+    }
+  }]
+}
+
+{% endschema %}

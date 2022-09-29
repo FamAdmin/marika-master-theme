@@ -1,0 +1,55 @@
+<script
+src="https://code.jquery.com/jquery-1.12.4.min.js"
+integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+crossorigin="anonymous"></script>
+
+<script>
+console.log('cartprice', {{checkout_price | json}})
+{% if settings.gwp_enable == true %}
+  {% assign gwp_in_cart = false %}
+  {% assign gwp_product = all_products[settings.gwp_product] %}
+
+  {% for item in checkout_line_items %}
+  console.log('ite', {{item.product | json}})
+    {% if item.product.id == gwp_product.id %}
+      {% assign gwp_in_cart = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign threshold = settings.gwp_threshold | times: 100 %}
+console.log('product', {{gwp_product.available | json}});
+
+  {% if checkout_price >= threshold %}
+    {% if gwp_in_cart == false %}
+      updateGWP(1);
+    {% endif %}
+  {% else %}
+    {% if gwp_in_cart == true %}
+      updateGWP(0);
+    {% endif %}
+  {% endif %}
+
+  function updateGWP(quantity) {
+//       $.ajax({
+//         type: 'POST',
+//         url: '/cart/update.js',
+//         data: {
+//           updates: {
+//             {{gwp_product.variants[0].id}}: quantity
+//           }
+//         },
+//         dataType: 'json',
+//         success: function() {
+//           location.reload();
+//         },
+//         error: function(err) {
+//           console.log('error:', err)
+//         }
+//       })
+  }
+
+{% endif %}
+
+
+
+</script>
