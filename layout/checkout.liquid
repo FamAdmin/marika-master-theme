@@ -52,6 +52,7 @@
             {{ content_for_order_summary }}
 
             {% for line_item in checkout.line_items %}
+              <div class="vuex-oc-products_hidden" product_id="{{ line_item.product.id }}" quantity="{{ line_item.quantity }}" unit_price="{{ line_item.product.price }}" hidden></div>
               {% for image in line_item.product.images %}
                 {% assign variantOption = line_item.variant.option1 | upcase %}
                 {% assign imageAlt = image.alt | upcase %}
@@ -61,6 +62,10 @@
                 {% endif %}
               {% endfor %}
             {% endfor %}
+            {% if checkout.customer %}
+              <div data-user-id="{{ checkout.customer.id }}" hidden="hidden" class="vuex-user-id_hidden"></div>
+              <input type="hidden" value="{{ checkout.customer.email }}" data-customer-id="{{ checkout.customer.id }}" data-customer-email="{{ checkout.customer.email }}" data-customer-name="{{ checkout.customer.name }}">
+            {% endif %}
 
           </div>
         </div>
@@ -275,6 +280,8 @@
 
     </script>
     <script>(function(){var s = document.createElement('script'),e = ! document.body ? document.querySelector('head') : document.body;s.src = 'https://acsbapp.com/apps/app/assets/js/acsb.js';s.async = s.defer = true;s.onload = function(){acsbJS.init({statementLink : '',feedbackLink : '',footerHtml : '',hideMobile : false,hideTrigger : false,language : 'en',position : 'right',leadColor : '#ED5C66',triggerColor : '#ED5C66',triggerRadius : '50%',triggerPositionX : 'right',triggerPositionY : 'bottom',triggerIcon : 'default',triggerSize : 'medium',triggerOffsetX : 20,triggerOffsetY : 20,mobile : {triggerSize : 'medium',triggerPositionX : 'right',triggerPositionY : 'bottom',triggerOffsetX : 10,triggerOffsetY : 10,triggerRadius : '50%'}});};e.appendChild(s);}());</script>
-
+    <!-- Vue ai Tag -->
+    <script src="https://vuex.vue.ai/embed-code/embed_code.js" async="async" defer="defer" data-msd-client-id="dd6bd6fe-a0fc-4f24-9094-6fedc8583df4" data-msd-region="us-east-1"></script>
+    <!-- Vue ai Tag -->
   </body>
 </html>
