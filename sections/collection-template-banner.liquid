@@ -105,12 +105,9 @@
       {% assign sidebar = false %}
     {% endif %}
 
-    {% if sidebar %}
-      {% include 'sidebar' %}
-      <div class="twelve columns">
-    {% else %}
-      <div class="sixteen columns">
-    {% endif %}
+
+    <div class="sixteen columns">
+
 
       {% if collection.description != blank %}
         <div class="section clearfix collection_description">
@@ -135,6 +132,34 @@
   {% endpaginate %}
 
 </div>
+
+<!-- start custom html code -->
+<div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+  <div class="contain-full-width">
+    <div class="wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'html' %}
+            {% if block.settings.title != blank %}
+              <header>
+                <h4>{{ block.settings.title | escape }}</h4>
+              </header>
+            {% endif %}
+            <div class="custom-content-container">
+              <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+                <div class="content">
+                  {% if block.settings.code != blank %}
+                    {{ block.settings.code }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- end custom html code -->
 
 {% schema %}
 
@@ -386,7 +411,7 @@
       "settings": [
         {
           "type": "text",
-          "id": "title",
+          "id": "text_title",
           "label": "Heading",
           "default": "Heading"
         },
@@ -407,6 +432,22 @@
       "type": "filter_by_vendor",
       "name": "Vendor list",
       "limit": 1
+    },
+    {
+      "type": "html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom HTML Title"
+        }, {
+          "type": "html",
+          "id": "code",
+          "label": "HTML"
+        }
+      ]
     }
   ]
 }

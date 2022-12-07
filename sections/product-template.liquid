@@ -43,18 +43,8 @@
   </div>
 
   {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-  {% if section.blocks.size > 0 %}
-    {% assign sidebar = true %}
-  {% else %}
-    {% assign sidebar = false %}
-  {% endif %}
   <div class="product clearfix">
-    {% if sidebar %}
-      {% include 'sidebar' %}
-      <div class="twelve columns">
-    {% else %}
       <div class="sixteen columns">
-    {% endif %}
 
     <div  class="product-{{ product.id }}"
           data-free-text="{{ settings.free_price_text }}"
@@ -327,55 +317,40 @@
 
              <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
 
-        
-    {% if sidebar %}
-
-            {% if section.settings.display_related_products %}
-              {% include 'related-products' %}
-            {% endif %}
-            {% if section.settings.display_recently_viewed %}
-              {% include 'recently-viewed' %}
-            {% endif %}
 
           </div>
         </div>
       </div>
 
-    {% else %}
-
+      <!-- start custom html code -->
+      <div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+        <div class="contain-full-width">
+          <div class="wrapper">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'html' %}
+                  {% if block.settings.title != blank %}
+                    <header>
+                      <h4>{{ block.settings.title | escape }}</h4>
+                    </header>
+                  {% endif %}
+                  <div class="custom-content-container">
+                    <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+                      <div class="content">
+                        {% if block.settings.code != blank %}
+                          {{ block.settings.code }}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+              {% endcase %}
+            {% endfor %}
           </div>
         </div>
       </div>
+      <!-- end custom html code -->
 
-      <!-- start Recomatic code -->
-
-      <div id="recomatic-asset-url" data-value="https://cdn.shopify.com/s/files/1/1588/5229/files/color.JPG?5103053599268345582"></div>
-      <style type="text/css">.recomatic-product-wrap { display: none; }</style>
-      <div style='clear:both'></div>
-      <div class="recomatic-related-products container main content">
-        <div class="sixteen columns">
-          <div class="related-products__title "><h4 class="title center">You May Also Like</h4><div class="feature_divider"></div></div>
-          <div recomatic="product" shop="{{shop.permanent_domain}}" product_id="{{product.id}}"></div>
-        </div>
-      </div>
-
-	  <script>
-      var done = false;
-      $('body').on('DOMNodeInserted', '.recomatic-wrap', function(e) {
-        if(!done){
-          console.log("ENTERED...");
-          setTimeout( () => {
-            $(".recomatic-color").each( function(){
-              $(this)[0].style.backgroundImage = $(this)[0].style.backgroundImage + ", " + $(this)[0].style.backgroundImage.replace('JPG', 'jpg');
-            });
-          	console.log("DONE!");
-          }, 1000);
-          done = true;
-        }
-      });
-	  </script>
-
-      <!-- end Recomatic code -->
+      
 
       {% if section.settings.display_related_products %}
         {% include 'related-products' %}
@@ -383,8 +358,6 @@
       {% if section.settings.display_recently_viewed %}
         {% include 'recently-viewed' %}
       {% endif %}
-
-    {% endif %}
 
 <style>
   .prop-65-popup {
@@ -893,7 +866,7 @@
       "settings": [
         {
           "type": "text",
-          "id": "title",
+          "id": "text_title",
           "label": "Heading",
           "default": "Heading"
         },
@@ -914,6 +887,22 @@
       "type": "filter_by_vendor",
       "name": "Vendor list",
       "limit": 1
+    },
+    {
+      "type": "html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom HTML Title"
+        }, {
+          "type": "html",
+          "id": "code",
+          "label": "HTML"
+        }
+      ]
     }
   ],
   "default": {

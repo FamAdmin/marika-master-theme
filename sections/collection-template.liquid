@@ -3,26 +3,55 @@
 - Collection template
 - Uses blocks
 {% endcomment %}
-
-{% for block in section.blocks %}
-    {% if block.type == 'collection_banner' %}
-      {% assign banner_url = block.settings.collection_banner_image | img_url %}
-      {% if banner_url contains collection.handle and block.settings.hide_banner == false %}
-        {% include 'collection_banner' %}
+<script>
+  {%- capture banners_array -%}
+    {% for block in section.blocks %}
+      {% if block.type == 'banner_headless' %}
+          {
+            "banner_location": '{{ block.settings.banner_collection.handle }}',
+            "banner_image": '{{ block.settings.banner_image | img_url }}'
+          },
       {% endif %}
+    {% endfor %}
+  {%- endcapture -%}
+  
+  window.FAMHeadless = {}
+  window.FAMHeadless.marika = {}
+  window.FAMHeadless.marika.collectionBanners = [{{ banners_array }}]
+  </script>
+  
+  {% for block in section.blocks %}
+      {% if block.type == 'collection_banner' %}
+        {% assign banner_url = block.settings.collection_banner_image | img_url %}
+        {% if banner_url contains collection.handle and block.settings.hide_banner == false %}
+          {% include 'collection_banner' %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  
+    {% if block.settings.display_collection_title %}
+      <div class="caption">
+          <h1 class="headline">{{ collection.title }}</h1>
+      </div>
     {% endif %}
+  
+  <a name="pagecontent" id="pagecontent"></a>
+
+  {% for block in section.blocks %}
+  
   {% endfor %}
 
-  {% if block.settings.display_collection_title %}
-    <div class="caption">
-        <h1 class="headline">{{ collection.title }}</h1>
-    </div>
-  {% endif %}
+  {% if section.settings.headless_toggle %}
+  <div class="container" id="collection-{{ collection.id }}">
+  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}">
+    <template>
+      <App :categorySelected="{{ collection.handle }}"></App>
+    </template>
+  </div>
 
-<a name="pagecontent" id="pagecontent"></a>
-
-<div class="container" id="collection-{{ collection.id }}">
-  {% paginate collection.products by section.settings.pagination_limit %}
+  <!-- test -->
+  <div class="shopify-collection-liquid-plp hidden">
+    {% paginate collection.products by section.settings.pagination_limit %}
   {% if section.settings.collection_breadcrumb %}
     <div class="clearfix breadcrumb-collection">
        <div class="eight columns breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -144,7 +173,7 @@
   <div class="active-filters">
     {% comment %}
     <a href="{{ routes.search_url }}?sort_by={{ search.sort_by }}&q={{ search.terms }}" class="active-filters__clear">Clear all</a>
-	{% endcomment %}
+  {% endcomment %}
     
     {%- for filter in search.filters -%}
       {%- if filter.type == "price_range" -%}
@@ -222,12 +251,8 @@
       {% assign sidebar = false %}
     {% endif %}
 
-    {% if sidebar %}
-      {% include 'sidebar' %}
-      <div class="twelve columns">
-    {% else %}
-      <div class="sixteen columns">
-    {% endif %}
+
+    <div class="sixteen columns">
 
       {% if collection.description != blank %}
         <div class="section clearfix collection_description">
@@ -250,277 +275,354 @@
 
     </div>
   {% endpaginate %}
+  </div>
+  <!-- test -->
 
+
+  </div>
+  {%- else -%}
+  
+  <div class="container" id="collection-{{ collection.id }}">
+
+  </div>
+  
+  {% endif %}
+  
+<!-- start custom html code -->
+<div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+  <div class="contain-full-width">
+    <div class="wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'html' %}
+            {% if block.settings.title != blank %}
+              <header>
+                <h4>{{ block.settings.title | escape }}</h4>
+              </header>
+            {% endif %}
+            <div class="custom-content-container">
+              <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+                <div class="content">
+                  {% if block.settings.code != blank %}
+                    {{ block.settings.code }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
 </div>
+<!-- end custom html code -->
 
-{% schema %}
-
-{
-  "name": "Collection",
-  "class": "collection-template-section",
-  "settings": [
-    {
-      "type": "select",
-      "id": "products_per_row",
-      "label": "Products per row",
-      "options": [
-        {
-          "value": "2",
-          "label": "2"
-        },
-        {
-          "value": "3",
-          "label": "3"
-        },
-        {
-          "value": "4",
-          "label": "4"
-        },
-        {
-          "value": "5",
-          "label": "5"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "pagination_limit",
-      "label": "Products per page",
-      "options": [
-        {
-          "value": "20",
-          "label": "20"
-        },
-        {
-          "value": "24",
-          "label": "24"
-        },
-        {
-          "value": "30",
-          "label": "30"
-        },
-        {
-          "value": "36",
-          "label": "36"
-        },
-        {
-          "value": "40",
-          "label": "40"
-        },
-        {
-          "value": "48",
-          "label": "48"
-        },
-        {
-          "value": "50",
-          "label": "50"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "display_collection_title",
-      "label": "Show collection title"
-    },
-    {
-      "type": "checkbox",
-      "id": "collection_breadcrumb",
-      "label": "Show breadcrumb links",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "collection_tags",
-      "label": "Enable filtering by product tag"
-    },
-    {
-      "type": "checkbox",
-      "id": "collection_sort",
-      "label": "Enable collection sorting"
-    },
-    {
-      "type": "header",
-      "content": "Banner image"
-    },
-    {
-      "type": "checkbox",
-      "id": "featured_collection_image",
-      "label": "Show top banner image",
-      "info": "The collection's featured image will be used by default. Optionally upload a banner image as a fallback."
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Banner image",
-      "info": "1600 x 1000px recommended"
-    },
-    {
-      "type": "checkbox",
-      "id": "image_darken",
-      "label": "Darken banner image",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Sidebar"
-    },
-    {
-      "type": "paragraph",
-      "content": "Create a sidebar by adding content blocks."
-    },
-    {
-      "type": "checkbox",
-      "id": "toggle",
-      "label": "Toggle sidebar content"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "filter_by_collection",
-      "name": "Collection list",
-      "limit": 1
-    },
-    {
-      "type": "collection_banner",
-      "name": "Collection Banner",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "collection_banner_image",
-          "label": "Collection Banner image - The name must contain the collection handle"
-        },
-        {
-          "type": "image_picker",
-          "id": "collection_banner_image_mobile",
-          "label": "Collection Banner image - Mobile"
-        },
-        {
-          "type": "checkbox",
-          "id": "hide_banner",
-          "label": "Force to hide banner"
-        }
-      ]
-    },
-    {
-      "type": "menu",
-      "name": "Menu",
-      "settings": [
-        {
-          "type": "link_list",
-          "id": "custom_menu_linklist",
-          "label": "Menu"
-        }
-      ]
-    },
-    {
-      "type": "page",
-      "name": "Page",
-      "settings": [
-        {
-          "type": "page",
-          "id": "content_page",
-          "label": "Page"
-        }
-      ]
-    },
-    {
-      "type": "recently_viewed",
-      "name": "Recently viewed products",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
-        },
-        {
-          "type": "text",
-          "id": "sidebar_rv_title",
-          "label": "Title",
-          "default": "Recently Viewed"
-        },
-        {
-          "type": "select",
-          "id": "sidebar_rv_per",
-          "label": "Products limit",
-          "default": "3",
-          "options": [
-            {
-              "value": "1",
-              "label": "1"
-            },
-            {
-              "value": "2",
-              "label": "2"
-            },
-            {
-              "value": "3",
-              "label": "3"
-            },
-            {
-              "value": "4",
-              "label": "4"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "filter",
-      "name": "Tag filter",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "text",
-          "id": "filter_name",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "filter_tags",
-          "label": "Filter tags",
-          "info": "Add a comma-separated list of product tags. Only the tags found in the collection will be displayed as filters ([?](https://help.outofthesandbox.com/hc/en-us/articles/115008642047))"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_filter_swatches",
-          "label": "Display color swatches"
-        }
-      ]
-    },
-    {
-      "type": "filter_by_tag",
-      "name": "Tag list",
-      "limit": 1
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>Text area can be used for special announcements or general information.</p>"
-        }
-      ]
-    },
-    {
-      "type": "filter_by_type",
-      "name": "Type list",
-      "limit": 1
-    },
-    {
-      "type": "filter_by_vendor",
-      "name": "Vendor list",
-      "limit": 1
-    }
-  ]
-}
-
-{% endschema %}
+  {% schema %}
+  
+  {
+    "name": "Collection",
+    "class": "collection-template-section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "products_per_row",
+        "label": "Products per row",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pagination_limit",
+        "label": "Products per page",
+        "options": [
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "36",
+            "label": "36"
+          },
+          {
+            "value": "40",
+            "label": "40"
+          },
+          {
+            "value": "48",
+            "label": "48"
+          },
+          {
+            "value": "50",
+            "label": "50"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "display_collection_title",
+        "label": "Show collection title"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_breadcrumb",
+        "label": "Show breadcrumb links",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_tags",
+        "label": "Enable filtering by product tag"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sort",
+        "label": "Enable collection sorting"
+      },
+      {
+        "type": "header",
+        "content": "Banner image"
+      },
+      {
+        "type": "checkbox",
+        "id": "featured_collection_image",
+        "label": "Show top banner image",
+        "info": "The collection's featured image will be used by default. Optionally upload a banner image as a fallback."
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner image",
+        "info": "1600 x 1000px recommended"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_darken",
+        "label": "Darken banner image",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "paragraph",
+        "content": "Create a sidebar by adding content blocks."
+      },
+      {
+        "type": "checkbox",
+        "id": "toggle",
+        "label": "Toggle sidebar content"
+      },
+      {
+        "type": "checkbox",
+        "id": "headless_toggle",
+        "label": "Toggle for Headless Implementation",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "filter_by_collection",
+        "name": "Collection list",
+        "limit": 1
+      },
+      {
+        "type": "collection_banner",
+        "name": "Collection Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_banner_image",
+            "label": "Collection Banner image - The name must contain the collection handle"
+          },
+          {
+            "type": "image_picker",
+            "id": "collection_banner_image_mobile",
+            "label": "Collection Banner image - Mobile"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_banner",
+            "label": "Force to hide banner"
+          }
+        ]
+      },
+      {
+        "type": "banner_headless",
+        "name": "Banner Headless",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "banner_collection",
+            "label": "Collection Banner Location"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Collection Banner Image"
+          }
+        ]
+      },
+      {
+        "type": "menu",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "custom_menu_linklist",
+            "label": "Menu"
+          }
+        ]
+      },
+      {
+        "type": "page",
+        "name": "Page",
+        "settings": [
+          {
+            "type": "page",
+            "id": "content_page",
+            "label": "Page"
+          }
+        ]
+      },
+      {
+        "type": "recently_viewed",
+        "name": "Recently viewed products",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
+          },
+          {
+            "type": "text",
+            "id": "sidebar_rv_title",
+            "label": "Title",
+            "default": "Recently Viewed"
+          },
+          {
+            "type": "select",
+            "id": "sidebar_rv_per",
+            "label": "Products limit",
+            "default": "3",
+            "options": [
+              {
+                "value": "1",
+                "label": "1"
+              },
+              {
+                "value": "2",
+                "label": "2"
+              },
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "filter",
+        "name": "Tag filter",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "text",
+            "id": "filter_name",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "filter_tags",
+            "label": "Filter tags",
+            "info": "Add a comma-separated list of product tags. Only the tags found in the collection will be displayed as filters ([?](https://help.outofthesandbox.com/hc/en-us/articles/115008642047))"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_filter_swatches",
+            "label": "Display color swatches"
+          }
+        ]
+      },
+      {
+        "type": "filter_by_tag",
+        "name": "Tag list",
+        "limit": 1
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text_title",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Text area can be used for special announcements or general information.</p>"
+          }
+        ]
+      },
+      {
+        "type": "filter_by_type",
+        "name": "Type list",
+        "limit": 1
+      },
+      {
+        "type": "filter_by_vendor",
+        "name": "Vendor list",
+        "limit": 1
+      },
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Custom HTML Title"
+          }, {
+            "type": "html",
+            "id": "code",
+            "label": "HTML"
+          }
+        ]
+      }
+    ]
+  }
+  
+  {% endschema %}
+  

@@ -1,5 +1,5 @@
 {% if sidebar %}
-  <div class="{% if products_per_row == "2" %}six columns {% cycle collection_group_thumb: 'alpha', 'omega' %}{% elsif products_per_row == "3" %}four columns {% cycle collection_group_thumb: 'alpha', '', 'omega' %}{% elsif products_per_row == "4" %}three columns {% cycle collection_group_thumb: 'alpha', '', '', 'omega' %}{% else %}one-fifth-sidebar column {% cycle collection_group_thumb: 'alpha', '', '', '', 'omega' %}{% endif %} thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}" >
+  <div class="{% if products_per_row == "2" %}six columns {% cycle collection_group_thumb: 'alpha', 'omega' %}{% elsif products_per_row == "3" %}four columns {% cycle collection_group_thumb: 'alpha', '', 'omega' %}{% elsif products_per_row == "4" %}four columns {% cycle collection_group_thumb: 'alpha', '', '', 'omega' %}{% else %}one-fifth-sidebar column {% cycle collection_group_thumb: 'alpha', '', '', '', 'omega' %}{% endif %} thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}" >
 {% else %}
   <div class="
     {% if products_per_row == "2" %}

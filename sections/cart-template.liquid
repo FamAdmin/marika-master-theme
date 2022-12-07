@@ -18,11 +18,39 @@
       <div class="six columns offset-by-five">
         <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
 
-        <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}" class="action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+        <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}" class="action_button continue-button add_to_cart" id="continue_shopping">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
       </div>
       <br class="clear" />
     </div>
   </div>
+
+  <!-- start custom html code -->
+  <div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+    <div class="contain-full-width">
+      <div class="wrapper">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'html' %}
+              {% if block.settings.title != blank %}
+                <header>
+                  <h4>{{ block.settings.title | escape }}</h4>
+                </header>
+              {% endif %}
+              <div class="custom-content-container">
+                <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+                  <div class="content">
+                    {% if block.settings.code != blank %}
+                      {{ block.settings.code }}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- end custom html code -->
 {% else %}
 
   <form action="/cart" method="post" id="cart_form">
@@ -30,6 +58,7 @@
       <div class="ten columns">
         {% assign total_saving = 0 %}
         {% for item in cart.items %}
+          <div class="vuex-oc-products_hidden" product_id="{{ item.product.id }}" quantity="{{ item.quantity }}" unit_price="{{ item.variant.price }}" hidden></div>
           {% if item.variant.compare_at_price > item.variant.price %}
             {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
             {% assign total_saving = saving | plus: total_saving %}
@@ -214,31 +243,35 @@
     </div>
   </form>
 
-  <!-- start Recomatic code -->
-
-  <div id="recomatic-asset-url" data-value="https://cdn.shopify.com/s/files/1/1588/5229/files/color.JPG?5103053599268345582"></div>
-  <style type="text/css">.recomatic-product-wrap { display: none; }</style>
-  <div class="recomatic-related-products sixteen columns" style="padding-top: 30px;">
-    <div class="related-products__title"><h3>You'll Also Love</h3></div>
-    <div class="feature_divider"></div>
-    <div recomatic="cart" shop="{{shop.permanent_domain}}" product_ids="{{cart.items|map:'product'|map:'id'|join:','}}"></div>
+  <!-- start custom html code -->
+  <div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+    <div class="contain-full-width">
+      <div class="wrapper">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'html' %}
+              {% if block.settings.title != blank %}
+                <header>
+                  <h4>{{ block.settings.title | escape }}</h4>
+                </header>
+              {% endif %}
+              <div class="custom-content-container">
+                <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
+                  <div class="content">
+                    {% if block.settings.code != blank %}
+                      {{ block.settings.code }}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
+  <!-- end custom html code -->
 
-	<script>
-      var done = false;
-      $('body').on('DOMNodeInserted', '.recomatic-wrap', function(e) {
-        if(!done){
-          setTimeout( () => {
-            $(".recomatic-color").each( function(){
-              $(this)[0].style.backgroundImage = $(this)[0].style.backgroundImage + ", " + $(this)[0].style.backgroundImage.replace('JPG', 'jpg');
-            });
-          }, 1000);
-          done = true;
-        }
-      });
-	</script>
-
-  <!-- end Recomatic code -->
+  
 
   {% include 'cart-shipping-calculator' %}
 {% endif %}
@@ -269,6 +302,24 @@
       "type": "richtext",
       "id": "cart_message",
       "label": "Cart message"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom HTML Title"
+        }, {
+          "type": "html",
+          "id": "code",
+          "label": "HTML"
+        }
+      ]
     }
   ]
 }

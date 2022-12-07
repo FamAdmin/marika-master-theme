@@ -1,628 +1,167 @@
 {% comment %}
-** Collections - default view **
-- Collection template
-- Uses blocks
+** Contact page - custom view **
+- Page template
 {% endcomment %}
-<script>
-  {%- capture banners_array -%}
-    {% for block in section.blocks %}
-      {% if block.type == 'banner_headless' %}
-          {
-            "banner_location": '{{ block.settings.banner_collection.handle }}',
-            "banner_image": '{{ block.settings.banner_image | img_url }}'
-          },
-      {% endif %}
-    {% endfor %}
-  {%- endcapture -%}
-  
-  window.FAMHeadless = {}
-  window.FAMHeadless.marika = {}
-  window.FAMHeadless.marika.collectionBanners = [{{ banners_array }}]
-  </script>
-  
-  {% for block in section.blocks %}
-      {% if block.type == 'collection_banner' %}
-        {% assign banner_url = block.settings.collection_banner_image | img_url %}
-        {% if banner_url contains collection.handle and block.settings.hide_banner == false %}
-          {% include 'collection_banner' %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  
-    {% if block.settings.display_collection_title %}
-      <div class="caption">
-          <h1 class="headline">{{ collection.title }}</h1>
-      </div>
-    {% endif %}
-  
-  <a name="pagecontent" id="pagecontent"></a>
 
-  {% for block in section.blocks %}
-  
-  {% endfor %}
-
-  {% if section.settings.headless_toggle %}
-  <div class="container" id="collection-{{ collection.id }}">
-  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}">
-    <template>
-      <App :categorySelected="{{ collection.handle }}"></App>
-    </template>
-  </div>
-
-  <!-- test -->
-  <div class="shopify-collection-liquid-plp hidden">
-    {% paginate collection.products by section.settings.pagination_limit %}
-  {% if section.settings.collection_breadcrumb %}
-    <div class="clearfix breadcrumb-collection">
-       <div class="eight columns breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
-          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
-          <span class="breadcrumb-divider">/</span>
-          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ collection.title }}</span></a></span>
-          {% if current_tags %}
-            {% for tag in current_tags %}
-              {% unless tag contains 'meta-' %}
-                <span class="breadcrumb-divider">/</span>
-                <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="item"><span itemprop="name">{{ tag }}</span></a></span>
-              {% endunless %}
-            {% endfor %}
-          {% endif %}
-
-          {% if paginate.pages != 0 and settings.pagination_type != 'load_more' and settings.pagination_type != 'infinite_scroll' %}
-            <span class="breadcrumb-divider">/</span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
-          {% endif %}
-        </div>
+{% if section.settings.image != nil %}
+  <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
+    <img  src="{{ section.settings.image | img_url: '100x' }}"
+          alt="{% if section.settings.image.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ page.title | escape }}{% endif %}"
+          class="lazyload {{ settings.image_loading_style }}"
+          data-src="{{ section.settings.image | img_url: '1400x', format: 'pjpg' }}"
+          sizes="100vw"
+          srcset="{{ section.settings.image | img_url: '480x', format: 'pjpg' }} 480w,
+                  {{ section.settings.image | img_url: '765x', format: 'pjpg' }} 765w,
+                  {{ section.settings.image | img_url: '1400x', format: 'pjpg' }} 1400w,
+                  {{ section.settings.image | img_url: '2048x', format: 'pjpg' }} 2048w"
+           />
+    <div class="caption">
+      <h1 class="headline">{{ section.settings.title }}</h1>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
     </div>
-  {% endif %}
-    <div class="clearfix">
-      {% if section.settings.display_collection_title %}
-        <div class="eight columns title-wrapper">
-          <h1>{{ collection.title }}</h1>
-        </div>
-      {% endif %}
-      <div class="eight columns section_select {% unless section.settings.display_collection_title and section.settings.featured_collection_image %}{% endunless %}">
-        {% if collection.handle != blank and collection.products_count > 0 %}
+  </header>
+{% endif %}
 
-        <form class="filter-form">
-  <input type="hidden" name="q" value="{{ search.terms }}">
+<a name="pagecontent" id="pagecontent"></a>
 
-  {%- for filter in search.filters -%}
-    <details class="filter-group">
-      <summary class="filter-group-summary">
-        <div>
-          <span>{{ filter.label }}</span>
+<div class="container main content">
 
-          {%- if filter.active_values.size > 0 -%}
-            <span>({{ filter.active_values.size }})</span>
-          {%- endif -%}
-        </div>
-      </summary>
-
-      <div class="filter-group-display">
-        <div class="filter-group-display__header">
-          <span class="filter-group-display__header-selected">{{ filter.active_values.size }} selected</span>
-
-          {%- if filter.active_values.size > 0 -%}
-            <a href="{{ filter.url_to_remove }}" class="filter-group-display__header-reset">Reset</a>
-          {%- endif -%}
-        </div>
-
-        {%- case filter.type -%}
-          {%- when 'list' -%}
-            <ul class="filter-group-display__list">
-              {%- for filter_value in filter.values -%}
-                <li class="filter-group-display__list-item">
-                  <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
-                  <input type="checkbox"
-                    name="{{ filter_value.param_name }}"
-                    value="{{ filter_value.value }}"
-                    id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
-                    {% if filter_value.active -%}checked{%- endif %}
-                    {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
-                  >{{ filter_value.label }}</label>
-                </li>
-              {%- endfor -%}
-            </ul>
-
-            <div class="filter-group-display__submit">
-              <input type="submit" value="Apply">
-            </div>
-          {%- when 'price_range' -%}
-            <div class="filter-group-display__price-range">
-              <div class="filter-group-display__price-range-from">
-                <span>{{ cart.currency.symbol }}</span>
-
-                <input name="{{ filter.min_value.param_name }}"
-                  id="Filter-{{ filter.min_value.param_name }}"
-                  {% if filter.min_value.value -%}
-                    value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
-                  {%- endif %}
-                  type="number"
-                  placeholder="0"
-                  min="0"
-                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                >
-
-                <label for="Filter-{{ filter.min_value.param_name }}">From</label>
-              </div>
-              <div class="filter-group-display__price-range-to">
-                <span>{{ cart.currency.symbol }}</span>
-
-                <input name="{{ filter.max_value.param_name }}"
-                  id="Filter-{{ filter.max_value.param_name }}"
-                  {% if filter.max_value.value -%}
-                    value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
-                  {%- endif %}
-                  type="number"
-                  placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                  min="0"
-                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                >
-
-                <label for="Filter-{{ filter.max_value.param_name }}">To</label>
-              </div>
-            </div>
-
-            <div class="filter-group-display__submit">
-              <input type="submit" value="Apply">
-            </div>
-        {%- endcase -%}
-      </div>
-    </details>
-  {%- endfor -%}
-
-  <div class="active-filters">
-    {% comment %}
-    <a href="{{ routes.search_url }}?sort_by={{ search.sort_by }}&q={{ search.terms }}" class="active-filters__clear">Clear all</a>
-  {% endcomment %}
-    
-    {%- for filter in search.filters -%}
-      {%- if filter.type == "price_range" -%}
-        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-          <a class="active-filters__remove-filter" href="{{ filter.url_to_remove }}">
-            {%- assign min_value = filter.min_value.value | default: 0 -%}
-            {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
-
-            {{ min_value | money }} - {{ max_value | money }} X
-          </a>
-        {%- endif -%}
-      {%- else -%}
-        {%- for filter_value in filter.active_values -%}
-          <a class="active-filters__remove-filter" href="{{ filter_value.url_to_remove }}">
-            {{ filter_value.label }} X
-          </a>
-        {%- endfor -%}
-      {%- endif- %}
-    {%- endfor -%}
-  </div>
-</form>
-
-        
-          {% if section.settings.collection_tags %}
-            {% for tag in collection.all_tags %}
-              {% if forloop.first %}
-                <select name="tag_filter" id="tag_filter" class="tag_filter" data-default-collection="{% if collection.handle == 'all' %}/collections/all{% else %}{{ collection.url }}{% endif %}">
-                  <option {% unless current_tags %}selected="selected"{% endunless %} value="{% if collection.handle == "all" %}/collections/all{% else %}{{ collection.url }}{% endif %}">{{ 'collections.general.all_collection_title' | t: title: collection.title }}</option>
-              {% endif %}
-
-              {% unless tag contains 'meta-' %}
-                {% if tag contains '0-' %}
-                  {% assign priceRange = tag | split: '-' %}
-                  <option {% if current_tags contains tag %}selected="selected"{% endif %} value="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}">Price: {{ priceRange[0] | times: 100 | money }} - {{ priceRange[1] | times: 100 | money }}</option>
-                  }
-
-                {% elsif tag contains 'cf-size' %}
-                  <option class="filter-option" {% if current_tags contains tag %}selected="selected"{% endif %} value="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}">Size: {{ tag | remove: 'cf-size-' | upcase }}</option>
-                {% endif %}
-              {% endunless %}
-
-              {% if forloop.last %}
-                </select>
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-
-         {% if section.settings.collection_sort %}
-            <select class="sort_by" id="sort-by" data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
-              <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
-              <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
-              <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
-              <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
-              <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
-              <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
-              <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
-              <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
-            </select>
-          {% endif %}
-        {% endif %}
-      </div>
-    </div>
-    <div class="sixteen columns">
+  <div class="ten columns offset-by-three page clearfix">
+    {% if section.settings.image == nil %}
+      <h1>{{ page.title }}</h1>
       <div class="feature_divider"></div>
-    </div>
-
-
-    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-    {% assign aux = section.blocks | map: 'type' | join: ',' %}
-    {% assign nonBannerBlocks = aux | remove: 'collection_banner' | remove: ',collection_banner' | split: ',' %}
-    {% if nonBannerBlocks.size > 0 %}
-      {% assign sidebar = true %}
-    {% else %}
-      {% assign sidebar = false %}
     {% endif %}
 
+    {{ page.content }}
 
-    <div class="sixteen columns">
-
-      {% if collection.description != blank %}
-        <div class="section clearfix collection_description">
-          {{ collection.description }}
-        </div>
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="quote">{{ 'contact.form.post_success' | t }}</p>
       {% endif %}
 
-      {% if collection.products.size == 0 %}
-        <div class="section clearfix collection-matrix">
-          <p class="quote">{{ 'collections.general.no_matches' | t }}</p>
-        </div>
-      {% else %}
-        {% assign products_per_row = section.settings.products_per_row %}
-        {% include 'product-loop', sidebar: sidebar %}
-      {% endif %}
+      {% if form.errors %}
+        <p class="quote">{{ 'general.forms.post_error' | t }}</p>
 
-    {% if settings.pagination_type == 'basic_pagination' %}
-      {% include 'pagination' with sidebar %}
-    {% endif %}
-
-    </div>
-  {% endpaginate %}
-  </div>
-  <!-- test -->
-
-
-  </div>
-  {%- else -%}
-  
-  <div class="container" id="collection-{{ collection.id }}">
-
-  </div>
-  
-  {% endif %}
-  
-<!-- start custom html code -->
-<div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
-  <div class="contain-full-width">
-    <div class="wrapper">
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when 'html' %}
-            {% if block.settings.title != blank %}
-              <header>
-                <h4>{{ block.settings.title | escape }}</h4>
-              </header>
+       {% assign message = 'contact.form.message' | t %}
+        <ul class="center">
+          {% for field in form.errors %}
+            {% if field == 'form' %}
+              <li>
+                {{ form.errors.messages[field] }}
+              </li>
+            {% else %}
+              <li>
+                {% assign field_name = field | replace: 'body', message %}
+                {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+              </li>
             {% endif %}
-            <div class="custom-content-container">
-              <div id="block-{{ block.id }}" class="custom__item custom__item-{{ block.type }} {% if block.settings.full_width %}custom__item-full_width{% endif %}" {{ block.shopify_attributes }}>
-                <div class="content">
-                  {% if block.settings.code != blank %}
-                    {{ block.settings.code }}
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-        {% endcase %}
-      {% endfor %}
-    </div>
+          {% endfor %}
+         </ul>
+      {% endif %}
+
+       <br class="clear" />
+       <div class="five columns alpha">
+        {% assign name_attr = 'contact.form.name' | handle %}
+        <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+        <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+       </div>
+       <div class="five columns omega">
+        <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+        <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+       </div>
+       {% comment %}
+        {% assign name_attr = 'contact.form.phone' | t | handle %}
+        <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+        {% endcomment %}
+
+      <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
+      <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+      <input type="submit" class="submit action_button" value="{{ 'contact.form.send' | t }}" />
+    {% endform %}
   </div>
 </div>
-<!-- end custom html code -->
 
-  {% schema %}
-  
-  {
-    "name": "Collection",
-    "class": "collection-template-section",
-    "settings": [
-      {
-        "type": "select",
-        "id": "products_per_row",
-        "label": "Products per row",
-        "options": [
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          },
-          {
-            "value": "4",
-            "label": "4"
-          },
-          {
-            "value": "5",
-            "label": "5"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "pagination_limit",
-        "label": "Products per page",
-        "options": [
-          {
-            "value": "20",
-            "label": "20"
-          },
-          {
-            "value": "24",
-            "label": "24"
-          },
-          {
-            "value": "30",
-            "label": "30"
-          },
-          {
-            "value": "36",
-            "label": "36"
-          },
-          {
-            "value": "40",
-            "label": "40"
-          },
-          {
-            "value": "48",
-            "label": "48"
-          },
-          {
-            "value": "50",
-            "label": "50"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "display_collection_title",
-        "label": "Show collection title"
-      },
-      {
-        "type": "checkbox",
-        "id": "collection_breadcrumb",
-        "label": "Show breadcrumb links",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "collection_tags",
-        "label": "Enable filtering by product tag"
-      },
-      {
-        "type": "checkbox",
-        "id": "collection_sort",
-        "label": "Enable collection sorting"
-      },
-      {
+{% if section.settings.contact_address != blank %}
+  <div class="embed-container maps">
+    <iframe width="100%" height="220" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q={{ section.settings.contact_address | replace: ' ', '+' }}&amp;z={{ section.settings.zoom_level }}&amp;output=embed"></iframe>
+  </div>
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Contact",
+  "class": "contact-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1600 x 600px recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_darken",
+      "label": "Darken banner image",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Subheading"
+    },
+    {
         "type": "header",
-        "content": "Banner image"
-      },
-      {
-        "type": "checkbox",
-        "id": "featured_collection_image",
-        "label": "Show top banner image",
-        "info": "The collection's featured image will be used by default. Optionally upload a banner image as a fallback."
-      },
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Banner image",
-        "info": "1600 x 1000px recommended"
-      },
-      {
-        "type": "checkbox",
-        "id": "image_darken",
-        "label": "Darken banner image",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Sidebar"
-      },
-      {
-        "type": "paragraph",
-        "content": "Create a sidebar by adding content blocks."
-      },
-      {
-        "type": "checkbox",
-        "id": "toggle",
-        "label": "Toggle sidebar content"
-      },
-      {
-        "type": "checkbox",
-        "id": "headless_toggle",
-        "label": "Toggle for Headless Implementation",
-        "default": false
-      }
-    ],
-    "blocks": [
-      {
-        "type": "filter_by_collection",
-        "name": "Collection list",
-        "limit": 1
-      },
-      {
-        "type": "collection_banner",
-        "name": "Collection Banner",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "collection_banner_image",
-            "label": "Collection Banner image - The name must contain the collection handle"
-          },
-          {
-            "type": "image_picker",
-            "id": "collection_banner_image_mobile",
-            "label": "Collection Banner image - Mobile"
-          },
-          {
-            "type": "checkbox",
-            "id": "hide_banner",
-            "label": "Force to hide banner"
-          }
-        ]
-      },
-      {
-        "type": "banner_headless",
-        "name": "Banner Headless",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "banner_collection",
-            "label": "Collection Banner Location"
-          },
-          {
-            "type": "image_picker",
-            "id": "banner_image",
-            "label": "Collection Banner Image"
-          }
-        ]
-      },
-      {
-        "type": "menu",
-        "name": "Menu",
-        "settings": [
-          {
-            "type": "link_list",
-            "id": "custom_menu_linklist",
-            "label": "Menu"
-          }
-        ]
-      },
-      {
-        "type": "page",
-        "name": "Page",
-        "settings": [
-          {
-            "type": "page",
-            "id": "content_page",
-            "label": "Page"
-          }
-        ]
-      },
-      {
-        "type": "recently_viewed",
-        "name": "Recently viewed products",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "paragraph",
-            "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
-          },
-          {
-            "type": "text",
-            "id": "sidebar_rv_title",
-            "label": "Title",
-            "default": "Recently Viewed"
-          },
-          {
-            "type": "select",
-            "id": "sidebar_rv_per",
-            "label": "Products limit",
-            "default": "3",
-            "options": [
-              {
-                "value": "1",
-                "label": "1"
-              },
-              {
-                "value": "2",
-                "label": "2"
-              },
-              {
-                "value": "3",
-                "label": "3"
-              },
-              {
-                "value": "4",
-                "label": "4"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "filter",
-        "name": "Tag filter",
-        "limit": 5,
-        "settings": [
-          {
-            "type": "text",
-            "id": "filter_name",
-            "label": "Title"
-          },
-          {
-            "type": "textarea",
-            "id": "filter_tags",
-            "label": "Filter tags",
-            "info": "Add a comma-separated list of product tags. Only the tags found in the collection will be displayed as filters ([?](https://help.outofthesandbox.com/hc/en-us/articles/115008642047))"
-          },
-          {
-            "type": "checkbox",
-            "id": "enable_filter_swatches",
-            "label": "Display color swatches"
-          }
-        ]
-      },
-      {
-        "type": "filter_by_tag",
-        "name": "Tag list",
-        "limit": 1
-      },
-      {
-        "type": "text",
-        "name": "Text",
-        "settings": [
-          {
-            "type": "text",
-            "id": "text_title",
-            "label": "Heading",
-            "default": "Heading"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Text area can be used for special announcements or general information.</p>"
-          }
-        ]
-      },
-      {
-        "type": "filter_by_type",
-        "name": "Type list",
-        "limit": 1
-      },
-      {
-        "type": "filter_by_vendor",
-        "name": "Vendor list",
-        "limit": 1
-      },
-      {
-        "type": "html",
-        "name": "Custom HTML",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "Custom HTML Title"
-          }, {
-            "type": "html",
-            "id": "code",
-            "label": "HTML"
-          }
-        ]
-      }
-    ]
-  }
-  
-  {% endschema %}
-  
+        "content": "Map"
+    },
+    {
+      "type": "text",
+      "id": "contact_address",
+      "label": "Street address",
+      "info": "The full address that will be placed on the map."
+    },
+    {
+      "type": "select",
+      "id": "zoom_level",
+      "label": "Map zoom level (1-20)",
+      "options": [
+        {"value": "1", "label": "1"},
+        {"value": "2", "label": "2"},
+        {"value": "3", "label": "3"},
+        {"value": "4", "label": "4"},
+        {"value": "5", "label": "5"},
+        {"value": "6", "label": "6"},
+        {"value": "7", "label": "7"},
+        {"value": "8", "label": "8"},
+        {"value": "9", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"}
+      ],
+      "default": "12"
+    }
+  ]
+}
+
+{% endschema %}
