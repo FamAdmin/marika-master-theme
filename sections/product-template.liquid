@@ -257,8 +257,9 @@
           {% endif %}
 
           <div class="free-shipping">
+            <a href="/pages/details">
             <img src="{{ 'truck.png' | asset_url }}" alt="">
-            <p>Free standard shipping</p>
+            <p>Free standard shipping</p> </a>
           </div>
 
           <div class="productDescription">
@@ -365,18 +366,23 @@
   	text-align: center;
   }
   .free-shipping{
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+    color: #363636;
+    background-color: #FFF6E1;
+    -webkit-clip-path: polygon(100% 0%, calc(100% - 2rem) 50%, 100% 100%, 0 100%, 0 0, 0 0);
+    clip-path: polygon(100% 0%, calc(100% - 2rem) 50%, 100% 100%, 0 100%, 2rem 50%, 0 0);
+    max-width: 25rem;
+  }
+  .free-shipping a{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin: 2rem 0;
-    padding: 1rem 1.5rem;
-    color: white;
-    background-color: #345777;
-    -webkit-clip-path: polygon(100% 0%, calc(100% - 2rem) 50%, 100% 100%, 0 100%, 0 0, 0 0);
-    clip-path: polygon(100% 0%, calc(100% - 2rem) 50%, 100% 100%, 0 100%, 0 0, 0 0);
-    max-width: 25rem;
+    justify-content: center;
     gap: 1.3rem;
+  }.free-shipping a:hover{
+    color: inherit;
   }
+  
   .free-shipping p{
     color: inherit;
     font-size: 1.1rem;
