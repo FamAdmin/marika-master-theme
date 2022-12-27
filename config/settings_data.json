@@ -2984,16 +2984,16 @@
           "52cb1fda-46a5-45c4-9856-4884cab3af39": {
             "type": "promo_item",
             "settings": {
-              "promo_text": "Extra 60% Off SALE ON SALE Special. No Code Needed",
-              "promo_url": "shopify:\/\/collections\/sale"
+              "promo_text": "Extra 35% Off NEW ARRIVALS Special. Code: DECNEW",
+              "promo_url": "shopify:\/\/collections\/new-arrivals"
             }
           },
           "40d69056-d005-4638-bb57-528dbf159242": {
             "type": "promo_item",
             "disabled": true,
             "settings": {
-              "promo_text": "Up To 60% Off Select SPORTS BRAS. No Code Needed",
-              "promo_url": "shopify:\/\/collections\/sports-bras"
+              "promo_text": "2 For $29 MIX & MATCH. No Code Needed",
+              "promo_url": "shopify:\/\/collections\/2-for-29-mix-match"
             }
           }
         },
@@ -3073,9 +3073,9 @@
       "1489283389016": {
         "type": "image-with-text-overlay",
         "settings": {
-          "image": "shopify:\/\/shop_images\/60offSale-Desktop-Hero.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/60offSale-Mobile-Hero.jpg",
-          "banner_link": "\/collections\/sale",
+          "image": "shopify:\/\/shop_images\/35offNewArrivals-DesktopHero.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/35offNewArrivals-MobileHero.jpg",
+          "banner_link": "\/collections\/new-arrivals",
           "pretext": "",
           "title": "",
           "heading_text_color": "#ffffff",
@@ -3095,9 +3095,9 @@
         "type": "image-with-text-overlay",
         "disabled": true,
         "settings": {
-          "image": "shopify:\/\/shop_images\/60offSportsBras_PromoBanner_Desk.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/60offSportsBras_PromoBanner_Mobile.jpg",
-          "banner_link": "\/collections\/sports-bras",
+          "image": "shopify:\/\/shop_images\/35offCapris_PromoBanner_DESKTOP.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/35offCapris_PromoBanner_MOBILE.jpg",
+          "banner_link": "\/collections\/capris",
           "pretext": "",
           "title": "",
           "heading_text_color": "#020202",
@@ -3164,8 +3164,8 @@
           "d1f3161e-d3bf-40f5-965b-bda570659f78": {
             "type": "collection_banner",
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/sale_60offSale-Desktop-Collection.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/sale_60offSale-Mobile-Collection.jpg",
+              "collection_banner_image": "shopify:\/\/shop_images\/new-arrivals_35offNewArrivals-Collect-Desktop.jpg",
+              "collection_banner_image_mobile": "shopify:\/\/shop_images\/new-arrivals_35offNewArrivals-Collect-Mobile.jpg",
               "hide_banner": false
             }
           },
@@ -3951,7 +3951,7 @@
           "cdca5f6f-2e44-412c-aaab-f544c677662f": {
             "type": "text_content",
             "settings": {
-              "promo_details_text": "<p>*<strong>Receive an Extra 60% Off SALE ON SALE Styles Special. <\/strong>No Code Needed<strong> <\/strong>during check out and can be purchased from <a href=\"https:\/\/www.marika.com\/collections\/sale\">https:\/\/www.marika.com\/collections\/sale<\/a>. Offer expires 12\/31\/2022 at 11:59pm PT. Offer excludes gift cards, out-of-stock merchandise or previous purchases. Offer cannot be combined with any other offer. No substitutions. All sales are final. Details of offer are subject to change. ​<\/p><p> <\/p><p><\/p><p><strong>Free Standard Shipping:<\/strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<\/p>"
+              "promo_details_text": "<p>*<strong>Receive an EXTRA 35% Off New Arrivals Styles<\/strong> when you enter code <strong>DECNEW <\/strong>during check out and purchased from <a href=\"https:\/\/www.marika.com\/collections\/new-arrivals\">https:\/\/www.marika.com\/collections\/new-arrivals<\/a>. Offer expires 12\/14\/2022 at 11:59pm PT. Offer excludes gift cards, out-of-stock merchandise or previous purchases. Offer cannot be combined with any other offer. No substitutions. All sales are final. Details of offer are subject to change. ​<\/p><p> <\/p><p><strong>Free Standard Shipping:<\/strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<\/p>"
             }
           }
         },
