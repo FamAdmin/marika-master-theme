@@ -6,7 +6,7 @@
 {% endcomment %}
 
 {% if section.blocks.size > 0 %}
-  <div class="dropdown_container mega-menu mega-menu-1" data-dropdown="{{ section.settings.parent | handleize }}">
+  <div class="dropdown_container mega-menu mega-menu-5" data-dropdown="{{ section.settings.parent | handleize }}">
     <div class="dropdown menu">
       <div class="dropdown_content {% if section.blocks < 4 %}dropdown_narrow{% endif %}">
         {% for block in section.blocks %}
@@ -22,15 +22,11 @@
               {% comment %}Image with caption and link{% endcomment %}
               {% if block.settings.image_top != nil or block.settings.image_caption_top != blank %}
                 <div class="mega-menu__image-caption-link">
-                  <a {% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} class="hover_anchor">
+                  <a {% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} >
                     {% if block.settings.image_top != nil %}
                       <img  src="{{ block.settings.image_top | img_url: '500x' }}"
                             alt="{{ block.settings.image_top.alt | escape }}"
-                            class="no_hover lazyload {{ settings.image_loading_style }}"
-                             />
-                      <img  src="{{ block.settings.image_top_hover | img_url: '500x' }}"
-                            alt="{{ block.settings.image_top_hover.alt | escape }}"
-                            class="hover_image lazyload {{ settings.image_loading_style }}"
+                            class="lazyload {{ settings.image_loading_style }}"
                              />
                     {% endif %}
                     {% if block.settings.image_caption_top %}
@@ -283,13 +279,13 @@
       </div>
     {% endfor %}
   </ul>
-  {% endif %}
+  {% endif %}  
 {% endif %}
 
 {% schema %}
 
 {
-  "name": "Mega menu 1",
+  "name": "Mega menu 6",
   "class": "mega-menu-section",
   "max_blocks": 5,
   "settings": [
@@ -323,11 +319,6 @@
           "type": "image_picker",
           "id": "image_top",
           "label": "Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_top_hover",
-          "label": "Hover Image"
         },
         {
           "type": "text",
