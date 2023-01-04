@@ -1,6 +1,6 @@
 {% for link in linklists[mobile-menu].links %}
   {% if linklists[link.handle] == empty %}
-    <li data-mobile-dropdown-rel="{{ link.handle }}">
+    <li data-mobile-dropdown-rel="{{ link.handle }}" class="not_sub_link">
       {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
         <a data-no-instant href="{{ link.url }}" class="parent-link--false">
           {{ link.title }}
