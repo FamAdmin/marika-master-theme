@@ -1041,9 +1041,9 @@ select.currencies {
   padding-bottom: 0;
   cursor: pointer;
   @if (lightness(#1b1f23) > 50) {
-    background-image: url(//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/select.png?v=163443801653745187891663612189); // Lighter background
+    background-image: url(//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/select.png?v=163443801653745187891672442943); // Lighter background
   } @else {
-    background-image: url(//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/select_light.png?v=153136132513795776861663612189); // Darker background
+    background-image: url(//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/select_light.png?v=153136132513795776861672442943); // Darker background
   }
   @include respond-to('medium'){
     font-size: 16px;
@@ -2482,7 +2482,7 @@ select::-ms-expand {
 }
 
 select {
-  background: url(//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/select.png?v=163443801653745187891663612189) no-repeat 96% 50%;
+  background: url(//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/select.png?v=163443801653745187891672442943) no-repeat 96% 50%;
   background-size: 18px 12px;
   
     padding: 8px 14px 8px;
@@ -3845,7 +3845,7 @@ div.section { margin: 10px 0; }
   height: 0;
   width: 0;
   transition: all 0.3s linear;
-  background: url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/loader.gif') center center no-repeat;
+  background: url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/loader.gif') center center no-repeat;
   background-size: 32px 32px;
   margin: 0 auto;
 }
@@ -6356,11 +6356,11 @@ or wrap each row of columns in a <div class="row"> */
 
 @font-face {
   font-family: 'turbo';
-  src: url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/turbo.eot?v=22446298993688963281663612189');
-  src: url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/turbo.eot?v=22446298993688963281663612189') format('embedded-opentype'),
-       url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/turbo.woff?v=1876293967402835401663612189') format('woff'),
-       url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/turbo.ttf?v=35221075142360648371663612189') format('truetype'),
-       url('//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/turbo.svg?v=31490373283648575191663612189') format('svg');
+  src: url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/turbo.eot?v=22446298993688963281672442943');
+  src: url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/turbo.eot?v=22446298993688963281672442943') format('embedded-opentype'),
+       url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/turbo.woff?v=1876293967402835401672442943') format('woff'),
+       url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/turbo.ttf?v=35221075142360648371672442943') format('truetype'),
+       url('//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/turbo.svg?v=31490373283648575191672442943') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -6714,7 +6714,7 @@ Copyright (c) 2013 Daniel Eden
   color: #ffffff;
 
   
-    background: url(//cdn.shopify.com/s/files/1/1588/5229/t/652/assets/password-page-background.jpg?v=134257309994338270501663612189) center center;
+    background: url(//cdn.shopify.com/s/files/1/1588/5229/t/698/assets/password-page-background.jpg?v=134257309994338270501672442943) center center;
   
 
   
