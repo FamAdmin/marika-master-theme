@@ -242,12 +242,47 @@ $(function() {
 			var newImage = $(this).find('img');
 			$(this).siblings().removeClass('thumbnail-selected');
 			$(this).addClass('thumbnail-selected');
-			$('.product-main-image').attr('src', newImage.attr('src').replace('400x', '800x')).attr('alt', newImage.attr('alt')).attr('data-image-id', newImage.attr('data-image-id'));	
-			$('.zoomImg').remove();
-			$('#imgZoomWrapper').zoom({
-				url: $('.image-zoom').attr('src').replace('800x', '500x@2x')
-			});
+			if ($(this).attr('data-media-type') == undefined || $(this).attr('data-media-type') == 'image') {
+				$('.product-main-image').attr('src', newImage.attr('src').replace('400x', '800x')).attr('alt', newImage.attr('alt')).attr('data-image-id', newImage.attr('data-image-id'));	
+				$('.zoomImg').remove();
+				$('#imgZoomWrapper').zoom({
+					url: $('.image-zoom').attr('src').replace('800x', '500x@2x')
+				});
+				$('.product-main-image').css('display','');
+				$('.product-main-video').css('display','none');
+			} else if ($(this).attr('data-media-type') == 'video') {
+				$('.product-main-video').remove();
+				let imageContainer = document.querySelector('.image__container'),
+					videoTag = document.createElement('video'),
+					imgTag = document.createElement('img'),
+					sources = $(this).attr('data-media-sources').split('-;;-');
+				if (imageContainer != null) {
+					console.log('sources',sources);
+					videoTag.classList.add('product-main-video');
+					videoTag.playsinline = true;
+					videoTag.autoplay = true;
+					videoTag.loop = true;
+					videoTag.muted = true;
+					videoTag.controls = false;
+					sources.forEach(source => {
+						console.log('source',source);
+						let sourceTag = document.createElement('source');
+						sourceTag.setAttribute('src', source.split('-==-')[0]);
+						sourceTag.setAttribute('type', source.split('-==-')[1]);
+						videoTag.appendChild(sourceTag);
+					});
+					imgTag.setAttribute('src', newImage.attr('src').replace('400x', '800x'));
+					videoTag.appendChild(imgTag);
+					imageContainer.appendChild(videoTag);
+					videoTag.load();
+					videoTag.play();
+					$('.zoomImg').remove();
+					$('.product-main-image').css('display','none');
+					$('.product-main-video').css('display','');
+				}
+			}
 		})
+
       
 		$('.image-zoom')
 			.wrap('<span id="imgZoomWrapper" style="display:inline-block"></span>')
