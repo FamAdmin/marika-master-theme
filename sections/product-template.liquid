@@ -205,6 +205,68 @@
           {% unless collection_handles contains 'coming-soon' %}
             {% include 'product-form' with 'product' %}
           {% endunless %}
+          <div class="mobile_ctas" style="display:none;">
+            <div class="mobile_ctas_left">
+              {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+              <div class=" product-{{ product.id }}-gallery {% if product.images.size > 1 %} multi-image {% endif %} {% if product.images.size <= 1 %} single-image {% endif %} " data-zoom="{{ section.settings.activate_zoom }}">
+                <div class="image__container" style="max-width: 100%">
+                  <img  src="{{ product.featured_image.src | img_url: '100x'  }}"
+                        alt="{{ image_alt | escape }}"
+                        class="image-zoom product-main-image"
+                        data-index="{{ forloop.index0 }}"
+                        data-image-id="{{ image_id }}" 
+                        data-zoom="{{ product.featured_image.src | img_url: '100x', scale: 2}}"
+                        />
+                </div>
+              </div>
+            </div>
+            <div class="mobile_ctas_right">
+              <div class="mobile_p_meta">
+                <h2>{{product.title}}</h2>
+                <p class="modal_price">
+                  <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                  <meta itemprop="seller" content="{{ shop.name | escape }}" />
+                  <link itemprop="availability" href="http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}">
+                  <meta itemprop="itemCondition" content="New" />
+
+                  <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+                  <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                    <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                      {% if variant.price > 0 %}
+                        <span class="money">{{ variant.price | money }}</span>
+                      {% else %}
+                        {{ settings.free_price_text }}
+                      {% endif %}
+                    </span>
+                  </span>
+                  <span class="was_price">
+                    {% if variant.price < variant.compare_at_price and variant.available %}
+                      <span class="money">{{ variant.compare_at_price | money }}</span>
+                    {% endif %}
+                  </span>
+                  <p class="promo-note">
+                    <script>console.log('promo note:',{{ product.metafields.promo_code.time_content.value }});</script>
+                    {% assign today_date = 'now' | date: '%s' %}
+                    {% assign promos = product.metafields.promo_code.time_content.value %}
+
+                    {% for promo in promos %}
+                    <script>console.log('promo:',{{ promo }});</script>
+
+                      {% assign promo_start_date = promo.promo_start | date: '%s' %} 
+                      {% assign promo_end_date = promo.promo_end | date: '%s' %} 
+                    <script>console.log('promo starts:', {{ promo_start_date }}, 'now is:', {{ today_date }} ); </script>
+                      {% if promo_start_date < today_date and promo_end_date > today_date %}
+                        {{ promo.promo_text }}
+                      {% endif %}
+
+                    {% endfor %}
+                  </p>
+                </p>  
+              </div>
+              {% include 'm-product-form' with 'product' %}
+            </div>
+          </div>
 
           {% if section.settings.product_description_position == "bottom" %}
             {% if product.description != blank %}
