@@ -429,14 +429,17 @@ twq('config','ocprj');
 </script>
 <script>
 $( document ).ready(function() {
-  var p = $( ".add_to_cart" );
-  $(window).on('scroll', function() {
-    if ($(window).scrollTop() >= $('.add_to_cart').offset().top + 200 + $('.add_to_cart').outerHeight() - window.innerHeight) {
-      $('.mobile_ctas').show();
-    } else {
-      $('.mobile_ctas').hide();
-    }
-  });
+  if($( window ).width() <= 767)
+  {
+    var p = $( ".add_to_cart" );
+    $(window).on('scroll', function() {
+      if ($(window).scrollTop() >= $('.add_to_cart').offset().top + 200 + $('.add_to_cart').outerHeight() - window.innerHeight) {
+        $('.mobile_ctas').show();
+      } else {
+        $('.mobile_ctas').hide();
+      }
+    });
+  }  
 });
 </script>
 </html>
