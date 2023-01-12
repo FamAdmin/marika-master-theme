@@ -69,6 +69,7 @@ $(function() {
   
   //Quick View
     $('.swatch-element').click(function() {
+    	
   		 setTimeout(function() {
               var colorNameNew;
               $('.quick-shop .swatch[data-option-index="0"] input[name="option-0"]').each(function() {
@@ -313,6 +314,7 @@ $(function() {
 
 		// Limit thumbnails to 6 images on swatch click
 		$('.swatch-element').on('click', function() {
+
 			// setTimeout(function() {
 			// 	var variantColor = $(this).attr('data-value');
 			//

@@ -203,7 +203,9 @@
         {% endcomment %}
 
           {% unless collection_handles contains 'coming-soon' %}
+            <div class="main_frm">
             {% include 'product-form' with 'product' %}
+            </div>
           {% endunless %}
           <div class="mobile_ctas" style="display:none;">
             <div class="mobile_ctas_left">
@@ -264,7 +266,7 @@
                   </p>
                 </p>  
               </div>
-              {% include 'm-product-form' with 'product' %}
+              {% include 'product-form' with 'product' %}
             </div>
           </div>
 

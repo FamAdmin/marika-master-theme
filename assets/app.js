@@ -2646,6 +2646,7 @@ $(function() {
     //Add click event when there is more than one product on the page (eg. Collection in Detail)
     if ($('.js-product_section').length > 1){
       $('body').on('click', '.swatch-element', function(){
+      	
         var swatchValue = $(this).data('value');
 
         $(this)
