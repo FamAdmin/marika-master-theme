@@ -8887,7 +8887,9 @@ $delay: 0;
 .mobile_ctas .acsb-shown{
   display: none;
 }
-
+li.mobile_wid{
+  display: none;
+}
 @media(max-width:767px){
 .mobile_ctas {
     display: grid;
@@ -9010,6 +9012,37 @@ $delay: 0;
 }
 .mobile_ctas .swatch_options input:checked+.swatch-element label{
   color: #000;
+}
+.footer-social-icons .social_icons {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li.mobile_wid div#accessibe_button {
+    float: inherit;
+    margin: 0;
+}
+li.mobile_wid{
+  display: block;
+}
+li.mobile_wid {
+    margin: 0 !important;
+    margin-left: 40px !important;
+}
+.desk_wid {
+    display: none;
+}
+body.product .footer {
+    border: none;
+    display: table;
+    margin-bottom: 186px;
+}
+body.product #kustomer-ui-sdk-iframe {
+    left: 0;
+    right: 0!important;
+    bottom: 190px !important;
 }
 }
 
