@@ -468,12 +468,13 @@ $( document ).ready(function() {
 
     }, 300);
 
-    // setTimeout(function() {
-    //   if($("#header .top_bar .cart_container .cart_count").text() == '0');
-    //   { 
-    //     $('.cart_container').removeClass('active_link');
-    //   }  
-    // }, 1000);          
+    setTimeout(function() {
+      if( parseInt($("#header .top_bar .cart_container .cart_count").text()) == 0 )
+      { 
+        //console.log($("#header .top_bar .cart_container .cart_count").text() + 'Test');
+        $('.cart_container').removeClass('active_link');
+      }  
+    }, 2000);          
   });
   setTimeout(function() {
     var temp = '';
