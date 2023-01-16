@@ -207,7 +207,7 @@
             {% include 'product-form' with 'product' %}
             </div>
           {% endunless %}
-          <div class="mobile_ctas" style="display:none;">
+          <div class="mobile_ctas">
             <div class="mobile_ctas_left">
               {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
               <div class=" product-{{ product.id }}-gallery {% if product.images.size > 1 %} multi-image {% endif %} {% if product.images.size <= 1 %} single-image {% endif %} " data-zoom="{{ section.settings.activate_zoom }}">

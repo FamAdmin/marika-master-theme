@@ -6,6 +6,7 @@
 <!--[if IE 9 ]><html class="ie ie9" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html lang="{{ shop.locale }}"> <!--<![endif]-->
   <head> 
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFV8ZDV"></script>
  {%- render 'hso-no-follow-no-index' -%}
 {% render 'orbislabs_sitemap_noindex' %}
     <meta charset="utf-8">
@@ -429,19 +430,25 @@ twq('config','ocprj');
 </script>
 {% if template contains "product" %}
 <script>
-$( document ).ready(function() {
-  if($( window ).width() <= 767)
-  {
-    var p = $( ".add_to_cart" );
-    $(window).on('scroll', function() {
-      if ($(window).scrollTop() >= $('.add_to_cart').offset().top + 200 + $('.add_to_cart').outerHeight() - window.innerHeight) {
-        $('.mobile_ctas').show();
-      } else {
-        $('.mobile_ctas').hide();
-      }
-    });
-  }  
-});
+  window.onscroll = function () {
+    stickyHeader()
+};
+window.addEventListener('load', function () {
+  const quickAdd = document.querySelector('.mobile_ctas'),
+      topOfOthDiv = document.querySelector(".add_to_cart").offsetTop;
+      window.onscroll = function () {
+        stickyHeader()
+    };          
+function stickyHeader() {
+    if (window.pageYOffset > topOfOthDiv) {
+        quickAdd.style.opacity = 1
+        quickAdd.style.visibility = 'visible'
+    } else {
+        quickAdd.style.opacity = 0
+        quickAdd.style.visibility = 'hidden'
+    }
+}
+});  
 </script>
 
 <script>

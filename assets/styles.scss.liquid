@@ -2922,7 +2922,7 @@ input.contact_email[type="email"] {
 
 .product-quantity-box {
   margin-right: 0;
-  width: 45%;
+  width: 40%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -2974,7 +2974,7 @@ input.contact_email[type="email"] {
 
 .product-quantity-box + .inline_purchase {
   margin-top: 30px;
-  width: 55%;
+  width: 50%;
   float: left;
 }
 
@@ -8892,7 +8892,7 @@ li.mobile_wid{
 }
 @media(max-width:767px){
 .mobile_ctas {
-    display: none;
+    display: grid;
     grid-template-columns: 30% 68%;
     grid-column-gap: 10px;
     position: fixed;
@@ -8900,7 +8900,12 @@ li.mobile_wid{
     background: rgba(0, 0, 0, 0.86);
     z-index: 999;
     left: 0;
+    right: 0;
+    margin: 0 auto;
     padding: 8px;
+    visibility: hidden;
+    transition: all ease-in-out 0.25s;
+    opacity: 0;
 }
 .mobile_ctas .swatch.color {
     display: none;
@@ -8956,10 +8961,10 @@ li.mobile_wid{
     border: 1px solid #FFFFFF;
     border-radius: 4px;
     color: #fff;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     min-width: inherit;
-    line-height: 28px;
+    line-height: 26px;
     padding: 0;
     font-size: 12px;
     font-weight: 500;
