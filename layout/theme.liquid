@@ -429,7 +429,7 @@ twq('config','ocprj');
     })();
 </script>
 {% if template contains "product" %}
-<script>
+{% comment %} <script>
   window.onscroll = function () {
     stickyHeader()
 };
@@ -449,7 +449,7 @@ function stickyHeader() {
     }
 }
 });  
-</script>
+</script> {% endcomment %}
 
 <script>
 $( document ).ready(function() {
