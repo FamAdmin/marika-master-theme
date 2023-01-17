@@ -147,6 +147,7 @@
     </div>
   </div>
 
+  {% if section.settings.show_mobile %}
   <ul class="mobile-mega-menu hidden" data-mobile-dropdown="{{ section.settings.parent | handleize }}">
     {% for block in section.blocks %}
       <div>
@@ -278,6 +279,7 @@
       </div>
     {% endfor %}
   </ul>
+    {% endif %}
 {% endif %}
 
 {% schema %}
@@ -292,6 +294,11 @@
       "id": "parent",
       "label": "Link title",
       "info": "The mega menu will appear below this parent link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Mega menu show on mobile"
     }
   ],
   "blocks": [

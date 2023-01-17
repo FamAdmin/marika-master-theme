@@ -3036,6 +3036,11 @@
         "type": "checkbox",
         "id": "mega_menu_5",
         "label": "Enable mega menu 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_menu_6",
+        "label": "Enable mega menu 6"
       }
     ]
   },
