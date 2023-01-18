@@ -6,6 +6,7 @@
 <!--[if IE 9 ]><html class="ie ie9" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html lang="{{ shop.locale }}"> <!--<![endif]-->
   <head> 
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFV8ZDV"></script>
  {%- render 'hso-no-follow-no-index' -%}
 {% render 'orbislabs_sitemap_noindex' %}
     <meta charset="utf-8">
@@ -440,6 +441,79 @@ twq('config','ocprj');
         }
     })();
 </script>
+{% if template contains "product" %}
+{% comment %} <script>
+  window.onscroll = function () {
+    stickyHeader()
+};
+window.addEventListener('load', function () {
+  const quickAdd = document.querySelector('.mobile_ctas'),
+      topOfOthDiv = document.querySelector(".add_to_cart").offsetTop;
+      window.onscroll = function () {
+        stickyHeader()
+    };          
+function stickyHeader() {
+    if (window.pageYOffset > topOfOthDiv) {
+        quickAdd.style.opacity = 1
+        quickAdd.style.visibility = 'visible'
+    } else {
+        quickAdd.style.opacity = 0
+        quickAdd.style.visibility = 'hidden'
+    }
+}
+});  
+</script> {% endcomment %}
+
+<script>
+$( document ).ready(function() {
+  $( ".mobile_ctas .add_to_cart" ).click(function(event) {
+    event.preventDefault();
+    $( ".main_frm .add_to_cart" ).trigger( "click" );
+  });
+
+  $( "body" ).click(function(event) {
+    setTimeout(function() {
+      let swatch_name = '';
+      $( ".main_frm .swatch.size input" ).each(function( index ) {
+        if($(this).is(":checked")){
+          swatch_name = $(this).val();
+        }  
+      });
+      $(".mobile_ctas .swatch.size .swatch-element").removeClass('actives');
+      $( ".mobile_ctas .swatch.size .swatch-element" ).each(function( index ) {
+        if($(this).attr('data-value') == swatch_name){
+          $(this).addClass('actives');
+        }
+      });
+
+    }, 300);
+
+    setTimeout(function() {
+      if( parseInt($("#header .top_bar .cart_container .cart_count").text()) == 0 )
+      { 
+        $('.cart_container').removeClass('active_link');
+      }  
+    }, 2000);          
+  });
+  setTimeout(function() {
+    var temp = '';
+    $( ".main_frm .swatch.size input" ).each(function( index ) {
+      if($(this).is(":checked")){
+        temp = $(this).val();
+      }  
+    });
+    $( ".mobile_ctas .swatch.size input" ).each(function( index ) {
+      $(this).removeAttr("checked");
+    });
+    $( ".mobile_ctas .swatch.size .swatch-element" ).each(function( index ) {
+      if($(this).attr('data-value') == temp){
+        $(this).addClass('actives');
+      }
+    });
+  }, 1000);
+});
+</script>
+{% endif %}
 </html>
 {% endcapture %}
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}

@@ -2922,7 +2922,7 @@ input.contact_email[type="email"] {
 
 .product-quantity-box {
   margin-right: 0;
-  width: 45%;
+  width: 40%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -2974,7 +2974,7 @@ input.contact_email[type="email"] {
 
 .product-quantity-box + .inline_purchase {
   margin-top: 30px;
-  width: 55%;
+  width: 50%;
   float: left;
 }
 
@@ -8879,3 +8879,200 @@ $delay: 0;
   left: 0;
   right: 0 !important;
 }
+
+/*MK - AB Test Sticky ATC on PDP start*/
+.mobile_ctas {
+  display: none;
+}
+.mobile_ctas .acsb-shown{
+  display: none;
+}
+li.mobile_wid{
+  display: none;
+}
+@media(max-width:767px){
+.mobile_ctas {
+    display: grid;
+    grid-template-columns: 30% 68%;
+    grid-column-gap: 10px;
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.86);
+    z-index: 999;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 8px;
+    visibility: hidden;
+    transition: all ease-in-out 0.25s;
+    opacity: 0;
+}
+.mobile_ctas .swatch.color {
+    display: none;
+}
+.mobile_p_meta h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF; 
+}
+.mobile_p_meta h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 0;
+    padding-bottom: 0px;
+}
+.mobile_p_meta span.current_price span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-right:8px;
+}
+.mobile_p_meta span.was_price {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: line-through;
+    color: #8C8C8C;
+}
+.mobile_p_meta .modal p.modal_price, .mobile_p_meta p.modal_price {
+    font-size: inherit;
+}
+.mobile_ctas_right .option_title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+.mobile_ctas_right .swatch label {
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    min-width: inherit;
+    line-height: 26px;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+.mobile_ctas_right .swatch_options {
+    margin-bottom: 0;
+}
+.mobile_ctas_right .purchase.clearfix.inline_purchase {
+    margin-top: 5px;
+    width: 100%;
+}
+.mobile_ctas_right .swatch-element {
+    border: 0;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 4px;
+}
+.mobile_ctas_right .swatch label span.crossed-out {
+    background: none;
+}
+.mobile_ctas_right .swatch .soldout label {
+    position: relative;
+}
+.mobile_ctas_right .swatch .soldout label:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: #8C8C8C;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.mobile_ctas_right .swatch .soldout label {
+    position: relative;
+    color: #8C8C8C;
+}
+.mobile_ctas_right .purchase.clearfix.inline_purchase button.action_button.add_to_cart {
+    background: #fff;
+    color: #000;
+    border: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+.mobile_ctas .swatch_options input:checked+.swatch-element {
+    background: #fff;
+}
+.mobile_ctas .swatch_options input:checked+.swatch-element label{
+  color: #000;
+}
+.footer-social-icons .social_icons {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li.mobile_wid div#accessibe_button {
+    float: inherit;
+    margin: 0;
+}
+li.mobile_wid{
+  display: block;
+}
+li.mobile_wid {
+    margin: 0 !important;
+    margin-left: 40px !important;
+}
+.desk_wid {
+    display: none;
+}
+body.product .footer {
+    border: none;
+    display: table;
+    margin-bottom: 186px;
+}
+body.product #kustomer-ui-sdk-iframe {
+    left: 0;
+    right: 0!important;
+    bottom: 190px !important;
+}
+.mobile_ctas .viewSizeGuide {
+    display: none !important;
+}
+.mobile_ctas .product-quantity-box {
+    display: none;
+}
+  .mobile_ctas .actives{
+     background: #fff; 
+  }
+  .mobile_ctas .actives label{
+     color: #000;
+  }
+  .mobile_ctas span.sold_out {
+    color: #fff;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+  }
+  body.product a.back-to-top {
+    bottom: 190px;
+  }
+  body.acsb-keynav .mobile_ctas input[type=radio].acsb-shown{
+    display: none !important;
+  }
+}
+
+/*MK - AB Test Sticky ATC on PDP End*/
