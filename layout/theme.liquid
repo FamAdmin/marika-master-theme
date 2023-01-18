@@ -473,15 +473,15 @@ $( document ).ready(function() {
 
   $( "body" ).click(function(event) {
     setTimeout(function() {
-      var temp1 = '';
+      let swatch_name = '';
       $( ".main_frm .swatch.size input" ).each(function( index ) {
         if($(this).is(":checked")){
-          temp1 = $(this).val();
+          swatch_name = $(this).val();
         }  
       });
       $(".mobile_ctas .swatch.size .swatch-element").removeClass('actives');
       $( ".mobile_ctas .swatch.size .swatch-element" ).each(function( index ) {
-        if($(this).attr('data-value') == temp1){
+        if($(this).attr('data-value') == swatch_name){
           $(this).addClass('actives');
         }
       });
