@@ -217,9 +217,14 @@
   width: 18px;
   height: 18px;
 }
+.go-cart__drawer {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
 .go-cart-drawer__content {
   height: auto;
-  max-height: 370px;
+  max-height: 200px;
   overflow: hidden;
   overflow-y: scroll;
   padding: 0 30px;
@@ -228,6 +233,12 @@
 @media (min-width: 800px) and (max-width: 1140px) {
   .go-cart-drawer__content {
     max-height: 200px;
+  }
+}
+
+@media(min-width: 1500px) {
+  .go-cart-drawer__content {
+    max-height: 370px;
   }
 }
 
