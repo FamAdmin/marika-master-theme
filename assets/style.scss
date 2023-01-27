@@ -20,6 +20,7 @@ body {
     -webkit-font-smoothing: antialiased;
     max-width: 1300px;
     margin: 0 auto;
+	overflow-x: hidden !important;
 }
 
 body.noScroll {

@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap");
 
-
 .header-section {
   position: relative !important;
 }
@@ -225,6 +224,13 @@
   overflow-y: scroll;
   padding: 0 30px;
 }
+
+@media (min-width: 800px) and (max-width: 1140px) {
+  .go-cart-drawer__content {
+    max-height: 200px;
+  }
+}
+
 .go-cart-drawer__subtotal {
   display: flex;
   align-items: center;
@@ -435,7 +441,7 @@
 .go-cart-drawer__upsell {
   height: auto;
   background: #f2f2f2;
-  margin-top: 60px;
+  margin-top: 30px;
   padding: 0 50px 30px;
   position: relative;
 }
@@ -547,14 +553,61 @@
   z-index: 1000000;
 }
 
+.cart-sticky {
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.cart-sticky svg {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 767px) {
+  .go-cart__drawer {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+  .go-cart__drawer::-webkit-scrollbar {
+    width: 4px !important;
+  }
+
+  .go-cart__drawer::-webkit-scrollbar-thumb {
+    background-color: #013dff !important;
+  }
 
   .go-cart-drawer__content {
     padding: 0 5px;
+    max-height: 250px;
+  }
+
+  .go-cart-item__image img {
+    width: 70px;
+    margin-right: 10px;
+  }
+
+  .go-cart-item__remove {
+    font-size: 14px;
+    left: 198px;
+  }
+
+  .go-cart-item__price {
+    bottom: 29px;
+  }
+
+  .go-cart-item__price s {
+    margin-right: 4px;
+  }
+
+  .go-cart-item__info {
+    padding: 10px 10px 10px 10px;
   }
 
   .go-cart-drawer__upsell {
     padding: 0 5px 30px;
+    margin-top: 0;
   }
 
   .swiper-button-next-custom {
