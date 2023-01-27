@@ -548,6 +548,21 @@
   align-items: center;
 }
 
+.swiper-button-prev-custom {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 12px;
+  width: 20px;
+  margin: 0 auto;
+  cursor: pointer;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  transform: rotate(180deg);
+}
+
+
 .go-cart-button-mobile {
   width: 32px;
   height: 32px;
