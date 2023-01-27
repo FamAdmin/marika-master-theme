@@ -1458,7 +1458,3 @@
   ]).default;
 });
 //# sourceMappingURL=index.js.map
-
-document.querySelector(".go-cart-button-mobile").addEventListener("click", function(){
-  document.querySelector(".js-go-cart-trigger").click();
-})
