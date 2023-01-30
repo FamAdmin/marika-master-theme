@@ -32,7 +32,7 @@
 
       {% if variant.featured_image %}
 
-        <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+        <input class="{% if option_index == 0 %}option-color{% else %}option-size{% endif %} " id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}" variant-id="{{variant.id}}" />
         <div data-value="{{ value | escape }}" class="swatch-element {% if is_color %}color {% else %}size {% endif %}{{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}" onmouseover="">
           {% if is_color %}
             <div class="tooltip">{{ value }}</div>

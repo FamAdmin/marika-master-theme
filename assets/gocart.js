@@ -1136,7 +1136,7 @@
                     var price = formatMoney(t.price, e.formatMoney)
                     var priceHTML = ""
                     var compare_price = 0
-
+                    console.log(t)
                     if(t.properties["compare_price"] > 0) {
                       compare_price = formatMoney(t.properties["compare_price"], e.formatMoney)
                       priceHTML = `<s>${compare_price}</s>${price}`
@@ -1458,3 +1458,52 @@
   ]).default;
 });
 //# sourceMappingURL=index.js.map
+
+
+const queryString = window.location.search;
+const variantIdURL = queryString.replace("?variant=", "")
+
+if(variantIdURL) {
+  document.querySelectorAll(".option-color").forEach(function(opt){
+    if(opt.getAttribute("variant-id") === variantIdURL) {
+      Shopify.color = opt.value
+      opt.checked = true
+    }
+  })
+  Shopify.size = document.querySelector(".option-size").value
+  document.querySelector(".option-size").checked = true
+  document.querySelector(".js-go-cart-add-to-cart").removeAttribute("disabled")
+}
+
+
+function getVariants() {
+  if(Shopify.color && Shopify.size) {
+    document.querySelector(".js-go-cart-add-to-cart").removeAttribute("disabled")
+    const variant = `${Shopify.color.toLowerCase()} / ${Shopify.size.toLowerCase()}`
+    document.querySelectorAll(".multi_select option").forEach((opt)=>{
+      opt.removeAttribute("selected")
+      if(opt.getAttribute("data-variant") === variant) {
+        opt.setAttribute("selected", "selected")
+      }
+    })
+  }
+}
+
+function clearSelect() {
+  document.querySelectorAll(".option-size").forEach((opt)=>{
+    opt.checked = false
+    Shopify.size = null
+  })
+  document.querySelector(".js-go-cart-add-to-cart").setAttribute("disabled", "disabled")
+}
+
+$(".option-color").on("click", function() {
+  Shopify.color = $(this).val()
+  getVariants()
+  clearSelect()
+})
+
+$(".option-size").on("click", function() {
+  Shopify.size = $(this).val()
+  getVariants()
+})

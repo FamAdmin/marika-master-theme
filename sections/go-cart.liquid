@@ -123,8 +123,9 @@
                                         {{block.settings.product.selected_or_first_available_variant.option1}}
                                     </span>
                                     <span class="price">
-                                        {{block.settings.product.compare_at_price | money }}
-                                        <s>{{block.settings.product.price | money}}</s>
+                                        {{block.settings.product.price | money}}
+                                        <s>{{block.settings.product.compare_at_price | money }}</s>
+                                        
                                     </span>
                                     <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ block.settings.product.handle }}-{{ collection.handle }}-{{ section.id }}">
                                         <input type="hidden" name="id" value="{{block.settings.product.selected_or_first_available_variant.id}}">
