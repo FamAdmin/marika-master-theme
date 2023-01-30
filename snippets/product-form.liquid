@@ -7,7 +7,7 @@
       <div class="select">
         <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
           {% for v in product.variants %}
-            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}" data-variant="{{ v.title | downcase }}">{{ v.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -16,7 +16,7 @@
         <label>{{ product.options[0] }}</label>
         <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
           {% for v in product.variants %}
-            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}" data-variant="{{ v.title | downcase }}">{{ v.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -69,15 +69,16 @@
 
       {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
         <button  
-        type="submit" 
+        type="submit"
         name="add" 
         data-add-to-cart 
         class="js-go-cart-add-to-cart"
+        disabled="disabled"
         {%- unless variant.available -%}disabled="disabled"{%- endunless -%}> 
-             {%- if variant.available -%} 
-                 {{- 'products.product.add_to_cart' | t -}} 
+             {%- if variant.available -%}
+                 {{- 'products.product.add_to_cart' | t -}}
              {%- else -%} 
-                 {{- 'products.product.sold_out' | t -}} 
+                 {{- 'products.product.sold_out' | t -}}
              {%- endif -%} 
         </button>  
     </div>
@@ -95,5 +96,6 @@
   });
 
 </script>
+
 
 <!-- End Twitter conversion tracking event code -->
