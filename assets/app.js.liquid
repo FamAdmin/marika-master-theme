@@ -2180,6 +2180,59 @@ $(function() {
     Quick Shop
   ==============================================================================*/
 
+  document.body.addEventListener('click', function ( event ) {
+    const eventElement = event.target;
+    if( eventElement.classList.contains("product-sizes__button")) {
+
+
+      let productVariant  = eventElement.getAttribute('data-variant');
+
+      $(eventElement).parent().parent().addClass("loading");
+  
+      $.ajax({
+        url: '/cart/add.js',
+        dataType: 'json',
+        cache: false,
+        type: 'post',
+        data: {
+          quantity: 1,
+          id: productVariant
+        },
+        success: function(itemData) {
+         
+          $.ajax({
+            url: '/cart.js',
+            dataType: "json",
+            cache: false,
+            success: function(cart) {
+              $(eventElement).parent().parent().removeClass("loading");
+              $(eventElement).parent().parent().addClass("added");
+              setTimeout(function(){
+                $(eventElement).parent().parent().removeClass("added");
+              }, 3000);
+
+              refreshCart(cart);
+              if($('html').hasClass("remodal-is-locked")) {
+                $('.remodal-close').click();
+              }
+
+              if($('#header').is(':visible')) {
+                $('#header .cart_container').addClass('active_link');
+              } else if ($('.sticky_nav--stick').length) {
+                $('.sticky_nav .cart_container').addClass('active_link');
+              } else {
+                $('.top_bar .cart_container').addClass('active_link');
+              }
+            }
+          });
+        },
+        error: function(XMLHttpRequest) {
+          console.log(XMLHttpRequest);
+        }
+      });
+    }
+  });
+
   var globalQuickShopProduct;
 
   $('body').on('change', '.currencies', function(e) {

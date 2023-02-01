@@ -3195,8 +3195,9 @@
           },
           "fcf274db-fbdc-4062-a157-dcd3e4a38684": {
             "type": "collection_banner",
-            "disabled": true,
             "settings": {
+              "collection_banner_image": "shopify:\/\/shop_images\/marika-adventure_M_AdventureBanner_Desktop.jpg",
+              "collection_banner_image_mobile": "shopify:\/\/shop_images\/marika-adventure_M_AdventureBanner_Mobile.jpg",
               "hide_banner": false
             }
           },
@@ -4400,6 +4401,7 @@
         "blocks": {
           "cc6ec072-2572-4b2b-86a3-91094136a819": {
             "type": "column",
+            "disabled": true,
             "settings": {
               "richtext_top": "",
               "image_caption_top": "",
@@ -4419,6 +4421,7 @@
           },
           "cc32c68b-fc19-4b9d-97a0-b59a057eca81": {
             "type": "column",
+            "disabled": true,
             "settings": {
               "richtext_top": "",
               "image_top": "shopify:\/\/shop_images\/Rectangle_20.png",
@@ -4439,6 +4442,7 @@
           },
           "83060459-7487-4d3d-89a9-756ebc06fb71": {
             "type": "column",
+            "disabled": true,
             "settings": {
               "richtext_top": "",
               "image_top": "shopify:\/\/shop_images\/Rectangle_21.png",
@@ -4532,6 +4536,7 @@
           },
           "54b844ec-51a8-4e17-b4a1-db4cf2a3ddcc": {
             "type": "column",
+            "disabled": true,
             "settings": {
               "richtext_top": "",
               "image_top": "shopify:\/\/shop_images\/Rectangle_24.png",
@@ -4583,37 +4588,36 @@
           "show_mobile": false
         }
       },
-      "go-cart": {
-        "type": "go-cart",
-        "blocks": {
-          "0da67f2a-fc61-4806-91ad-660634bb0f3d": {
-            "type": "products",
-            "settings": {
-              "product": "m197704"
-            }
-          },
-          "deb2baac-5598-49e3-a00d-cdf4dd6c4dde": {
-            "type": "products",
-            "settings": {
-              "product": "m192102"
-            }
-          },
-          "f0596353-794c-4394-a97d-6495b9d724d3": {
-            "type": "products",
-            "settings": {
-              "product": "m193419"
-            }
-          }
-        },
-        "block_order": [
-          "0da67f2a-fc61-4806-91ad-660634bb0f3d",
-          "deb2baac-5598-49e3-a00d-cdf4dd6c4dde",
-          "f0596353-794c-4394-a97d-6495b9d724d3"
-        ],
+      "blog-template": {
+        "type": "blog-template",
         "settings": {
-          "free_shipping_text": "Free Standard Shipping!*",
-          "taxes_text": "*U.S. orders only, International shipping rates apply. Taxes will be calculated at checkout.",
-          "upsell_title": "LEVEL UP YOUR WORKOUT"
+          "image_darken": false,
+          "subtitle": "",
+          "blog_posts_per_page": "12",
+          "blog_posts_per_row": "3",
+          "blog_tags": false,
+          "blog_author": false,
+          "blog_date": true,
+          "blog_comment_count": false,
+          "read_more_link": true,
+          "toggle": false
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "banner_enabled": true,
+          "image_darken": false,
+          "blog_breadcrumb": true,
+          "blog_pagination": true,
+          "blog_tags": false,
+          "blog_author": false,
+          "blog_date": true,
+          "display_social_buttons": true,
+          "blog_comment_count": true,
+          "read_more_link": true,
+          "blog_additional_posts": false,
+          "toggle": false
         }
       }
     },
