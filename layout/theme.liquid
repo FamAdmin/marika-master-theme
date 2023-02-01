@@ -363,6 +363,7 @@ twq('config','ocprj');
   {% endif %}
   <!-- Vue ai Tag -->
 
+  {{ 'gocart.js' | asset_url | script_tag }}
 
   <!-- Vue ai Headless -->
   {% if template contains 'collection' %}
@@ -485,7 +486,7 @@ $( document ).ready(function() {
 
 {% section 'go-cart' %}
 
-{{ 'gocart.js' | asset_url | script_tag }}
+
 <script>
     const goCart = new GoCart();
 </script>
