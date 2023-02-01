@@ -1,7 +1,18 @@
 {% if product.available %}
   {% assign variant = product.selected_or_first_available_variant %}
 
-  <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}">
+  <form action="/cart/add"
+    method="post"
+    class="clearfix product_form init {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
+    id="product-form-{{ product.id }}"
+    data-money-format="{{ shop.money_format }}"
+    data-shop-currency="{{ shop.currency }}"
+    data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+    data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+    data-product="{{ product | json | escape }}"
+    data-product-id="{{ product.id }}"
+    data-rv-handle="{{ product.handle }}"
+    >
 
     {% if product.options.size > 1 %}
       <div class="select">
@@ -73,7 +84,6 @@
         name="add" 
         data-add-to-cart 
         class="js-go-cart-add-to-cart"
-        disabled="disabled"
         {%- unless variant.available -%}disabled="disabled"{%- endunless -%}> 
              {%- if variant.available -%}
                  {{- 'products.product.add_to_cart' | t -}}

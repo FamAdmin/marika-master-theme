@@ -1478,7 +1478,7 @@ if(variantIdURL) {
 
 function getVariants() {
   if(Shopify.color && Shopify.size) {
-    document.querySelector(".js-go-cart-add-to-cart").removeAttribute("disabled")
+    //document.querySelector(".js-go-cart-add-to-cart").removeAttribute("disabled")
     const variant = `${Shopify.color.toLowerCase()} / ${Shopify.size.toLowerCase()}`
     document.querySelectorAll(".multi_select option").forEach((opt)=>{
       opt.removeAttribute("selected")
@@ -1494,7 +1494,7 @@ function clearSelect() {
     opt.checked = false
     Shopify.size = null
   })
-  document.querySelector(".js-go-cart-add-to-cart").setAttribute("disabled", "disabled")
+  //document.querySelector(".js-go-cart-add-to-cart").setAttribute("disabled", "disabled")
 }
 
 $(".option-color").on("click", function() {
