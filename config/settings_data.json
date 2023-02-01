@@ -4591,10 +4591,24 @@
             "settings": {
               "product": "m197704"
             }
+          },
+          "deb2baac-5598-49e3-a00d-cdf4dd6c4dde": {
+            "type": "products",
+            "settings": {
+              "product": "m192102"
+            }
+          },
+          "f0596353-794c-4394-a97d-6495b9d724d3": {
+            "type": "products",
+            "settings": {
+              "product": "m193419"
+            }
           }
         },
         "block_order": [
-          "0da67f2a-fc61-4806-91ad-660634bb0f3d"
+          "0da67f2a-fc61-4806-91ad-660634bb0f3d",
+          "deb2baac-5598-49e3-a00d-cdf4dd6c4dde",
+          "f0596353-794c-4394-a97d-6495b9d724d3"
         ],
         "settings": {
           "free_shipping_text": "Free Standard Shipping!*",
