@@ -4619,6 +4619,46 @@
           "blog_additional_posts": false,
           "toggle": false
         }
+      },
+      "go-cart": {
+        "type": "go-cart",
+        "blocks": {
+          "244dc0c5-064f-4111-bc47-e9d321957ec7": {
+            "type": "products",
+            "settings": {
+              "product": "m192102"
+            }
+          },
+          "55181421-d229-4e94-a6a8-d273f93c9049": {
+            "type": "products",
+            "settings": {
+              "product": "m193419"
+            }
+          },
+          "6557b5d9-ef68-492b-897f-1771b87cf8c1": {
+            "type": "products",
+            "settings": {
+              "product": "m193519"
+            }
+          },
+          "031d4683-a474-4f62-a01a-f87117aa0392": {
+            "type": "products",
+            "settings": {
+              "product": "m189019"
+            }
+          }
+        },
+        "block_order": [
+          "244dc0c5-064f-4111-bc47-e9d321957ec7",
+          "55181421-d229-4e94-a6a8-d273f93c9049",
+          "6557b5d9-ef68-492b-897f-1771b87cf8c1",
+          "031d4683-a474-4f62-a01a-f87117aa0392"
+        ],
+        "settings": {
+          "free_shipping_text": "Free Standard Shipping!*",
+          "taxes_text": "*U.S. orders only, International shipping rates apply. Taxes will be calculated at checkout.",
+          "upsell_title": "LEVEL UP YOUR WORKOUT"
+        }
       }
     },
     "content_for_index": [
