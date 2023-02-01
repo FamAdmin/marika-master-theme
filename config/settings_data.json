@@ -4586,36 +4586,15 @@
       "go-cart": {
         "type": "go-cart",
         "blocks": {
-          "4e0438cc-9531-4e08-a78e-0943de58d2cf": {
-            "type": "products",
-            "settings": {
-              "product": "m193419"
-            }
-          },
-          "3dbc5035-fa26-4fbd-8dea-81425fb52221": {
-            "type": "products",
-            "settings": {
-              "product": "b194201"
-            }
-          },
           "0da67f2a-fc61-4806-91ad-660634bb0f3d": {
             "type": "products",
             "settings": {
               "product": "m197704"
             }
-          },
-          "1d0e4fb7-77d3-4768-bd08-de105ff9e421": {
-            "type": "products",
-            "settings": {
-              "product": "m182519"
-            }
           }
         },
         "block_order": [
-          "4e0438cc-9531-4e08-a78e-0943de58d2cf",
-          "3dbc5035-fa26-4fbd-8dea-81425fb52221",
-          "0da67f2a-fc61-4806-91ad-660634bb0f3d",
-          "1d0e4fb7-77d3-4768-bd08-de105ff9e421"
+          "0da67f2a-fc61-4806-91ad-660634bb0f3d"
         ],
         "settings": {
           "free_shipping_text": "Free Standard Shipping!*",
