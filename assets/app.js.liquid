@@ -2213,18 +2213,18 @@ $(function() {
               const goCart = new GoCart();
               $(".go-cart__trigger").click()
               
-              // refreshCart(cart);
-              // if($('html').hasClass("remodal-is-locked")) {
-              //   $('.remodal-close').click();
-              // }
+              refreshCart(cart);
+              if($('html').hasClass("remodal-is-locked")) {
+                $('.remodal-close').click();
+              }
 
-              // if($('#header').is(':visible')) {
-              //   $('#header .cart_container').addClass('active_link');
-              // } else if ($('.sticky_nav--stick').length) {
-              //   $('.sticky_nav .cart_container').addClass('active_link');
-              // } else {
-              //   $('.top_bar .cart_container').addClass('active_link');
-              // }
+              if($('#header').is(':visible')) {
+                $('#header .cart_container').addClass('active_link');
+              } else if ($('.sticky_nav--stick').length) {
+                $('.sticky_nav .cart_container').addClass('active_link');
+              } else {
+                $('.top_bar .cart_container').addClass('active_link');
+              }
             }
           });
         },
