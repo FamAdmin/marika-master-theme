@@ -2,23 +2,23 @@
   {% assign variant = product.selected_or_first_available_variant %}
 
   <form action="/cart/add"
-        method="post"
-        class="clearfix product_form init {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
-        id="product-form-{{ product.id }}"
-        data-money-format="{{ shop.money_format }}"
-        data-shop-currency="{{ shop.currency }}"
-        data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
-        data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
-        data-product="{{ product | json | escape }}"
-        data-product-id="{{ product.id }}"
-        data-rv-handle="{{ product.handle }}"
-        >
+    method="post"
+    class="clearfix product_form init {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
+    id="product-form-{{ product.id }}"
+    data-money-format="{{ shop.money_format }}"
+    data-shop-currency="{{ shop.currency }}"
+    data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+    data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+    data-product="{{ product | json | escape }}"
+    data-product-id="{{ product.id }}"
+    data-rv-handle="{{ product.handle }}"
+    >
 
     {% if product.options.size > 1 %}
       <div class="select">
         <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
           {% for v in product.variants %}
-            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}" data-variant="{{ v.title | downcase }}">{{ v.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -27,7 +27,7 @@
         <label>{{ product.options[0] }}</label>
         <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
           {% for v in product.variants %}
-            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}" data-variant="{{ v.title | downcase }}">{{ v.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -61,6 +61,7 @@
     <div class="final-sale-wrapper">
       <input type="hidden" name="properties[Final Sale]" id="finalsale" value="{% if product.tags contains 'final_sale' %}true{% endif %}">
     </div>
+    <input id="compare_at_price" type="hidden" name="properties[compare_price]" value="{{product.compare_at_price}}">
 
     {% if settings.display_product_quantity %}
       <div class="left product-quantity-box">
@@ -78,12 +79,18 @@
       {% endif %}
 
       {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-      <button type="submit" name="add" class="action_button add_to_cart" data-label={{ add_to_cart_label | json }}>
-        <span class="text">{{ add_to_cart_label }}</span>
-        <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
-          <path fill="none" stroke="{{ settings.btn_text_color }}" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-        </svg>
-      </button>
+        <button  
+        type="submit"
+        name="add" 
+        data-add-to-cart 
+        class="js-go-cart-add-to-cart"
+        {%- unless variant.available -%}disabled="disabled"{%- endunless -%}> 
+             {%- if variant.available -%}
+                 {{- 'products.product.add_to_cart' | t -}}
+             {%- else -%} 
+                 {{- 'products.product.sold_out' | t -}}
+             {%- endif -%} 
+        </button>  
     </div>
   </form>
 {% endif %}
@@ -99,5 +106,6 @@
   });
 
 </script>
+
 
 <!-- End Twitter conversion tracking event code -->

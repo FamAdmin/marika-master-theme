@@ -132,6 +132,7 @@
 {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
 {{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
+  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/NfMBlbyeE86LdE031gSPag" async></script>
 </head>
   {% if template contains "index" %}
     {% assign feature_image = true %}

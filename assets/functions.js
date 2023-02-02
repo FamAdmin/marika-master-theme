@@ -49,7 +49,10 @@ $(function() {
           }
         });
   		$('.variantColorName').remove();
-        $('.swatch[data-option-index="0"] .option_title').append('<span class="variantColorName">: ' + colorName + '</span>');
+		if(colorName != undefined) {
+			$('.swatch[data-option-index="0"] .option_title').append('<span class="variantColorName">: ' + colorName + '</span>');
+		}
+        
   
   
 //   $('.js-quick-shop-link').click(function() {
