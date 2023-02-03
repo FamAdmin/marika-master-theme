@@ -4,6 +4,14 @@
   position: relative !important;
 }
 
+.go-cart__trigger, .js-go-cart-add-to-cart, .cart-sticky, .go-cart__drawer, .go-cart__overlay{
+  display: none !important;
+}
+
+.mini_cart, .action_button.add_to_cart, .cart_container {
+  display: block;
+}
+
 .go-cart__modal {
   position: fixed;
   left: 50%;
@@ -94,7 +102,7 @@
   width: 10px;
   height: 10px;
   z-index: 10000;
-  right: 32px;
+  right: 5px;
 }
 
 .js-go-cart-counter {
@@ -582,8 +590,8 @@
 .cart-sticky {
   cursor: pointer;
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 51px;
+  right: -7px;
 }
 
 .cart-sticky svg {
