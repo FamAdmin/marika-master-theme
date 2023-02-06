@@ -1,0 +1,194 @@
+<!-- shopify tag integration -->
+ <script src="https://cdn.attn.tv/marika/dtag.js"></script>
+
+<!-- CRITEO START -->
+{% if first_time_accessed %}
+    <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+    <script type="text/javascript">
+        var site_type = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+        var criteo_items = [];
+        criteo_items.push({id : "ordertotal",price :{{order.subtotal_price | money_without_currency | remove: ","}}, quantity : 1});
+        {% for item in order.line_items %}
+        criteo_items.push({id : "{{item.product.id}}",price : 0, quantity : 1});
+        {% endfor %}
+          window.criteo_q = window.criteo_q || [];
+          window.criteo_q.push(
+            { event: "setAccount", account: 33095 },
+            { event: "setSiteType", type: site_type},
+            { event: "setEmail", email: "{{customer.email | remove: " " | strip_newlines | downcase | md5}}"},
+            { event: "trackTransaction", ecpplugin: "shopify", id: "{{order.order_number}}", product: criteo_items});
+    </script>
+{% endif %}
+<!-- CRITEO END -->
+
+<!-- Start BounceX Conversion MultiPixel. Deploy at the beginning of document head. -->
+<script>
+    var bouncex = bouncex || [];
+    bouncex.push(['conversion', {
+        order_id: "{{ order_number }}",
+        amount: "{{ subtotal_price | money_with_currency }}",
+        email: "{{ checkout.email }}",
+        goal: "purchase"
+    }]);
+</script>
+<!-- End BounceX Conversion MultiPixel. -->
+
+<!-- Start BounceX Conversion MultiPixel. Deploy at the beginning of document body. -->
+<img height=1 width=1 border=0 style="display:none;" src="//api.bounceexchange.com/capture/convert2.gif?website_id=2007&order_id={{ order_number }}&amount={{ subtotal_price | money_with_currency }}&email={{ checkout.email }}&goal=purchase" />
+<!-- End BounceX Conversion MultiPixel. -->
+
+<!-- Start BounceX tag. Deploy at the beginning of document head. -->
+
+<script>
+(function(d) {
+    var e = d.createElement('script');
+    e.src = d.location.protocol + '//tag.bounceexchange.com/2007/i.js';
+    e.async = true;
+    d.getElementsByTagName("head")[0].appendChild(e);
+}(document));
+</script>
+
+<!-- End BounceX Tag-->
+
+<!-- PEPPERJAM START -->
+<iframe src="https://t.pepperjamnetwork.com/track?PROGRAM_ID=6556&INT=DYNAMIC{% assign sub_total = 0 %}{% for line_item in line_items %}{% assign sub_total = line_item.line_price | plus: sub_total %}{% endfor %}{% assign sub_total = sub_total | append: '.00' %}{% for line_item in line_items %}&ITEM_ID{{ forloop.index }}={{ line_item.sku }}&ITEM_PRICE{{forloop.index}}={% if order.discounts_amount > 0 %}{% assign discount = order.discounts_amount |divided_by: sub_total %}{% assign discount_percentage = 1 | minus: discount %}{% assign afterDiscountPrice = line_item.price | times: discount_percentage %}{{ afterDiscountPrice | money_without_currency | remove: ',' }}{% else %}{{ line_item.price | money_without_currency | remove: ',' }}{% endif %}&QUANTITY{{ forloop.index }}={{ line_item.quantity }}&CATEGORY{{ forloop.index }}={{ line_item.product.type }}{% endfor %}&ORDER_ID={{ order_number }}&COUPON={% for discount in order.discounts %}{{ discount.code }}{% endfor %}{% if customer.orders_count < 2 %}&NEW_TO_FILE=1{% else %}&NEW_TO_FILE=0{% endif %}"width="1" height="1" frameborder="0"></iframe>
+
+<!-- PEPPERJAM END -->
+
+
+<!-- Google Code for Marika.com Adwords Conversion Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 982749606;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "oIKXCOugy3MQpqPO1AM";
+var google_conversion_value = {{ subtotal_price | money_without_currency }};
+var google_conversion_currency = "USD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/982749606/?value=google_conversion_value&amp;currency_code=USD&amp;label=oIKXCOugy3MQpqPO1AM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<!-- YOTPO -->
+<img src="https://api.yotpo.com/conversion_tracking.gif?app_key=kDAq9aC5epAk3Ondxh0Ec2nA3q463CbswfxUtKrQ&order_id={{order_name|handleize}}&order_amount={{subtotal_price|money_without_currency}}&order_currency={{ shop.currency }}" width="1" height="1">
+
+
+<script>
+var previewBar = document.getElementById('preview-bar-iframe');
+console.log('preivewBar hide');
+previewBar.style.display = 'none';
+</script>
+
+<!-- Bing Conversion Tracking -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o=
+
+{ti:"4039316"}
+;o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+
+{var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)}
+,i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+    <!-- End Bing Conversion Tracking -->
+
+<script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/kDAq9aC5epAk3Ondxh0Ec2nA3q463CbswfxUtKrQ/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script><script>yotpoTrackConversionData = {orderId: "{{order_name|handleize}}", orderAmount: "{{subtotal_price|money_without_currency}}", orderCurrency: "{{shop.currency }}"}</script><noscript><img src="//api.yotpo.com/conversion_tracking.gif?app_key=kDAq9aC5epAk3Ondxh0Ec2nA3q463CbswfxUtKrQ&order_id={{order_name|handleize}}&order_amount={{subtotal_price|money_without_currency}}&order_currency={{ shop.currency }}" width="1" height="1"></noscript>
+<script>
+window.uetq = window.uetq || []; 
+window.uetq.push({ 'gv': {{ subtotal_price | money_without_currency }}, 'gc': '{{ shop.currency }}' }); 
+</script>
+
+<!-- Start VWO Asynchronous Code -->
+      <script type='text/javascript'>
+      var _vwo_code=(function(){
+      var account_id=356357,
+      settings_tolerance=2000,
+      library_tolerance=2500,
+      use_existing_jquery=false,
+      /* DO NOT EDIT BELOW THIS LINE */
+      f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+      </script>
+      <!-- End VWO Asynchronous Code -->
+
+<script type="text/javascript">
+	window.VWO = window.VWO || [];
+        {% assign _vis_opt_revenue = total_price | money_without_currency %} 
+	window.VWO.push(['track.revenueConversion', {{ _vis_opt_revenue }} ]);
+</script>
+
+
+<!-- Adlucent order tracking code  -->
+<script type="text/javascript">
+    function getCookieValue(a) {
+        var b = document.cookie.match('(^|;)\\s*' + a
+            + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+    }
+    var orderData = [];
+    var retailer = "fambrands";
+    var clickId = getCookieValue("_adlClkID");
+    var orderKey = "{{ checkout.order.name }}";
+    {% for line_item in checkout.line_items %}
+    orderData.push(['{{ line_item.sku }}', '{{ line_item.quantity }}', '{{ line_item.final_price | money_without_currency }}']);
+    {% endfor %}
+    {% if  checkout.discounts_amount > 0 %}
+    orderData.push(['DISCOUNT','1','-{{ checkout.discounts_amount | money_without_currency }}']);
+    {% endif %}
+    (function () {
+        var adl = document.createElement("script");
+        adl.type = "text/javascript";
+        adl.async = true;
+        adl.src = document.location.protocol
+            + "//tracking.deepsearch.adlucent.com/adl.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(adl, s);
+    })();
+</script>
+
+<!-- Vue.ai -->
+{% if checkout.customer %}
+   <div data-user-id="{{ checkout.customer.id }}" hidden="hidden" class="vuex-user-id_hidden"></div>
+   <input type="hidden" value="{{ checkout.customer.email }}" data-customer-id="{{ checkout.customer.id }}" data-customer-email="{{ checkout.customer.email }}" data-customer-name="{{ checkout.customer.name }}">
+{% endif %}
+<!-- Vue.ai -->
+
+<!-- AddShoppers -->
+<script type="text/javascript">
+    var AddShoppersWidgetOptions = { 'loadCss': false, 'pushResponse': false };
+    AddShoppersConversion = {
+    order_id: "{{ order_number }}",
+    value: "{{ total_price | money_without_currency }}",
+    email: "{{ order.email }}",
+    currency: "{{ currency }}"
+    };
+    {% for discount_application in discount_applications %}
+        AddShoppersConversion["offer_code"] = "{{ discount_application.title }}";
+    {% endfor %}
+    (!function(){
+        var t=document.createElement("script");t.type="text/javascript",
+        t.async=!0,
+        t.id="AddShoppers",
+        t.src="https://shop.pe/widget/widget_async.js#6324deacf1cf1d04dcb0c1a2",
+        document.getElementsByTagName("head")[0].appendChild(t)
+    }());
+</script>
+<!-- AddShoppers -->
+
+<!-- Twitter conversion tracking event code -->
+
+<script type="text/javascript">
+
+  // Insert Twitter Event ID
+
+  twq('event', 'tw-ocprj-octzt', {
+
+  });
+
+</script>
+
+<!-- End Twitter conversion tracking event code -->
