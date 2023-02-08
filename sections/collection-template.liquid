@@ -43,7 +43,7 @@
 
   {% if section.settings.headless_toggle %}
   <div class="container" id="collection-{{ collection.id }}">
-  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}">
+  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}" data-ab-tests-enabled="">
     <template>
       <App :categorySelected="{{ collection.handle }}"></App>
     </template>
@@ -440,6 +440,12 @@
         "type": "checkbox",
         "id": "headless_toggle",
         "label": "Toggle for Headless Implementation",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "ab_test_source_data_toogle",
+        "label": "Toggle for AB Test Source Data Vue.ai",
         "default": false
       }
     ],
