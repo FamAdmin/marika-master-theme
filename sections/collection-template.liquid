@@ -43,7 +43,7 @@
 
   {% if section.settings.headless_toggle %}
   <div class="container" id="collection-{{ collection.id }}">
-  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}" data-ab-tests-enabled="{{ section.settings.ab_test_source_data_toogle }}">
+  <div id="app" class="shopify-collection-headless-plp" data-theme="marika" data-category="{{ collection.handle }}" data-category-title="{{ collection.title }}" data-user-id="{{ customer.id }}" data-ab-tests-enabled="{{ section.settings.ab_test_source_data_toogle }}">
     <template>
       <App :categorySelected="{{ collection.handle }}"></App>
     </template>
