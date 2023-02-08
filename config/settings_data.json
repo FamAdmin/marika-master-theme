@@ -3281,7 +3281,7 @@
           "image_darken": false,
           "toggle": false,
           "headless_toggle": true,
-          "ab_test_source_data_toogle": false
+          "ab_test_source_data_toogle": true
         }
       },
       "newsletter": {
