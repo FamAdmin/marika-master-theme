@@ -1136,8 +1136,7 @@
                     var price = formatMoney(t.price, e.formatMoney)
                     var priceHTML = ""
                     var compare_price = 0
-                    console.log(t)
-                    if(t.properties["compare_price"] > 0) {
+                    if(t.properties && t.properties["compare_price"] > 0) {
                       compare_price = formatMoney(t.properties["compare_price"], e.formatMoney)
                       priceHTML = `<s>${compare_price}</s>${price}`
                     }else{
