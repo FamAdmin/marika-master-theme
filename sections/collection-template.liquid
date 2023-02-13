@@ -49,7 +49,11 @@
     </template>
   </div>
 
-  <!-- test -->
+  </div>
+  {%- else -%}
+  
+  <div class="container" id="collection-{{ collection.id }}">
+      <!-- test -->
   <div class="shopify-collection-liquid-plp hidden">
     {% paginate collection.products by section.settings.pagination_limit %}
   {% if section.settings.collection_breadcrumb %}
@@ -277,12 +281,6 @@
   {% endpaginate %}
   </div>
   <!-- test -->
-
-
-  </div>
-  {%- else -%}
-  
-  <div class="container" id="collection-{{ collection.id }}">
 
   </div>
   
