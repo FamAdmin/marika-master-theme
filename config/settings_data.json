@@ -3280,7 +3280,7 @@
           "image": "shopify:\/\/shop_images\/40offAccessories-Cat-Dsktop_5fcd5e3f-f558-4649-9b14-5925ca1a3c71.jpg",
           "image_darken": false,
           "toggle": false,
-          "headless_toggle": false,
+          "headless_toggle": true,
           "ab_test_source_data_toogle": true
         }
       },
