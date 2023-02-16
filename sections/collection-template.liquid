@@ -54,7 +54,7 @@
   
   <div class="container" id="collection-{{ collection.id }}">
       <!-- test -->
-  <div class="shopify-collection-liquid-plp hidden">
+  <div class="shopify-collection-liquid-plp">
     {% paginate collection.products by section.settings.pagination_limit %}
   {% if section.settings.collection_breadcrumb %}
     <div class="clearfix breadcrumb-collection">
