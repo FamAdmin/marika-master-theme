@@ -23,6 +23,12 @@ body {
 	overflow-x: hidden !important;
 }
 
+@media(max-width: 767px) {
+	#attentive_creative {
+		bottom: 0 !important;
+	}	
+}
+
 body.noScroll {
 	overflow: hidden;
 }
