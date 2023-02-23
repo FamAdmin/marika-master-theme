@@ -370,7 +370,10 @@ twq('config','ocprj');
     <script src="{{ 'headlessApp.js' | asset_url }}" async></script>
   {% endif %}
   <!-- Vue ai Headless -->
-  </body>
+  
+{% include 'swymSnippet' %}
+
+</body>
   <script type="text/javascript" src="{{shop.secure_url}}/apps/vig/liquid_factory/scripttag.js?shop={{shop.permanent_domain}}"></script>
   {{ 'lightslider.js' | asset_url | script_tag}}
   {{ 'functions.js' | asset_url | script_tag }}
