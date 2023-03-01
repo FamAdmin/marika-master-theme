@@ -478,11 +478,11 @@
   padding: 15px;
 }
 
-.swiper-slide {
+.swiper-sidecart .swiper-slide {
   position: relative;
 }
 
-.swiper-slide:nth-child(odd)::before {
+.swiper-sidecart .swiper-slide:nth-child(odd)::before {
   content: "";
   position: absolute;
   height: 100%;

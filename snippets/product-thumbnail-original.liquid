@@ -98,7 +98,7 @@
     {% assign variantColor = product.variants[0].option1 | replace: '/ ', ' ' | replace: '/', ' ' | replace: '  ', ' ' | replace: ' ', '-' | replace: "'", "" | upcase %}
     {% assign styleNumber = product.handle | upcase %}
     <!-- <img class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/{{product.variants[0].featured_image.src}}" data-variant="{{product.variants[0].option1}}"/> -->
-    <img class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-variant="{{product.variants[0].option1}}"/>
+    <img class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-variant="{{product.variants[0].option1}}"  />
     {% for image in product.images %}
       {% if image.alt == product.variants[0].option1 %}
         <img src="https://cdn.shopify.com/s/files/1/1588/5229/{{image}}" style="display:none"/>

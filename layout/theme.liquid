@@ -370,7 +370,10 @@ twq('config','ocprj');
     <script src="{{ 'headlessApp.js' | asset_url }}" async></script>
   {% endif %}
   <!-- Vue ai Headless -->
-  </body>
+  
+{% include 'swymSnippet' %}
+
+</body>
   <script type="text/javascript" src="{{shop.secure_url}}/apps/vig/liquid_factory/scripttag.js?shop={{shop.permanent_domain}}"></script>
   {{ 'lightslider.js' | asset_url | script_tag}}
   {{ 'functions.js' | asset_url | script_tag }}
@@ -486,7 +489,7 @@ $( document ).ready(function() {
 {{ 'swiper.min.js' | asset_url | script_tag }}
 
 <script>
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.swiper-sidecart', {
       slidesPerView: 2,
       spaceBetween: 30,
       slidesPerGroup: 2,
@@ -504,6 +507,9 @@ $( document ).ready(function() {
     })
   })
 </script>
+
+
+<script src="{{ 'product-swatches.js' | asset_url }}"></script>
 
 </html>
 {% endcapture %}

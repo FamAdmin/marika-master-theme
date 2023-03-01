@@ -3281,7 +3281,7 @@
           "image_darken": false,
           "toggle": false,
           "headless_toggle": true,
-          "ab_test_source_data_toogle": false
+          "ab_test_source_data_toogle": true
         }
       },
       "newsletter": {
@@ -3424,7 +3424,7 @@
           "1511370811877": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Marika_Dec_Module_A.jpg",
+              "image": "shopify:\/\/shop_images\/Marika_Feb_Module_B.jpg",
               "link": "shopify:\/\/collections\/bestsellers",
               "title": "",
               "heading_color": "#020202",
@@ -3435,7 +3435,7 @@
           "1506041767864-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Marika_Dec_Module_B.jpg",
+              "image": "shopify:\/\/shop_images\/Marika_Feb_Module_A.jpg",
               "link": "shopify:\/\/collections\/new-arrivals",
               "title": "",
               "heading_color": "#020202",
@@ -3805,13 +3805,13 @@
       "1552941616330": {
         "type": "image-with-text-overlay",
         "settings": {
-          "image": "shopify:\/\/shop_images\/CycleHouse_Sep_Refresh_desktop.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/CycleHouse_Sep_Refresh_mobile.jpg",
-          "banner_link": "\/collections\/cycle-house-1",
+          "image": "shopify:\/\/shop_images\/HP_ShapewearBanner_desktop.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/HP_ShapewearBanner_mobile.jpg",
+          "banner_link": "https:\/\/www.marika.com\/collections\/shapewear",
           "pretext": "",
           "title": "",
           "heading_text_color": "#020202",
-          "title_on": true,
+          "title_on": false,
           "subtitle": "",
           "richtext_color": "#020202",
           "caption_background": false,
@@ -3819,7 +3819,7 @@
           "text_position": "center",
           "text_align": "center",
           "button1": "",
-          "button1_link": "shopify:\/\/collections\/cycle-house-1",
+          "button1_link": "shopify:\/\/collections\/shapewear",
           "button1_highlight": true
         }
       },
@@ -4107,10 +4107,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_8.png",
-              "image_top_hover": "shopify:\/\/shop_images\/Rectangle_11-2.png",
-              "image_caption_top": "Marika Sport",
-              "image_link_top": "shopify:\/\/collections\/marika-sport",
+              "image_top": "shopify:\/\/shop_images\/MLL2605A_CL4.4284_1.jpg",
+              "image_caption_top": "Marika Adventure",
+              "image_link_top": "shopify:\/\/collections\/marika-adventure",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
