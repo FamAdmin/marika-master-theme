@@ -508,6 +508,9 @@ $( document ).ready(function() {
   })
 </script>
 
+
+<script src="{{ 'product-swatches.js' | asset_url }}"></script>
+
 </html>
 {% endcapture %}
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}

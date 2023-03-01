@@ -187,9 +187,7 @@ $('.product-wrap').on('hover', function(e) {
 
 })
 $('.container').on('mouseenter', '.popover-swatch', function(e) {
-  console.log('switch!', $(this).attr('data-variant'))
-
   $(this).closest('.popover-content').prev().find('.image__container img').attr('src', $(this).next().attr('src'));
-  $(this).closest('.popover-content').prev().find('.image__container img').attr('srcset', $(this).next().attr('srcset'));
+  $(this).closest('.popover-content').prev().find('.image__container img').attr('srcset', $(this).next().attr('srcset'));  
 })
 </script>

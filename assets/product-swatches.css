@@ -1,0 +1,87 @@
+.product-wrap:hover .product-sizes {
+    display: block;
+}
+
+.product-sizes {
+    z-index: 10;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: none;
+}
+
+.product-sizes ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #322f2f;
+    border-radius: 10px;
+    min-height: 53px;
+    margin: 0 20px;
+    padding: 0;
+}
+
+.product-sizes ul.loading li, .product-sizes ul.added li  {
+    display: none;
+    position: relative;
+}
+
+.product-sizes ul.added::before {
+    content: "Added!";
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.product-sizes ul.loading::before {
+    content: "...";
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.product-sizes ul li {
+    list-style: none;
+    margin: 0;
+    
+}
+.product-sizes ul li span {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-sizes ul li span:hover {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-sizes ul li span.not-allow {
+    color: #666;
+    cursor: not-allowed;
+}
+
+.product-sizes ul li span.not-allow:hover {
+    border: none;
+}

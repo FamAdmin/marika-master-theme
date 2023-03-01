@@ -1,0 +1,14 @@
+{{ 'product-swatches.css' | asset_url | stylesheet_tag }}
+<div class="product-sizes" id="product-size-container-{{ product.id }}" data-color-selected="{{ product.selected_or_first_available_variant.option1 }}">
+    <ul>
+       {% for variant in product.variants %}
+        {% if variant.option1 == product.selected_or_first_available_variant.option1 %}
+            {% if variant.inventory_quantity > 0 %}
+                <li><span class="product-sizes__button" data-variant="{{variant.id}}">{{variant.option2}}</span><li>
+            {% else %}
+                 <li><span class="not-allow">{{variant.option2}}</span><li>
+            {% endif %}
+        {% endif %}
+       {% endfor %}
+    </ul>
+</div>
