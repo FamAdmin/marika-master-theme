@@ -1,6 +1,6 @@
 {% assign collection_handles = product.collections | map: 'handle' %}
 <div class="thumbnail-overlay">
-  <a href="{{ product.url | within: collection }}" class="hidden-product-link">{{ product.title }}</a>
+  {% comment %} <a href="{{ product.url | within: collection }}" class="hidden-product-link">{{ product.title }}</a> {% endcomment %}
   <div class="info">
     {% if settings.thumbnail_hover_enabled and settings.quick_shop_enabled %}
       <!-- {% include "product-info" %} -->

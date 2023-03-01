@@ -42,52 +42,39 @@
   <div class="product-wrap">
     <!-- removed swapping of images on hover: swap-{{ settings.collection_secondary_image }} -->
     <div class="relative product_image swap-{{ settings.collection_secondary_image }}">
-        <div class="image__container" style="{% if settings.align_height %} max-width: {{ product_set_width }}px; {% else %} max-width: {{- product.featured_image.width -}}px; {% endif %}">
-
-          <img  src="{{ product.featured_image | product_img_url: '400x' }}"
-                alt="{{ alt_text | escape }}"
-                style="{{ align_height_value }} max-width: {{- product.featured_image.width -}}px;"
-                data-sizes="auto"
-                data-src="{{ product.featured_image | product_img_url: '900x' }}"
-                data-srcset=" {{ product.featured_image | product_img_url: '300x' }} 300w,
-                              {{ product.featured_image | product_img_url: '400x' }} 400w,
-                              {{ product.featured_image | product_img_url: '500x' }} 500w,
-                              {{ product.featured_image | product_img_url: '600x' }} 600w,
-                              {{ product.featured_image | product_img_url: '700x' }} 700w,
-                              {{ product.featured_image | product_img_url: '800x' }} 800w,
-                              {{ product.featured_image | product_img_url: '900x' }} 900w"
-                next-src="{{ product.images[1] | img_url: '400x' }}"
-                next-data-src=" {{ product.images[1] | img_url: '900x' }}"
-                next-data-srcset=" {{ product.images[1] | img_url: '300x' }} 300w,
-                                    {{ product.images[1] | img_url: '400x' }} 400w,
-                                  {{ product.images[1] | img_url: '500x' }} 500w,
-                                  {{ product.images[1] | img_url: '600x' }} 600w,
-                                  {{ product.images[1] | img_url: '700x' }} 700w,
-                                  {{ product.images[1] | img_url: '800x' }} 800w,
-                                  {{ product.images[1] | img_url: '900x' }} 900w"
-          />
-        </div>
-          {% if settings.collection_secondary_image != blank %}
-            <div class="image__container" style="max-width: {% if product.images[1] != blank %}{{- product.images[1].width -}}px{% else %}{{- product.featured_image.width -}}px{% endif %}; ">
-              <img src="{% if product.images[1] != blank %}{{ product.images[1] | product_img_url: '900x' }}{% else %}{{ product.featured_image | product_img_url: '900x' }}{% endif %}"
-              class="secondary lazyload"
-              alt="{{ alt_text | escape }}"
-              />
+        <div style="{% if settings.align_height %} max-width: {{ product_set_width }}px; {% else %} max-width: {{- product.featured_image.width -}}px; {% endif %}">
+            <div class="swiper product-swiper" id="main-product-{{product.id}}">
+              <div class="swiper-wrapper">
+              {% for media in product.media %}
+                {% if media.alt == product.selected_or_first_available_variant.option1 %}
+                  <div class="swiper-slide">
+                    <a href="{{ product.url | within: collection }}">
+                      <img  src="{{ media.preview_image.src | img_url: '400x' }}"
+                          alt="{{ alt_text | escape }}"
+                          style="{{ align_height_value }} max-width: {{- media.preview_image.width -}}px;"
+                          data-sizes="auto"
+                          data-src="{{ media.preview_image.src | img_url: '900x' }}"
+                          data-srcset=" {{ media.preview_image.src | img_url: '300x' }} 300w,
+                          {{ media.preview_image.src | img_url: '400x' }} 400w,
+                          {{ media.preview_image.src | img_url: '500x' }} 500w,
+                          {{ media.preview_image.src | img_url: '600x' }} 600w,
+                          {{ media.preview_image.src | img_url: '700x' }} 700w,
+                          {{ media.preview_image.src | img_url: '800x' }} 800w,
+                          {{ media.preview_image.src | img_url: '900x' }} 900w"
+                      />
+                    </a>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
-          {% endif %}
-
+        </div>
       {% include "product-details" %}
-       {% include 'product-sizes' %}
-
+      {% include 'product-sizes' %}
     </div>
-    <a href="{{product.url | within: collection }}" >
-      {% include "product-info" %}
-    </a>
-    {% comment %}
-      <a class="product-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ product.url | within: collection }}" >
-        {% include "product-info" %}
-      </a>
-    {% endcomment %}
+    {% include "product-info" %}
   </div>
 
 
@@ -96,7 +83,7 @@
     <!-- TODO: color swatch replacement -->
     {% assign variantColor = product.variants[0].option1 | replace: '/ ', ' ' | replace: '/', ' ' | replace: '  ', ' ' | replace: ' ', '-' | replace: "'", "" | upcase %}
     {% assign styleNumber = product.handle | upcase %}
-    <img onerror="this.src = this.src.replace('.JPG','.jpg');" class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-color="{{variantColor}}" data-handle="{{product.handle}}" data-product-id="{{product.id}}" />
+    <img onerror="this.src = this.src.replace('.JPG','.jpg');" class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-color="{{variantColor | replace:'-',' ' }}" data-handle="{{product.handle}}" data-product-id="{{product.id}}" />
     {% for image in product.images %}
       {% if image.alt == product.variants[0].option1 %}
         <img src="https://cdn.shopify.com/s/files/1/1588/5229/{{image}}" style="display:none"/>
@@ -110,7 +97,7 @@
             {% assign currentVariant = variant.option1 %}
             {% assign variantColor = variant.option1 | replace: '/ ', ' ' | replace: '/', ' ' | replace: '  ', ' ' | replace: ' ', '-' | replace: "'", "" | upcase %}
             {% assign styleNumber = product.handle | upcase %}
-            <img onerror="this.src = this.src.replace('.JPG','.jpg');" class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-color="{{variantColor}}" data-handle="{{product.handle}}" data-product-id="{{product.id}}"  />
+            <img onerror="this.src = this.src.replace('.JPG','.jpg');" class="popover-swatch" src="https://cdn.shopify.com/s/files/1/1588/5229/files/{{styleNumber}}-{{variantColor}}.JPG?13917334030413983500" data-color="{{ variant.option1 | replace:'-',' ' }}" data-handle="{{product.handle}}" data-product-id="{{product.id}}"  />
             {% for image in product.images %}
               {% if image.alt == variant.option1 %}
                 <img src="https://cdn.shopify.com/s/files/1/1588/5229/{{image}}" style="display:none"/>

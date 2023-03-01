@@ -7,7 +7,7 @@
   {% endif %}
   
   <h2>
-    <span class="title">{{ product.title }}</span>
+    <a href="{{product.url | within: collection }}"><span class="title">{{ product.title }}</span></a>
   </h2>
   {% if settings.enable_shopify_collection_badges and settings.enable_shopify_review_comments %}
     <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
