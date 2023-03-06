@@ -112,16 +112,15 @@ twq('config','ocprj');
       <script type="text/javascript" src="{{ 'jquery.zoom.js' | asset_url }}" defer=”defer”></script>
       <script src="https://kit.fontawesome.com/1a9329683e.js" crossorigin="anonymous"></script>
     {% endif %}
-    
-    <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
 
-      {'gtm.start': new Date().getTime(),event:'gtm.js'}
-      );var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-M2K5SGN');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Had to switch GTM versions to make G4 data push -->
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W5S76VZ');</script>
+<!-- End Google Tag Manager -->
 
       <!-- Start VWO Asynchronous Code -->
       <script type='text/javascript'>
@@ -200,10 +199,11 @@ twq('config','ocprj');
   <body class="{{ template | replace: '.', '-' | handle }}">
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
 
+    <!-- Had to switch GTM Containers to make G4 Analytics push -->
     <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2K5SGN"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5S76VZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
     {% section 'header' %}
   
