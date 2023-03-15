@@ -134,7 +134,7 @@ $xlarge: 1400px;
 }
 
 @mixin headline-style($font-size: $font-size-header) {
-  font-family: {{ settings.headline_font | replace: 'Google_', '' | replace: '+', ' ' }}, {{ settings.headline__font.fallback_families }};
+  font-family: {{ settings.headline_font | replace: 'Google_', '' | replace: '+', ' ' }}, {{ settings.headline_font.fallback_families }};
   font-size: $font-size * 1px;
   font-weight: {{ settings.headline_weight }};
   font-style: {{ settings.headline_font_text }};
