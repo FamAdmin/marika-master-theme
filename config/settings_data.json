@@ -3229,7 +3229,7 @@
             "type": "banner_headless",
             "disabled": true,
             "settings": {
-              "banner_collection": "sale",
+              "banner_collection": "sale-old-44ece2",
               "banner_image": "shopify:\/\/shop_images\/LIPCargoLegging-Mobile-Hero_Option_2.jpg"
             }
           },
@@ -3931,7 +3931,7 @@
           "1576787309230": {
             "type": "collection",
             "settings": {
-              "feature_collection": "sale",
+              "feature_collection": "sale-old-44ece2",
               "image": "shopify:\/\/shop_images\/MLP0454A_001_34573_copy.jpg"
             }
           }
