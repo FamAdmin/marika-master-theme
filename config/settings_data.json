@@ -3954,7 +3954,7 @@
           "cdca5f6f-2e44-412c-aaab-f544c677662f": {
             "type": "text_content",
             "settings": {
-              "promo_details_text": "<p>*<strong>3 for $39 on Select Leggings  <\/strong>when purchased from <a href=\"https:\/\/www.marika.com\/collections\/3-for-39-leggings\">https:\/\/www.marika.com\/collections\/3-for-39-leggings<\/a>.<br\/>Offer expires 1\/4\/2023 at 11:59pm PT. No promo code needed. Discount automatically applies in cart at checkout. Offer not valid on previous purchases and cannot be used with any other offer. Applying a promo code to<br\/>your cart will cancel the 3 for $39 on select styles promo. Offer only available while supplies last. All purchases are final sale. Select styles are $13.00 when you buy 3 and must be purchased in quantities of 3 to receive<br\/>discount. Offer may not be applied to gift cards or shipping cost. Details of offer are subject to change.<\/p><p> <\/p><p><\/p><p><strong>Free Standard Shipping:<\/strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<\/p>"
+              "promo_details_text": "<p>*<strong>Save Up to 60% Off Sale Styles <\/strong>when purchased from <a href=\"https:\/\/www.marika.com\/collections\/sale\" title=\"Sale\">https:\/\/www.marika.com\/collections\/sale<\/a>. Offer expires 4\/12\/2023 at 11:59pm PT. No promo code needed. Discount automatically applies in cart at checkout. Offer not valid on previous purchases and cannot be used with any other offer. Offer only available while supplies last. All purchases are final sale. Offer may not be applied to gift cards or shipping cost. Details of offer are subject to change<\/p><p> <\/p><p><strong>Free Standard Shipping:<\/strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<\/p>"
             }
           }
         },
@@ -4658,6 +4658,230 @@
           "free_shipping_text": "Free Standard Shipping!*",
           "taxes_text": "*U.S. orders only, International shipping rates apply. Taxes will be calculated at checkout.",
           "upsell_title": "LEVEL UP YOUR WORKOUT"
+        }
+      },
+      "page-details-template": {
+        "type": "page-details-template",
+        "blocks": {
+          "page-details-template-0": {
+            "type": "image_with_text_overlay",
+            "settings": {
+              "pretext": "<p>Introducing Your<\/p>",
+              "title": "Page Details Template",
+              "subtitle": "<p>Let's Get Started!<\/p>",
+              "caption_background": false,
+              "caption_background_transparency": false,
+              "text_position": "center",
+              "text_align": "center",
+              "button1": "",
+              "button1_link": "",
+              "button1_highlight": false,
+              "button2": "",
+              "button2_link": "",
+              "button2_highlight": false
+            }
+          },
+          "page-details-template-1": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          },
+          "page-details-template-2": {
+            "type": "rich_text_and_image",
+            "settings": {
+              "title": "Talk about your brand",
+              "content": "<p>Use this text to share information about your brand with your customers.<\/p><p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+              "text_size": "featured_text",
+              "text_alignment": "center",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "page-details-template-3": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 10,
+              "divider_border": false
+            }
+          },
+          "page-details-template-4": {
+            "type": "featured_collection",
+            "settings": {
+              "title": "Featured collection",
+              "collection": "",
+              "collection_style": "grid",
+              "products_per": "4",
+              "products_limit": "8"
+            }
+          },
+          "page-details-template-5": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 10,
+              "divider_border": false
+            }
+          },
+          "page-details-template-6": {
+            "type": "featured_video",
+            "settings": {
+              "source": "youtube",
+              "aspect_ratio": "16:9",
+              "autoplay": false,
+              "autoloop": true,
+              "video_dark_overlay": false,
+              "video": "",
+              "mp4": "",
+              "ogv": "",
+              "display_text_over_video": false,
+              "pretext": "",
+              "title": "Featured Video Section",
+              "subtitle": "",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_background": false,
+              "caption_background_transparency": false,
+              "button1_label": "Play Video",
+              "button1_link": "",
+              "button1_highlight": false,
+              "button2_label": "",
+              "button2_link": "",
+              "button2_highlight": false
+            }
+          },
+          "page-details-template-7": {
+            "type": "image_with_text",
+            "settings": {
+              "frontpage_text_align": "left",
+              "frontpage_image_position": "left",
+              "title": "Your headline",
+              "text": "<p>Promotion description appears here.<\/p>",
+              "link": "",
+              "button_label": "View all"
+            }
+          },
+          "page-details-template-8": {
+            "type": "image_with_text",
+            "settings": {
+              "frontpage_text_align": "left",
+              "frontpage_image_position": "right",
+              "title": "Your headline",
+              "text": "<p>Promotion description appears here.<\/p>",
+              "link": "",
+              "button_label": "View all"
+            }
+          },
+          "page-details-template-9": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 10,
+              "divider_border": false
+            }
+          },
+          "page-details-template-10": {
+            "type": "blog_posts",
+            "settings": {
+              "title": "Blog posts",
+              "blog_widget_select": "",
+              "home_page_articles": "3",
+              "blog_tags": false,
+              "blog_author": false,
+              "blog_date": true,
+              "blog_comment_count": true,
+              "read_more_link": true
+            }
+          },
+          "page-details-template-11": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 10,
+              "divider_border": false
+            }
+          },
+          "page-details-template-12": {
+            "type": "contact_form",
+            "settings": {
+              "contact_heading": "Get in touch",
+              "contact_subheading": "Leave a message",
+              "contact_content": "<p>Phasellus viverra nulla ut metus varius laoreet. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros. Etiam imperdiet imperdiet orci.<\/p>",
+              "contact_text_position": "left",
+              "contact_text_alignment": "left"
+            }
+          },
+          "page-details-template-13": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 10,
+              "divider_border": false
+            }
+          },
+          "page-details-template-14": {
+            "type": "map",
+            "settings": {
+              "contact_address": "",
+              "zoom_level": "12",
+              "map_stretch": true,
+              "map_height": 250
+            }
+          },
+          "page-details-template-15": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          },
+          "page-details-template-16": {
+            "type": "image_gallery",
+            "settings": {
+            }
+          },
+          "page-details-template-17": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          },
+          "page-details-template-18": {
+            "type": "quote",
+            "settings": {
+              "page_quote": "<p><i>40% of online shoppers abandon a site that takes more than 3 seconds to load<\/i><\/p>",
+              "quote_link": ""
+            }
+          },
+          "page-details-template-19": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          }
+        },
+        "block_order": [
+          "page-details-template-0",
+          "page-details-template-1",
+          "page-details-template-2",
+          "page-details-template-3",
+          "page-details-template-4",
+          "page-details-template-5",
+          "page-details-template-6",
+          "page-details-template-7",
+          "page-details-template-8",
+          "page-details-template-9",
+          "page-details-template-10",
+          "page-details-template-11",
+          "page-details-template-12",
+          "page-details-template-13",
+          "page-details-template-14",
+          "page-details-template-15",
+          "page-details-template-16",
+          "page-details-template-17",
+          "page-details-template-18",
+          "page-details-template-19"
+        ],
+        "settings": {
         }
       }
     },
