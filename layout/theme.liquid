@@ -177,7 +177,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% if content_for_header contains 'aiodstag' %}
 {% include 'cscode_discount' %}
 {% endif %}
-</head>
+{% include "omega_multi_pixel" %} </head>
   {% if template contains "index" %}
     {% assign feature_image = true %}
   {% elsif template contains "collection" %}
