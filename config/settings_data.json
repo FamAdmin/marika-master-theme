@@ -3219,7 +3219,7 @@
             "type": "banner_headless",
             "disabled": true,
             "settings": {
-              "banner_collection": "bestsellers",
+              "banner_collection": "bestsellers-old-a53528",
               "banner_image": "shopify:\/\/shop_images\/BLM0236A-RAEGAN-PLAID.jpg"
             }
           },
