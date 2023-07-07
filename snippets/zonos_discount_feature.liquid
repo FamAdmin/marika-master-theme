@@ -1,0 +1,67 @@
+<script>
+  const url = window.location.href;
+  const regex = /\/(checkouts|c)\/([a-f\d]{32})/;
+  const match = url.match(regex) || [];
+  const checkoutToken = match.length >= 3 
+    ? match[2]
+    : null;
+
+function parseDiscount(discountAmount){
+  if(discountAmount != null && sessionStorage.getItem('discountAmount') !== null){
+    if(parseFloat(sessionStorage.getItem('discountAmount')) > parseFloat(discountAmount)){
+      sessionStorage.setItem('discountAmount', discountAmount);
+    }else if(parseFloat(sessionStorage.getItem('discountAmount')) < parseFloat(discountAmount)){
+      sessionStorage.setItem('discountAmount', discountAmount);
+    }else{
+      return;
+    }
+  }else if(discountAmount == null && sessionStorage.getItem('discountAmount') !== null){
+    sessionStorage.removeItem("discountAmount");
+  }else if(discountAmount == null && sessionStorage.getItem('discountAmount') == null){
+    return;
+  }else if(discountAmount != null && sessionStorage.getItem('discountAmount') == null){ 
+    sessionStorage.setItem('discountAmount', discountAmount);
+  }
+
+  forceNewRateRequest(discountAmount);
+}
+
+function forceNewRateRequest(discountAmount){
+    let tempCart;
+  
+  const xhrRequest = (method, url, headers = {}, body) => new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
+    xhr.onload = () => xhr.status >= 200 && xhr.status < 300 ? resolve(JSON.parse(xhr.responseText)) : reject(xhr.statusText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send(JSON.stringify(body));
+  });
+  
+  xhrRequest("GET", "/cart.js")
+    .then(cart => {
+      tempCart = cart;
+      const itemToRemove = tempCart.items[0];
+      return xhrRequest("POST", "/cart/change.js", {"Content-Type": "application/json;charset=UTF-8"}, {line: 1, quantity: 0});
+    })
+    .then(() => {
+      // some value needs to change or it will cache. So we are incrementing a value on every attempt so a new rate is requested.
+      let increment = 1;
+      if(sessionStorage.getItem('increment') !== null){ 
+          increment += parseFloat(sessionStorage.getItem('increment')); 
+      }
+      sessionStorage.setItem('increment', increment);
+
+      token = checkoutToken;
+      if(discountAmount === null){
+        token = null;
+      }
+      const itemToAdd = {id: tempCart.items[0].id, quantity: tempCart.items[0].quantity, properties: { '_checkoutToken': token, '_increment': increment }};
+      return xhrRequest("POST", "/cart/add.js", {"Content-Type": "application/json;charset=UTF-8"}, itemToAdd);
+    })
+    .then(() => {
+      window.location.reload();
+    })
+    .catch(error => console.log(`There was an error: ${error}`));
+}
+</script>
