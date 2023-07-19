@@ -2,8 +2,8 @@
   const url = window.location.href;
   const regex = /\/(checkouts|c)\/([a-f\d]{32})/;
   const match = url.match(regex) || [];
-  const checkoutToken = match.length >= 3 
-    ? match[2]
+  const checkoutToken = (match[2] || url.split("/").slice(-2, -1)[0] || null).length >= 15
+    ? match[2] || url.split("/").slice(-2, -1)[0]
     : null;
 
 function parseDiscount(discountAmount){
