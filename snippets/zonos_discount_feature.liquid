@@ -27,7 +27,8 @@ function parseDiscount(discountAmount){
 }
 
 function forceNewRateRequest(discountAmount){
-    let tempCart;
+  let tempCart;
+  let indexWithoutSellingPlanAllocation = null;
   
   const xhrRequest = (method, url, headers = {}, body) => new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -41,10 +42,20 @@ function forceNewRateRequest(discountAmount){
   xhrRequest("GET", "/cart.js")
     .then(cart => {
       tempCart = cart;
-      const itemToRemove = tempCart.items[0];
-      return xhrRequest("POST", "/cart/change.js", {"Content-Type": "application/json;charset=UTF-8"}, {line: 1, quantity: 0});
+
+      // only remove an item that is not a selling plan
+      indexWithoutSellingPlanAllocation = tempCart.items.findIndex(i => !i.selling_plan_allocation);
+
+      if(indexWithoutSellingPlanAllocation !== -1){        
+        const line = indexWithoutSellingPlanAllocation + 1;
+        return xhrRequest("POST", "/cart/change.js", {"Content-Type": "application/json;charset=UTF-8"}, {line, quantity: 0});
+      }
+      return null;
     })
-    .then(() => {
+    .then((data) => {
+      if(!data){
+        return null;
+      }
       // some value needs to change or it will cache. So we are incrementing a value on every attempt so a new rate is requested.
       let increment = 1;
       if(sessionStorage.getItem('increment') !== null){ 
@@ -56,7 +67,7 @@ function forceNewRateRequest(discountAmount){
       if(discountAmount === null){
         token = null;
       }
-      const itemToAdd = {id: tempCart.items[0].id, quantity: tempCart.items[0].quantity, properties: { '_checkoutToken': token, '_increment': increment }};
+      const itemToAdd = {id: tempCart.items[indexWithoutSellingPlanAllocation].id, quantity: tempCart.items[indexWithoutSellingPlanAllocation].quantity, properties: {...tempCart.items[indexWithoutSellingPlanAllocation].properties, '_checkoutToken': token, '_increment': increment }};
       return xhrRequest("POST", "/cart/add.js", {"Content-Type": "application/json;charset=UTF-8"}, itemToAdd);
     })
     .then(() => {
