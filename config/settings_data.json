@@ -3116,7 +3116,6 @@
       },
       "1489285116594": {
         "type": "collection-list",
-        "disabled": true,
         "blocks": {
           "1489285116594-1": {
             "type": "collection",
@@ -3153,6 +3152,7 @@
           "1489285116594-2",
           "1489285785375"
         ],
+        "disabled": true,
         "settings": {
           "title": "Shop by Category",
           "subTitle": "",
@@ -3372,7 +3372,6 @@
       },
       "1489285451288": {
         "type": "social-feeds",
-        "disabled": true,
         "blocks": {
           "1489285451288-1": {
             "type": "instagram",
@@ -3386,6 +3385,7 @@
         "block_order": [
           "1489285451288-1"
         ],
+        "disabled": true,
         "settings": {
         }
       },
@@ -4500,7 +4500,7 @@
               "richtext_top": "",
               "image_top": "shopify:\/\/shop_images\/Rectangle_22.png",
               "image_caption_top": "Bottoms Sale",
-              "image_link_top": "shopify:\/\/collections\/bottoms-sale",
+              "image_link_top": "shopify:\/\/collections\/bottoms-sale-old-10af13",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
