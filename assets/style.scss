@@ -27,6 +27,13 @@ body.noScroll {
 	overflow: hidden;
 }
 
+@media(max-width: 767px) {
+	#attentive_creative {
+		bottom: 0 !important;
+	}	
+}
+
+
 p, span {
 	font-family: 'Gotham', 'Montserrat', sans-serif;
 }
