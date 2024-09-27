@@ -154,7 +154,7 @@
       "newsletter_bg": "",
       "newsletter_popup_image_align": "left",
       "newsletter_popup_title": "Sign up today",
-      "newsletter_popup_text": "<p><\/p>",
+      "newsletter_popup_text": "<p></p>",
       "newsletter_popup_text_align": "center",
       "newsletter_popup_seconds": "0",
       "newsletter_popup_days": "14",
@@ -320,7 +320,7 @@
       "feature1_description": "Optional description can go here",
       "feature1_button": "",
       "feature2_enabled": true,
-      "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+      "feature2_link": "http://help.outofthesandbox.com/",
       "feature2_title": "Promo 2",
       "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
       "feature2_button": "",
@@ -330,7 +330,7 @@
       "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
       "feature3_button": "",
       "feature4_enabled": true,
-      "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+      "feature4_link": "https://twitter.com/outofthesandbox",
       "feature4_title": "Promo 4",
       "feature4_description": "Let us know when your new shop launches on Twitter",
       "feature4_button": "",
@@ -721,7 +721,7 @@
               "type": "text",
               "settings": {
                 "title": "Title",
-                "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "content": "<p>Use this text to share information about your brand with your customers.</p>",
                 "social_icons_footer": true
               }
             }
@@ -742,9 +742,9 @@
           "type": "image-with-text-overlay",
           "settings": {
             "image": "",
-            "pretext": "<p>Introducing the<\/p>",
+            "pretext": "<p>Introducing the</p>",
             "title": "Turbo Shopify Theme",
-            "subtitle": "<p>From Out of the Sandbox<\/p>",
+            "subtitle": "<p>From Out of the Sandbox</p>",
             "caption_background": false,
             "caption_background_transparency": false,
             "text_position": "center",
@@ -759,7 +759,7 @@
           "settings": {
             "image": "",
             "title": "Talk about your brand",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers.</p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.</p>",
             "text_size": "featured_text",
             "text_alignment": "center",
             "button_label": "",
@@ -775,7 +775,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -785,7 +785,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -795,7 +795,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -805,7 +805,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             }
@@ -860,9 +860,9 @@
               "type": "image",
               "settings": {
                 "image": "",
-                "pretext": "<p>Short text that precedes the headline<\/p>",
+                "pretext": "<p>Short text that precedes the headline</p>",
                 "title": "Your headline here",
-                "subtitle": "<p>This is a short subheading for your slideshow image<\/p>",
+                "subtitle": "<p>This is a short subheading for your slideshow image</p>",
                 "text_position": "center",
                 "text_align": "center",
                 "caption_background": false,
@@ -894,7 +894,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -904,7 +904,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -1029,7 +1029,7 @@
           "type": "newsletter",
           "settings": {
             "newsletter_title": "Subscribe",
-            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;</p>",
             "display_first_name": false,
             "display_last_name": false,
             "newsletter_section_text_align": "center",
@@ -1077,7 +1077,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1092,7 +1092,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1107,7 +1107,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1289,22 +1289,22 @@
       "display_first_name": false,
       "display_last_name": false,
       "use_newsletter_border": false,
-      "newsletter_bg": "shopify:\/\/shop_images\/NL-popup2.jpg",
+      "newsletter_bg": "shopify://shop_images/NL-popup2.jpg",
       "newsletter_popup_image_align": "right",
       "newsletter_popup_title": "Sign Up Today",
-      "newsletter_popup_text": "<p><\/p>",
+      "newsletter_popup_text": "<p></p>",
       "newsletter_popup_text_align": "center",
       "newsletter_popup_seconds": "0",
       "newsletter_popup_days": "7",
-      "twitter_link": "https:\/\/twitter.com\/outofthesandbox",
-      "facebook_link": "https:\/\/facebook.com\/ootsb",
+      "twitter_link": "https://twitter.com/outofthesandbox",
+      "facebook_link": "https://facebook.com/ootsb",
       "google_link": "",
-      "youtube_link": "https:\/\/www.youtube.com\/user\/outofthesandbox",
+      "youtube_link": "https://www.youtube.com/user/outofthesandbox",
       "vimeo_link": "",
       "pinterest_link": "",
       "tumblr_link": "",
-      "instagram_link": "https:\/\/www.instagram.com\/shopify\/",
-      "snapchat_link": "https:\/\/www.snapchat.com\/add\/shopify",
+      "instagram_link": "https://www.instagram.com/shopify/",
+      "snapchat_link": "https://www.snapchat.com/add/shopify",
       "houzz_link": "",
       "linkedin_link": "",
       "email_link": "",
@@ -1466,7 +1466,7 @@
       "feature1_description": "Optional description can go here",
       "feature1_button": "",
       "feature2_enabled": true,
-      "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+      "feature2_link": "http://help.outofthesandbox.com/",
       "feature2_title": "Promo 2",
       "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
       "feature2_button": "",
@@ -1476,7 +1476,7 @@
       "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
       "feature3_button": "",
       "feature4_enabled": true,
-      "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+      "feature4_link": "https://twitter.com/outofthesandbox",
       "feature4_title": "Promo 4",
       "feature4_description": "Let us know when your new shop launches on Twitter",
       "feature4_button": "",
@@ -1857,7 +1857,7 @@
               "type": "text",
               "settings": {
                 "title": "Title",
-                "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "content": "<p>Use this text to share information about your brand with your customers.</p>",
                 "social_icons_footer": true
               }
             }
@@ -1878,9 +1878,9 @@
           "type": "image-with-text-overlay",
           "settings": {
             "image": "",
-            "pretext": "<p>Introducing the<\/p>",
+            "pretext": "<p>Introducing the</p>",
             "title": "Turbo Shopify Theme",
-            "subtitle": "<p>From Out of the Sandbox<\/p>",
+            "subtitle": "<p>From Out of the Sandbox</p>",
             "caption_background": false,
             "caption_background_transparency": false,
             "text_position": "center",
@@ -1895,7 +1895,7 @@
           "settings": {
             "image": "",
             "title": "Talk about your brand",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers.</p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.</p>",
             "text_size": "featured_text",
             "text_alignment": "center",
             "button_label": "",
@@ -1911,7 +1911,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1921,7 +1921,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1931,7 +1931,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1941,7 +1941,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             }
@@ -1996,9 +1996,9 @@
               "type": "image",
               "settings": {
                 "image": "",
-                "pretext": "<p>Short text that precedes the headline<\/p>",
+                "pretext": "<p>Short text that precedes the headline</p>",
                 "title": "Your headline here",
-                "subtitle": "<p>This is a short subheading for your slideshow image<\/p>",
+                "subtitle": "<p>This is a short subheading for your slideshow image</p>",
                 "text_position": "center",
                 "text_align": "center",
                 "caption_background": false,
@@ -2030,7 +2030,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -2040,7 +2040,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -2165,7 +2165,7 @@
           "type": "newsletter",
           "settings": {
             "newsletter_title": "Subscribe",
-            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;</p>",
             "display_first_name": false,
             "display_last_name": false,
             "newsletter_section_text_align": "center",
@@ -2213,7 +2213,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2228,7 +2228,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2243,7 +2243,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2458,7 +2458,7 @@
     "newsletter_bg": "",
     "newsletter_popup_image_align": "left",
     "newsletter_popup_title": "Sign up today",
-    "newsletter_popup_text": "<p><\/p>",
+    "newsletter_popup_text": "<p></p>",
     "newsletter_popup_text_align": "center",
     "popup_button1": "",
     "popup_button1_link": "",
@@ -2468,19 +2468,19 @@
     "popup_button2_highlight": false,
     "newsletter_popup_seconds": "0",
     "newsletter_popup_days": "14",
-    "twitter_link": "https:\/\/twitter.com\/marikafitness",
-    "facebook_link": "https:\/\/www.facebook.com\/MarikaFitness\/",
+    "twitter_link": "https://twitter.com/marikafitness",
+    "facebook_link": "https://www.facebook.com/MarikaFitness/",
     "google_link": "",
     "youtube_link": "",
     "vimeo_link": "",
     "pinterest_link": "",
     "tumblr_link": "",
-    "instagram_link": "https:\/\/instagram.com\/marika_clothing",
+    "instagram_link": "https://instagram.com/marika_clothing",
     "snapchat_link": "",
     "houzz_link": "",
     "linkedin_link": "",
     "email_link": "",
-    "favicon": "shopify:\/\/shop_images\/M.png",
+    "favicon": "shopify://shop_images/M.png",
     "disqus_enabled": false,
     "disqus_shortname": "",
     "gwp_enable": false,
@@ -2641,7 +2641,7 @@
     "feature1_description": "Optional description can go here",
     "feature1_button": "",
     "feature2_enabled": true,
-    "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+    "feature2_link": "http://help.outofthesandbox.com/",
     "feature2_title": "Promo 2",
     "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
     "feature2_button": "",
@@ -2651,7 +2651,7 @@
     "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
     "feature3_button": "",
     "feature4_enabled": true,
-    "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+    "feature4_link": "https://twitter.com/outofthesandbox",
     "feature4_title": "Promo 4",
     "feature4_description": "Let us know when your new shop launches on Twitter",
     "feature4_button": "",
@@ -2995,7 +2995,7 @@
             "type": "promo_item",
             "settings": {
               "promo_text": "Get 3 for $39 on SELECT LEGGINGS. No Code Needed",
-              "promo_url": "shopify:\/\/collections\/3-for-39-leggings"
+              "promo_url": "shopify://collections/3-for-39-leggings"
             }
           },
           "40d69056-d005-4638-bb57-528dbf159242": {
@@ -3003,7 +3003,7 @@
             "disabled": true,
             "settings": {
               "promo_text": "Up To 60% Off Select SPORTS BRAS. No Code Needed",
-              "promo_url": "shopify:\/\/collections\/sports-bras"
+              "promo_url": "shopify://collections/sports-bras"
             }
           }
         },
@@ -3015,7 +3015,7 @@
           "fixed_header": true,
           "search_enabled": true,
           "promo_details_text": "Details",
-          "promo_details_url": "shopify:\/\/pages\/details",
+          "promo_details_url": "shopify://pages/details",
           "promo_speed": 5000,
           "promo_banner_color": "#1e1e1e",
           "promo_banner_text_color": "#fdfdfd",
@@ -3025,8 +3025,8 @@
           "phone_number": "",
           "top_bar_menu": "",
           "cart_icon": "cart",
-          "logo": "shopify:\/\/shop_images\/Marika_Logo_Cropped.png",
-          "logo_mobile": "shopify:\/\/shop_images\/Marika_Logo_Cropped.png",
+          "logo": "shopify://shop_images/Marika_Logo_Cropped.png",
+          "logo_mobile": "shopify://shop_images/Marika_Logo_Cropped.png",
           "logo_display_width": 205,
           "main_linklist": "main-menu",
           "main_linklist2": "footer",
@@ -3074,7 +3074,7 @@
           "display_designed_by": false,
           "display_payment_methods": true,
           "newsletter_title": "LET'S GET SOCIAL",
-          "newsletter_text": "<p>Sign up to get promotions, style updates and news first!<\/p>",
+          "newsletter_text": "<p>Sign up to get promotions, style updates and news first!</p>",
           "display_first_name": false,
           "display_last_name": false,
           "newsletter_section_text_align": "center"
@@ -3083,9 +3083,9 @@
       "1489283389016": {
         "type": "image-with-text-overlay",
         "settings": {
-          "image": "shopify:\/\/shop_images\/3for39leggings-DesktopHero_e7665a4a-d35b-4cbb-9168-dc4fce3ff42f.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/3for39leggings-MobileHero_14e138c0-b6bb-4186-8efd-ec292f4a3058.jpg",
-          "banner_link": "\/collections\/3-for-39-leggings",
+          "image": "shopify://shop_images/3for39leggings-DesktopHero_e7665a4a-d35b-4cbb-9168-dc4fce3ff42f.jpg",
+          "mobile_image": "shopify://shop_images/3for39leggings-MobileHero_14e138c0-b6bb-4186-8efd-ec292f4a3058.jpg",
+          "banner_link": "/collections/3-for-39-leggings",
           "pretext": "",
           "title": "",
           "heading_text_color": "#ffffff",
@@ -3105,9 +3105,9 @@
         "type": "image-with-text-overlay",
         "disabled": true,
         "settings": {
-          "image": "shopify:\/\/shop_images\/60offSportsBras_PromoBanner_Desk.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/60offSportsBras_PromoBanner_Mobile.jpg",
-          "banner_link": "\/collections\/sports-bras",
+          "image": "shopify://shop_images/60offSportsBras_PromoBanner_Desk.jpg",
+          "mobile_image": "shopify://shop_images/60offSportsBras_PromoBanner_Mobile.jpg",
+          "banner_link": "/collections/sports-bras",
           "pretext": "",
           "title": "",
           "heading_text_color": "#020202",
@@ -3130,28 +3130,28 @@
             "type": "collection",
             "settings": {
               "feature_collection": "leggings-1",
-              "image": "shopify:\/\/shop_images\/CATEGORY-1.png"
+              "image": "shopify://shop_images/CATEGORY-1.png"
             }
           },
           "1489285116594-0": {
             "type": "collection",
             "settings": {
               "feature_collection": "tops-1",
-              "image": "shopify:\/\/shop_images\/CATEGORY-2.png"
+              "image": "shopify://shop_images/CATEGORY-2.png"
             }
           },
           "1489285116594-2": {
             "type": "collection",
             "settings": {
               "feature_collection": "sports-bras",
-              "image": "shopify:\/\/shop_images\/CATEGORY-4.png"
+              "image": "shopify://shop_images/CATEGORY-4.png"
             }
           },
           "1489285785375": {
             "type": "collection",
             "settings": {
               "feature_collection": "shapewear",
-              "image": "shopify:\/\/shop_images\/CATEGORY-3.png"
+              "image": "shopify://shop_images/CATEGORY-3.png"
             }
           }
         },
@@ -3174,8 +3174,8 @@
           "d1f3161e-d3bf-40f5-965b-bda570659f78": {
             "type": "collection_banner",
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/3-for-39-leggings_3for39leggings-Desktop-Collection.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/3-for-39-leggings_3for39leggings-Mobile-Collection.jpg",
+              "collection_banner_image": "shopify://shop_images/3-for-39-leggings_3for39leggings-Desktop-Collection.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/3-for-39-leggings_3for39leggings-Mobile-Collection.jpg",
               "hide_banner": false
             }
           },
@@ -3183,8 +3183,8 @@
             "type": "collection_banner",
             "disabled": true,
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/pants-joggers_LIPZenPant-Collect-Desktop.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/pants-joggers_LIPZenPant-Collect-Mobile.jpg",
+              "collection_banner_image": "shopify://shop_images/pants-joggers_LIPZenPant-Collect-Desktop.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/pants-joggers_LIPZenPant-Collect-Mobile.jpg",
               "hide_banner": false
             }
           },
@@ -3205,16 +3205,16 @@
           "fcf274db-fbdc-4062-a157-dcd3e4a38684": {
             "type": "collection_banner",
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/marika-adventure_M_AdventureBanner_Desktop.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/marika-adventure_M_AdventureBanner_Mobile.jpg",
+              "collection_banner_image": "shopify://shop_images/marika-adventure_M_AdventureBanner_Desktop.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/marika-adventure_M_AdventureBanner_Mobile.jpg",
               "hide_banner": false
             }
           },
           "cba70086-07d4-4168-b034-d8a4015e889d": {
             "type": "collection_banner",
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/DesktopHero_balance-collection-mens-and-womens-styles.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/MobileHero_balance-collection-mens-and-womens-styles.jpg",
+              "collection_banner_image": "shopify://shop_images/DesktopHero_balance-collection-mens-and-womens-styles.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/MobileHero_balance-collection-mens-and-womens-styles.jpg",
               "hide_banner": false
             }
           },
@@ -3223,7 +3223,7 @@
             "disabled": true,
             "settings": {
               "banner_collection": "",
-              "banner_image": "shopify:\/\/shop_images\/tanks_35offTops_CollectionMobile.jpg"
+              "banner_image": "shopify://shop_images/tanks_35offTops_CollectionMobile.jpg"
             }
           },
           "c92b6e68-a5ee-459c-9614-7463378e20f2": {
@@ -3231,7 +3231,7 @@
             "disabled": true,
             "settings": {
               "banner_collection": "bestsellers-old-a53528",
-              "banner_image": "shopify:\/\/shop_images\/BLM0236A-RAEGAN-PLAID.jpg"
+              "banner_image": "shopify://shop_images/BLM0236A-RAEGAN-PLAID.jpg"
             }
           },
           "65708e96-39ef-4e68-8e03-92b8deffd1ee": {
@@ -3239,28 +3239,28 @@
             "disabled": true,
             "settings": {
               "banner_collection": "sale-old-0b4eee",
-              "banner_image": "shopify:\/\/shop_images\/LIPCargoLegging-Mobile-Hero_Option_2.jpg"
+              "banner_image": "shopify://shop_images/LIPCargoLegging-Mobile-Hero_Option_2.jpg"
             }
           },
           "f940a158-5fdd-423e-9dcc-e131f1e74d28": {
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-plp-1\"><\/div>"
+              "code": "<div id=\"vue-plp-1\"></div>"
             }
           },
           "eb86479f-b8d4-4b27-8c83-d8cf7f907046": {
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-plp-2\"><\/div>"
+              "code": "<div id=\"vue-plp-2\"></div>"
             }
           },
           "20372c58-bfe3-4107-9dcd-6fdf5cfa23ed": {
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-plp-3\"><\/div>"
+              "code": "<div id=\"vue-plp-3\"></div>"
             }
           }
         },
@@ -3286,7 +3286,7 @@
           "collection_tags": true,
           "collection_sort": true,
           "featured_collection_image": true,
-          "image": "shopify:\/\/shop_images\/40offAccessories-Cat-Dsktop_5fcd5e3f-f558-4649-9b14-5925ca1a3c71.jpg",
+          "image": "shopify://shop_images/40offAccessories-Cat-Dsktop_5fcd5e3f-f558-4649-9b14-5925ca1a3c71.jpg",
           "image_darken": false,
           "toggle": false,
           "headless_toggle": false,
@@ -3297,7 +3297,7 @@
         "type": "newsletter",
         "settings": {
           "newsletter_title": "Subscribe",
-          "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+          "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …</p>",
           "display_first_name": false,
           "display_last_name": false,
           "newsletter_section_text_align": "center"
@@ -3310,14 +3310,14 @@
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-pdp-1\"><\/div>"
+              "code": "<div id=\"vue-pdp-1\"></div>"
             }
           },
           "9609652f-4a49-4413-a2b2-68a1a28220c9": {
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-pdp-2\"><\/div>"
+              "code": "<div id=\"vue-pdp-2\"></div>"
             }
           }
         },
@@ -3405,14 +3405,14 @@
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-cart-1\"><\/div>"
+              "code": "<div id=\"vue-cart-1\"></div>"
             }
           },
           "aa979287-b439-4267-bcac-1f26d6129e2d": {
             "type": "html",
             "settings": {
               "title": "",
-              "code": "<div id=\"vue-cart-2\"><\/div>"
+              "code": "<div id=\"vue-cart-2\"></div>"
             }
           }
         },
@@ -3433,8 +3433,8 @@
           "1511370811877": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Marika_Feb_Module_B.jpg",
-              "link": "shopify:\/\/collections\/bestsellers-old-a53528",
+              "image": "shopify://shop_images/Marika_Feb_Module_B.jpg",
+              "link": "shopify://collections/bestsellers-old-a53528",
               "title": "",
               "heading_color": "#020202",
               "text": "",
@@ -3444,8 +3444,8 @@
           "1506041767864-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Marika_Feb_Module_A.jpg",
-              "link": "shopify:\/\/collections\/new-arrivals",
+              "image": "shopify://shop_images/Marika_Feb_Module_A.jpg",
+              "link": "shopify://collections/new-arrivals",
               "title": "",
               "heading_color": "#020202",
               "text": "",
@@ -3468,9 +3468,9 @@
       "banner": {
         "type": "banner",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Homepage-Desktop_3_2000x.progressive_46aad357-0ff7-42c8-be26-496702cfe1e8.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/Hompage-Mobile-category_2dff8110-5ae7-4aea-be5f-6a4d4c2ea6c8.png",
-          "banner_link": "\/pages\/gift-guide"
+          "image": "shopify://shop_images/Homepage-Desktop_3_2000x.progressive_46aad357-0ff7-42c8-be26-496702cfe1e8.jpg",
+          "mobile_image": "shopify://shop_images/Hompage-Mobile-category_2dff8110-5ae7-4aea-be5f-6a4d4c2ea6c8.png",
+          "banner_link": "/pages/gift-guide"
         }
       },
       "one-plus-4x4": {
@@ -3478,16 +3478,16 @@
         "settings": {
           "title": "",
           "grid_align": "right",
-          "image": "shopify:\/\/shop_images\/2017_11_15_Marika_Holiday_Chandler_Saria_40_1.jpg",
-          "banner_link": "\/collections\/jackets-hoodies\/products\/blt1434t?variant=1212286173211",
-          "image_2": "shopify:\/\/shop_images\/BLL0529T-0WX121394.jpg",
-          "banner_link_2": "\/collections\/leggings-2\/products\/bll0529t?variant=1212272672795",
-          "image_3": "shopify:\/\/shop_images\/BLC0545T-2DP121875_1.jpg",
-          "banner_link_3": "\/collections\/leggings-1\/products\/blc0545t?variant=39223810953",
-          "image_4": "shopify:\/\/shop_images\/BLL0528T-2F2121878_1.jpg",
-          "banner_link_4": "\/collections\/leggings-2\/products\/bll0528t?variant=1212268609563",
-          "image_5": "shopify:\/\/shop_images\/BLT1434T-2CS121871_1.jpg",
-          "banner_link_5": "\/collections\/jackets-hoodies\/products\/blt1434t?variant=1212286500891"
+          "image": "shopify://shop_images/2017_11_15_Marika_Holiday_Chandler_Saria_40_1.jpg",
+          "banner_link": "/collections/jackets-hoodies/products/blt1434t?variant=1212286173211",
+          "image_2": "shopify://shop_images/BLL0529T-0WX121394.jpg",
+          "banner_link_2": "/collections/leggings-2/products/bll0529t?variant=1212272672795",
+          "image_3": "shopify://shop_images/BLC0545T-2DP121875_1.jpg",
+          "banner_link_3": "/collections/leggings-1/products/blc0545t?variant=39223810953",
+          "image_4": "shopify://shop_images/BLL0528T-2F2121878_1.jpg",
+          "banner_link_4": "/collections/leggings-2/products/bll0528t?variant=1212268609563",
+          "image_5": "shopify://shop_images/BLT1434T-2CS121871_1.jpg",
+          "banner_link_5": "/collections/jackets-hoodies/products/blt1434t?variant=1212286500891"
         }
       },
       "row-featured-gifts": {
@@ -3496,29 +3496,29 @@
           "1512695797733": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/KLL0552T119268.jpg",
-              "link_url": "\/collections\/new-arrivals\/products\/kll0552t?variant=39223882761"
+              "image": "shopify://shop_images/KLL0552T119268.jpg",
+              "link_url": "/collections/new-arrivals/products/kll0552t?variant=39223882761"
             }
           },
           "1512696116172": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/BLJ0184A-0KD119249_1.jpg",
-              "link_url": "\/collections\/jackets-hoodies\/products\/blj0184a?variant=1212261367835"
+              "image": "shopify://shop_images/BLJ0184A-0KD119249_1.jpg",
+              "link_url": "/collections/jackets-hoodies/products/blj0184a?variant=1212261367835"
             }
           },
           "1512696123080": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MLL0420A119229_1.jpg",
-              "link_url": "\/products\/mll0420a?variant=1212371042331"
+              "image": "shopify://shop_images/MLL0420A119229_1.jpg",
+              "link_url": "/products/mll0420a?variant=1212371042331"
             }
           },
           "1512696142986": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MLJ0210A-97Z119233_1.jpg",
-              "link_url": "\/collections\/jackets-hoodies\/products\/mlj0210a?variant=1212296757275"
+              "image": "shopify://shop_images/MLJ0210A-97Z119233_1.jpg",
+              "link_url": "/collections/jackets-hoodies/products/mlj0210a?variant=1212296757275"
             }
           }
         },
@@ -3537,16 +3537,16 @@
         "settings": {
           "title": "The Fashionista",
           "grid_align": "left",
-          "image": "shopify:\/\/shop_images\/2017_11_28_Marika_Ecom_Chandler_PecanBLL0530T-9B2121676_1.jpg",
-          "banner_link": "\/collections\/sport-bra\/products\/mlb0372a?variant=39223897993",
-          "image_2": "shopify:\/\/shop_images\/BLT1048A-001121753.jpg",
-          "banner_link_2": "\/collections\/jackets-hoodies\/products\/blt1048a?variant=42858043145",
-          "image_3": "shopify:\/\/shop_images\/MLB0339A-001017119335.jpg",
-          "banner_link_3": "\/collections\/sport-bra\/products\/mlb0339a?variant=5103453011995",
-          "image_4": "shopify:\/\/shop_images\/BLT1192A-001120791.jpg",
-          "banner_link_4": "\/products\/blt1192a?variant=1212285124635",
-          "image_5": "shopify:\/\/shop_images\/2017_11_28_Marika_Ecom_Chandler_PecanMLL0402A-03P119480.jpg",
-          "banner_link_5": "\/collections\/leggings-2\/products\/mll0402a?variant=1212369928219"
+          "image": "shopify://shop_images/2017_11_28_Marika_Ecom_Chandler_PecanBLL0530T-9B2121676_1.jpg",
+          "banner_link": "/collections/sport-bra/products/mlb0372a?variant=39223897993",
+          "image_2": "shopify://shop_images/BLT1048A-001121753.jpg",
+          "banner_link_2": "/collections/jackets-hoodies/products/blt1048a?variant=42858043145",
+          "image_3": "shopify://shop_images/MLB0339A-001017119335.jpg",
+          "banner_link_3": "/collections/sport-bra/products/mlb0339a?variant=5103453011995",
+          "image_4": "shopify://shop_images/BLT1192A-001120791.jpg",
+          "banner_link_4": "/products/blt1192a?variant=1212285124635",
+          "image_5": "shopify://shop_images/2017_11_28_Marika_Ecom_Chandler_PecanMLL0402A-03P119480.jpg",
+          "banner_link_5": "/collections/leggings-2/products/mll0402a?variant=1212369928219"
         }
       },
       "row-featured-gifts-2": {
@@ -3555,22 +3555,22 @@
           "1512696157382": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/BLJ0195A-4E1121887.jpg",
-              "link_url": "\/products\/blj0195a?variant=1212263104539"
+              "image": "shopify://shop_images/BLJ0195A-4E1121887.jpg",
+              "link_url": "/products/blj0195a?variant=1212263104539"
             }
           },
           "1512696167467": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MLL0401A-001121294.jpg",
-              "link_url": "\/products\/mll0401a?variant=1212366422043"
+              "image": "shopify://shop_images/MLL0401A-001121294.jpg",
+              "link_url": "/products/mll0401a?variant=1212366422043"
             }
           },
           "1512696171900": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/2017_11_15_Marika_Holiday_Chandler_Saria_55_1.jpg",
-              "link_url": "\/collections\/get-cozy"
+              "image": "shopify://shop_images/2017_11_15_Marika_Holiday_Chandler_Saria_55_1.jpg",
+              "link_url": "/collections/get-cozy"
             }
           }
         },
@@ -3588,16 +3588,16 @@
         "settings": {
           "title": "Gifts For Yourself",
           "grid_align": "right",
-          "image": "shopify:\/\/shop_images\/2017_11_28_Marika_Ecom_Chandler_PecanBLL0530T-9B2121617.jpg",
-          "banner_link": "\/collections\/jackets-hoodies\/\/products\/mlt1066a?variant=42858070281",
-          "image_2": "shopify:\/\/shop_images\/BLC0589T119239.jpg",
-          "banner_link_2": "\/collections\/sport-bra\/products\/klb0407t?variant=39223832905",
-          "image_3": "shopify:\/\/shop_images\/KLC0394T-0W0119241.jpg",
-          "banner_link_3": "\/collections\/capris\/products\/klc0394t?variant=1212291153947",
-          "image_4": "shopify:\/\/shop_images\/2017_11_27_Marika_FlatlaysBLL0370A-0Q0.jpg",
-          "banner_link_4": "\/collections\/leggings-2\/products\/bll0370a?variant=42858031561",
-          "image_5": "shopify:\/\/shop_images\/blt1485t119245_1.jpg",
-          "banner_link_5": "\/collections\/tanks\/products\/blt1485t?variant=1212289744923"
+          "image": "shopify://shop_images/2017_11_28_Marika_Ecom_Chandler_PecanBLL0530T-9B2121617.jpg",
+          "banner_link": "/collections/jackets-hoodies//products/mlt1066a?variant=42858070281",
+          "image_2": "shopify://shop_images/BLC0589T119239.jpg",
+          "banner_link_2": "/collections/sport-bra/products/klb0407t?variant=39223832905",
+          "image_3": "shopify://shop_images/KLC0394T-0W0119241.jpg",
+          "banner_link_3": "/collections/capris/products/klc0394t?variant=1212291153947",
+          "image_4": "shopify://shop_images/2017_11_27_Marika_FlatlaysBLL0370A-0Q0.jpg",
+          "banner_link_4": "/collections/leggings-2/products/bll0370a?variant=42858031561",
+          "image_5": "shopify://shop_images/blt1485t119245_1.jpg",
+          "banner_link_5": "/collections/tanks/products/blt1485t?variant=1212289744923"
         }
       },
       "1512696555156": {
@@ -3607,9 +3607,9 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/BOGO70Tops-DesktopHero.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/BOGO70Tops-MobileHero.jpg",
-              "link_url": "\/collections\/tops-1",
+              "image": "shopify://shop_images/BOGO70Tops-DesktopHero.jpg",
+              "mobile_image": "shopify://shop_images/BOGO70Tops-MobileHero.jpg",
+              "link_url": "/collections/tops-1",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -3629,9 +3629,9 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/3for35Acc-DesktopHero.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/3for35Acc-Acc_MobileHero.jpg",
-              "link_url": "\/collections\/3-for-24-99-accessories",
+              "image": "shopify://shop_images/3for35Acc-DesktopHero.jpg",
+              "mobile_image": "shopify://shop_images/3for35Acc-Acc_MobileHero.jpg",
+              "link_url": "/collections/3-for-24-99-accessories",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -3750,25 +3750,25 @@
       "page-landing-page-mysteryflash_2lucky5": {
         "type": "page-landing-page-mysteryflash_2lucky5",
         "settings": {
-          "image": "shopify:\/\/shop_images\/M11-LandingPage-Desktop-25.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/M11-LandingPage-Mobile-25.gif",
-          "banner_link": "\/collections\/new-arrivals"
+          "image": "shopify://shop_images/M11-LandingPage-Desktop-25.jpg",
+          "mobile_image": "shopify://shop_images/M11-LandingPage-Mobile-25.gif",
+          "banner_link": "/collections/new-arrivals"
         }
       },
       "page-landing-page-mysteryflash_30lucky": {
         "type": "page-landing-page-mysteryflash_30lucky",
         "settings": {
-          "image": "shopify:\/\/shop_images\/M11-LandingPage-Desktop-30.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/M11-LandingPage-Mobile-30.gif",
-          "banner_link": "\/collections\/new-arrivals"
+          "image": "shopify://shop_images/M11-LandingPage-Desktop-30.jpg",
+          "mobile_image": "shopify://shop_images/M11-LandingPage-Mobile-30.gif",
+          "banner_link": "/collections/new-arrivals"
         }
       },
       "page-landing-page-mysteryflash_FLOURCTKYY": {
         "type": "page-landing-page-mysteryflash_FLOURCTKYY",
         "settings": {
-          "image": "shopify:\/\/shop_images\/M11-LandingPage-Desktop-40.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/M11-LandingPage-Mobile-40.gif",
-          "banner_link": "\/collections\/new-arrivals"
+          "image": "shopify://shop_images/M11-LandingPage-Desktop-40.jpg",
+          "mobile_image": "shopify://shop_images/M11-LandingPage-Mobile-40.gif",
+          "banner_link": "/collections/new-arrivals"
         }
       },
       "1547683167481": {
@@ -3781,18 +3781,18 @@
           "feature_style": "square",
           "promo_text_on_image_enabled": true,
           "text_on_image_hover": true,
-          "image1": "shopify:\/\/shop_images\/M1_2.png",
-          "link1": "shopify:\/\/collections\/leggings-1",
+          "image1": "shopify://shop_images/M1_2.png",
+          "link1": "shopify://collections/leggings-1",
           "title1": "",
           "text1": "",
           "button_label1": "",
-          "image2": "shopify:\/\/shop_images\/M2_1_af1cb64b-00b2-428b-b39c-8560b23b1bd6.png",
-          "link2": "shopify:\/\/collections\/tops-1",
+          "image2": "shopify://shop_images/M2_1_af1cb64b-00b2-428b-b39c-8560b23b1bd6.png",
+          "link2": "shopify://collections/tops-1",
           "title2": "",
           "text2": "",
           "button_label2": "Shop Tops",
-          "image3": "shopify:\/\/shop_images\/M3_1_d725c26b-415d-43cd-8bf7-6a2c004693d7.png",
-          "link3": "shopify:\/\/collections\/sports-bras",
+          "image3": "shopify://shop_images/M3_1_d725c26b-415d-43cd-8bf7-6a2c004693d7.png",
+          "link3": "shopify://collections/sports-bras",
           "title3": "",
           "text3": "",
           "button_label3": "Shop Sports Bras"
@@ -3802,7 +3802,7 @@
         "type": "seo-copy-block-hp",
         "settings": {
           "seo-copy-header": "",
-          "seo-copy-text": "Marika is an active lifestyle brand for the gym and beyond. We've got you covered no matter what the day holds. Find your perfect fit with everyday essentials like bum-sculpting <a href=\"\/collections\/leggings-1\">leggings<\/a>, comfortable wear-anywhere <a href=\"\/collections\/tops-1\">pullovers<\/a>\n and <a href=\"\/collections\/accessories\">yoga mats<\/a> that support your best sun salutation."
+          "seo-copy-text": "Marika is an active lifestyle brand for the gym and beyond. We've got you covered no matter what the day holds. Find your perfect fit with everyday essentials like bum-sculpting <a href=\"/collections/leggings-1\">leggings</a>, comfortable wear-anywhere <a href=\"/collections/tops-1\">pullovers</a>\n and <a href=\"/collections/accessories\">yoga mats</a> that support your best sun salutation."
         }
       },
       "popular-products-section": {
@@ -3814,9 +3814,9 @@
       "1552941616330": {
         "type": "image-with-text-overlay",
         "settings": {
-          "image": "shopify:\/\/shop_images\/HP_ShapewearBanner_desktop.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/HP_ShapewearBanner_mobile.jpg",
-          "banner_link": "https:\/\/www.marika.com\/collections\/shapewear",
+          "image": "shopify://shop_images/HP_ShapewearBanner_desktop.jpg",
+          "mobile_image": "shopify://shop_images/HP_ShapewearBanner_mobile.jpg",
+          "banner_link": "https://www.marika.com/collections/shapewear",
           "pretext": "",
           "title": "",
           "heading_text_color": "#020202",
@@ -3828,7 +3828,7 @@
           "text_position": "center",
           "text_align": "center",
           "button1": "",
-          "button1_link": "shopify:\/\/collections\/shapewear",
+          "button1_link": "shopify://collections/shapewear",
           "button1_highlight": true
         }
       },
@@ -3839,8 +3839,8 @@
             "type": "collection_banner",
             "disabled": true,
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/sports-bras_35offsportsbras_Collect_Desk.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/sports-bras_35offsportsbras_Collect_Mobile.jpg",
+              "collection_banner_image": "shopify://shop_images/sports-bras_35offsportsbras_Collect_Desk.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/sports-bras_35offsportsbras_Collect_Mobile.jpg",
               "hide_banner": false
             }
           },
@@ -3848,8 +3848,8 @@
             "type": "collection_banner",
             "disabled": true,
             "settings": {
-              "collection_banner_image": "shopify:\/\/shop_images\/shorts-skorts_LIPHazelBermuda-Collection-Desktop.jpg",
-              "collection_banner_image_mobile": "shopify:\/\/shop_images\/shorts-skorts_LIPHazelBermuda-Collection-Mobile.jpg",
+              "collection_banner_image": "shopify://shop_images/shorts-skorts_LIPHazelBermuda-Collection-Desktop.jpg",
+              "collection_banner_image_mobile": "shopify://shop_images/shorts-skorts_LIPHazelBermuda-Collection-Mobile.jpg",
               "hide_banner": false
             }
           }
@@ -3880,8 +3880,8 @@
           "collection_tags": false,
           "collection_sort": false,
           "featured_collection_image": false,
-          "image": "shopify:\/\/shop_images\/Mens-Mix-Match_Category_Desktop.jpg",
-          "image_mobile": "shopify:\/\/shop_images\/Mens-Mix-Match_Category_Mobile.jpg",
+          "image": "shopify://shop_images/Mens-Mix-Match_Category_Desktop.jpg",
+          "image_mobile": "shopify://shop_images/Mens-Mix-Match_Category_Mobile.jpg",
           "image_darken": false,
           "toggle": false
         }
@@ -3896,8 +3896,8 @@
           "collection_tags": false,
           "collection_sort": false,
           "featured_collection_image": false,
-          "image": "shopify:\/\/shop_images\/2-for-20_CollectionDesktop.jpg",
-          "image_mobile": "shopify:\/\/shop_images\/2-for-20_CollectionMobile.jpg",
+          "image": "shopify://shop_images/2-for-20_CollectionDesktop.jpg",
+          "image_mobile": "shopify://shop_images/2-for-20_CollectionMobile.jpg",
           "image_darken": false,
           "toggle": false
         }
@@ -3920,28 +3920,28 @@
             "type": "collection",
             "settings": {
               "feature_collection": "tops-1",
-              "image": "shopify:\/\/shop_images\/Marika-SEP-CATEGORY-TOPS.jpg"
+              "image": "shopify://shop_images/Marika-SEP-CATEGORY-TOPS.jpg"
             }
           },
           "1576786808425-1": {
             "type": "collection",
             "settings": {
               "feature_collection": "leggings-1",
-              "image": "shopify:\/\/shop_images\/Marika-SEP-CATEGORY-BOTTOMS.jpg"
+              "image": "shopify://shop_images/Marika-SEP-CATEGORY-BOTTOMS.jpg"
             }
           },
           "1576786808425-0": {
             "type": "collection",
             "settings": {
               "feature_collection": "sports-bras",
-              "image": "shopify:\/\/shop_images\/Marika-SEP-CATEGORY-BRAS.jpg"
+              "image": "shopify://shop_images/Marika-SEP-CATEGORY-BRAS.jpg"
             }
           },
           "1576787309230": {
             "type": "collection",
             "settings": {
               "feature_collection": "sale-old-0b4eee",
-              "image": "shopify:\/\/shop_images\/MLP0454A_001_34573_copy.jpg"
+              "image": "shopify://shop_images/MLP0454A_001_34573_copy.jpg"
             }
           }
         },
@@ -3963,7 +3963,7 @@
           "cdca5f6f-2e44-412c-aaab-f544c677662f": {
             "type": "text_content",
             "settings": {
-              "promo_details_text": "<p>*<strong>3 for $39 on Select Leggings  <\/strong>when purchased from <a href=\"https:\/\/www.marika.com\/collections\/3-for-39-leggings\">https:\/\/www.marika.com\/collections\/3-for-39-leggings<\/a>.<br\/>Offer expires 1\/4\/2023 at 11:59pm PT. No promo code needed. Discount automatically applies in cart at checkout. Offer not valid on previous purchases and cannot be used with any other offer. Applying a promo code to<br\/>your cart will cancel the 3 for $39 on select styles promo. Offer only available while supplies last. All purchases are final sale. Select styles are $13.00 when you buy 3 and must be purchased in quantities of 3 to receive<br\/>discount. Offer may not be applied to gift cards or shipping cost. Details of offer are subject to change.<\/p><p> <\/p><p><\/p><p><strong>Free Standard Shipping:<\/strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<\/p>"
+              "promo_details_text": "<p>*<strong>3 for $39 on Select Leggings  </strong>when purchased from <a href=\"https://www.marika.com/collections/3-for-39-leggings\">https://www.marika.com/collections/3-for-39-leggings</a>.<br/>Offer expires 1/4/2023 at 11:59pm PT. No promo code needed. Discount automatically applies in cart at checkout. Offer not valid on previous purchases and cannot be used with any other offer. Applying a promo code to<br/>your cart will cancel the 3 for $39 on select styles promo. Offer only available while supplies last. All purchases are final sale. Select styles are $13.00 when you buy 3 and must be purchased in quantities of 3 to receive<br/>discount. Offer may not be applied to gift cards or shipping cost. Details of offer are subject to change.</p><p> </p><p></p><p><strong>Free Standard Shipping:</strong> Offer applies to standard, ground shipping within the contiguous US states. No minimum required. If you choose another shipping option, additional charges will apply. Free Shipping does not include delivery confirmation and insurance. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.</p>"
             }
           }
         },
@@ -3986,7 +3986,7 @@
           "1664309983c8fef876-1": {
             "type": "html",
             "settings": {
-              "code": "<div id=\"vue-home-1\"><\/div>"
+              "code": "<div id=\"vue-home-1\"></div>"
             }
           }
         },
@@ -4011,7 +4011,7 @@
           "16643100693a312f01-1": {
             "type": "html",
             "settings": {
-              "code": "<div id=\"vue-home-2\"><\/div>"
+              "code": "<div id=\"vue-home-2\"></div>"
             }
           }
         },
@@ -4036,7 +4036,7 @@
           "1664310083cf4c7120-1": {
             "type": "html",
             "settings": {
-              "code": "<div id=\"vue-home-3\"><\/div>"
+              "code": "<div id=\"vue-home-3\"></div>"
             }
           }
         },
@@ -4074,10 +4074,10 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_6.png",
-              "image_top_hover": "shopify:\/\/shop_images\/Rectangle_7-2.png",
+              "image_top": "shopify://shop_images/Rectangle_6.png",
+              "image_top_hover": "shopify://shop_images/Rectangle_7-2.png",
               "image_caption_top": "New Arrivals",
-              "image_link_top": "shopify:\/\/collections\/new-arrivals",
+              "image_link_top": "shopify://collections/new-arrivals",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4095,10 +4095,10 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_7.png",
-              "image_top_hover": "shopify:\/\/shop_images\/Rectangle_8-2.png",
+              "image_top": "shopify://shop_images/Rectangle_7.png",
+              "image_top_hover": "shopify://shop_images/Rectangle_8-2.png",
               "image_caption_top": "Balance Collection",
-              "image_link_top": "shopify:\/\/collections\/balance-collection",
+              "image_link_top": "shopify://collections/balance-collection",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4116,9 +4116,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/MLL2605A_CL4.4284_1.jpg",
+              "image_top": "shopify://shop_images/MLL2605A_CL4.4284_1.jpg",
               "image_caption_top": "Marika Adventure",
-              "image_link_top": "shopify:\/\/collections\/marika-adventure",
+              "image_link_top": "shopify://collections/marika-adventure",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4170,9 +4170,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_12-2.png",
+              "image_top": "shopify://shop_images/Rectangle_12-2.png",
               "image_caption_top": "Capris",
-              "image_link_top": "shopify:\/\/collections\/capris",
+              "image_link_top": "shopify://collections/capris",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4190,9 +4190,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_13.png",
+              "image_top": "shopify://shop_images/Rectangle_13.png",
               "image_caption_top": "Shorts & Skorts",
-              "image_link_top": "shopify:\/\/collections\/shorts-skorts-old-960354",
+              "image_link_top": "shopify://collections/shorts-skorts-old-960354",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4210,9 +4210,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_14.png",
+              "image_top": "shopify://shop_images/Rectangle_14.png",
               "image_caption_top": "Pants & Joggers",
-              "image_link_top": "shopify:\/\/collections\/pants-joggers",
+              "image_link_top": "shopify://collections/pants-joggers-old-0b7037",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4264,9 +4264,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_15.png",
+              "image_top": "shopify://shop_images/Rectangle_15.png",
               "image_caption_top": "Tanks",
-              "image_link_top": "shopify:\/\/collections\/tanks",
+              "image_link_top": "shopify://collections/tanks",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4284,9 +4284,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_16.png",
+              "image_top": "shopify://shop_images/Rectangle_16.png",
               "image_caption_top": "Tees",
-              "image_link_top": "shopify:\/\/collections\/tees",
+              "image_link_top": "shopify://collections/tees",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4304,9 +4304,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_17.png",
+              "image_top": "shopify://shop_images/Rectangle_17.png",
               "image_caption_top": "Jackets & Hoodies",
-              "image_link_top": "shopify:\/\/collections\/jackets-hoodies",
+              "image_link_top": "shopify://collections/jackets-hoodies",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4358,9 +4358,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_18.png",
+              "image_top": "shopify://shop_images/Rectangle_18.png",
               "image_caption_top": "Bottom Plus",
-              "image_link_top": "shopify:\/\/collections\/bottoms-plus",
+              "image_link_top": "shopify://collections/bottoms-plus",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4378,9 +4378,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_19.png",
+              "image_top": "shopify://shop_images/Rectangle_19.png",
               "image_caption_top": "Tops Plus",
-              "image_link_top": "shopify:\/\/collections\/tops-plus",
+              "image_link_top": "shopify://collections/tops-plus",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4433,9 +4433,9 @@
             "disabled": true,
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_20.png",
+              "image_top": "shopify://shop_images/Rectangle_20.png",
               "image_caption_top": "Men Tops",
-              "image_link_top": "shopify:\/\/collections\/mens-tops",
+              "image_link_top": "shopify://collections/mens-tops",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4454,9 +4454,9 @@
             "disabled": true,
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_21.png",
+              "image_top": "shopify://shop_images/Rectangle_21.png",
               "image_caption_top": "Mens Bottoms",
-              "image_link_top": "shopify:\/\/collections\/mens-bottoms",
+              "image_link_top": "shopify://collections/mens-bottoms",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4507,9 +4507,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_22.png",
+              "image_top": "shopify://shop_images/Rectangle_22.png",
               "image_caption_top": "Bottoms Sale",
-              "image_link_top": "shopify:\/\/collections\/bottoms-sale-old-10af13",
+              "image_link_top": "shopify://collections/bottoms-sale-old-10af13",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4527,9 +4527,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_23.png",
+              "image_top": "shopify://shop_images/Rectangle_23.png",
               "image_caption_top": "Sports Bras Sale",
-              "image_link_top": "shopify:\/\/collections\/bras-sale-old-b4e270",
+              "image_link_top": "shopify://collections/bras-sale-old-b4e270",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4548,9 +4548,9 @@
             "disabled": true,
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_24.png",
+              "image_top": "shopify://shop_images/Rectangle_24.png",
               "image_caption_top": "Mens Sale",
-              "image_link_top": "shopify:\/\/collections\/mens-sale",
+              "image_link_top": "shopify://collections/mens-sale",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -4568,9 +4568,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/Rectangle_25.png",
+              "image_top": "shopify://shop_images/Rectangle_25.png",
               "image_caption_top": "Clearance",
-              "image_link_top": "shopify:\/\/collections\/clearance",
+              "image_link_top": "shopify://collections/clearance",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
